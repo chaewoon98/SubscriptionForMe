@@ -1,4 +1,4 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.home;
 
 import androidx.fragment.app.Fragment;
 
