@@ -1,4 +1,4 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.main;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -9,6 +9,10 @@ import androidx.fragment.app.FragmentTransaction;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.collection.FragmentCollectionView;
+import com.example.subscriptionforme.home.FragmentHome;
+import com.example.subscriptionforme.recommendation.FragmentRecommend;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
