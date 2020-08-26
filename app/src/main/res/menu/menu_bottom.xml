@@ -3,16 +3,16 @@
     <item
         android:id="@+id/home"
         android:icon="@android:drawable/ic_menu_call"
-        android:title="MENU1" />
+        android:title="관리" />
 
     <item
         android:id="@+id/recommend"
         android:icon="@android:drawable/ic_menu_camera"
-        android:title="MENU2" />
+        android:title="추천" />
 
     <item
         android:id="@+id/collection"
         android:icon="@android:drawable/ic_menu_edit"
-        android:title="MENU3" />
+        android:title="모아보기" />
 
 </menu>

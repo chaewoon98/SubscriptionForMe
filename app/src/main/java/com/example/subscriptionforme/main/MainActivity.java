@@ -6,8 +6,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.WindowManager;
+import android.widget.Toast;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.collection.FragmentCollectionView;
@@ -24,11 +27,12 @@ public class MainActivity extends AppCompatActivity {
     private FragmentRecommend fragmentRecommend = new FragmentRecommend();
     private FragmentCollectionView fragmentCollectionView = new FragmentCollectionView();
     private FragmentTransaction transaction;
-
+    private BackPressCloseHandler backPressCloseHandler;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        backPressCloseHandler = new BackPressCloseHandler(this);
         setContentView(R.layout.activity_main);
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation_view);
@@ -69,6 +73,40 @@ public class MainActivity extends AppCompatActivity {
     public void replaceFragment(Fragment fragment){
         transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, fragment).commit();
+    }
+
+    @Override
+    public void onBackPressed() {
+        backPressCloseHandler.onBackPressed();
+    }
+
+    class BackPressCloseHandler {
+        private long backKeyPressedTime = 0;
+        private Toast toast;
+        private Activity activity;
+        private MainActivity mainActivity;
+
+        public BackPressCloseHandler(Activity context) {
+            this.activity = context;
+        }
+
+        public void onBackPressed() {
+
+            if (System.currentTimeMillis() > backKeyPressedTime + 2000) {
+                backKeyPressedTime = System.currentTimeMillis();
+                showGuide();
+                return;
+            }
+            if (System.currentTimeMillis() <= backKeyPressedTime + 2000) {
+                activity.finish();
+                toast.cancel();
+            }
+        }
+
+        public void showGuide() {
+            toast = Toast.makeText(activity, "\'뒤로\' 버튼을 한번 더 누르시면 종료됩니다.", Toast.LENGTH_SHORT);
+            toast.show();
+        }
     }
 
 }
