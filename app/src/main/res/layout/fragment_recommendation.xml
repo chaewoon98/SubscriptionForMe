@@ -32,37 +32,16 @@
         android:layout_height="0dp"
         android:layout_weight="9">
 
-<!--        <LinearLayout-->
-<!--            android:layout_width="match_parent"-->
-<!--            android:layout_height="match_parent"-->
-<!--            android:orientation="vertical">-->
-
-<!--            <ListView-->
-<!--                android:id="@+id/listView"-->
-<!--                android:layout_width="match_parent"-->
-<!--                android:layout_height="match_parent" />-->
-
-<!--        </LinearLayout>-->
         <ListView
             android:id="@+id/listView"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="40dp"
-            android:dividerHeight="40dp"
+            android:layout_marginTop="30dp"
+            android:dividerHeight="30dp"
             android:divider="#00000000"/>
 
     </FrameLayout>
-
-    <!--    <LinearLayout-->
-    <!--        android:layout_width="match_parent"-->
-    <!--        android:layout_height="0dp"-->
-    <!--        android:layout_weight="9"-->
-    <!--        android:orientation="vertical">-->
-    <!--        -->
-    <!--        -->
-
-    <!--    </LinearLayout>-->
 
 </LinearLayout>
