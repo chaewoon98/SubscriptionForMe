@@ -83,27 +83,14 @@
     </RelativeLayout>
 
 
-    <ScrollView
-        android:id="@+id/scrollview"
+    <ExpandableListView
+        android:id="@+id/expandable_listview"
         android:layout_width="match_parent"
-        android:layout_height="400dp"
-        android:layout_weight="1"
-        android:clipToPadding="false"
-        android:orientation="vertical"
-        android:scrollbarSize="15dp"
-        android:scrollbarStyle="outsideOverlay">
+        android:layout_height="488dp">
+
+    </ExpandableListView>
 
 
-        <LinearLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="15dp"
-            android:paddingRight="15dp"
-            android:paddingBottom="10dp">
 
-
-        </LinearLayout>
-    </ScrollView>
 
 </LinearLayout>
