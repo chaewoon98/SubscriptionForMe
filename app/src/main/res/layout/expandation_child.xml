@@ -12,7 +12,6 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_gravity="right"
-        android:textSize="15sp"
-    />
+        android:textSize="15sp"/>
 
 </LinearLayout>

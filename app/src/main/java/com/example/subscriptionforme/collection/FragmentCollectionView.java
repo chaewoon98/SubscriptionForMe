@@ -1,5 +1,6 @@
 package com.example.subscriptionforme.collection;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -115,15 +116,14 @@ public class FragmentCollectionView extends Fragment {
         listItem.put(listGroup.get(4),list5);
         listItem.put(listGroup.get(5),list6);
         listItem.put(listGroup.get(6),list7);
-
     }
 
     public class GroupClick implements ExpandableListView.OnChildClickListener {
-
         @Override
         public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
-
             Log.d("박태순",String.valueOf(groupPosition));
+            Intent childIntent = new Intent(getActivity(), ChildActivity.class);
+            startActivity(childIntent);
             return false;
         }
     }

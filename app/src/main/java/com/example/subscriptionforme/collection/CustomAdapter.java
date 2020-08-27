@@ -12,7 +12,6 @@ import java.util.HashMap;
 import java.util.List;
 
 public class CustomAdapter extends BaseExpandableListAdapter {
-
     //private ArrayList<GroupData> groupDatas;
     //private ArrayList<ArrayList<ChildData>> childData;
     Context context;
