@@ -9,13 +9,12 @@ import androidx.fragment.app.FragmentTransaction;
 import android.app.Activity;
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.WindowManager;
 import android.widget.Toast;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.collection.FragmentCollectionView;
 import com.example.subscriptionforme.home.FragmentHome;
-import com.example.subscriptionforme.recommendation.FragmentRecommend;
+import com.example.subscriptionforme.recommendation.FragmentRecommendation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {
@@ -24,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
     private FragmentManager fragmentManager = getSupportFragmentManager();
     // 4개의 메뉴에 들어갈 Fragment들
     private FragmentHome fragmentHome = new FragmentHome();
-    private FragmentRecommend fragmentRecommend = new FragmentRecommend();
+    private FragmentRecommendation fragmentRecommend = new FragmentRecommendation();
     private FragmentCollectionView fragmentCollectionView = new FragmentCollectionView();
     private FragmentTransaction transaction;
     private BackPressCloseHandler backPressCloseHandler;

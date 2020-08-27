@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="50dp"
+    android:orientation="vertical"
+    android:background="@color/transparentColor">
+
+    <ImageButton
+        android:id="@+id/add_button_subscription_home"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/plus_button"
+        android:layout_gravity="center_horizontal"
+
+        android:adjustViewBounds="true"
+        android:scaleType="fitCenter"
+        android:background="@color/transparentColor"
+        />
+
+</LinearLayout>
