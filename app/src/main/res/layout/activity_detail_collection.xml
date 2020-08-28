@@ -14,7 +14,7 @@
             android:layout_width="477dp"
             android:layout_height="507dp"
             android:layout_marginBottom="1dp"
-            android:background="#FBCEB1"
+            android:background="#F4E0D2"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintHorizontal_bias="0.0"
@@ -28,49 +28,52 @@
 
                 <ImageView
                     android:id="@+id/collectionImage"
-                    android:layout_width="543dp"
-                    android:layout_height="202dp"
+                    android:layout_width="359dp"
+                    android:layout_height="282dp"
                     android:layout_marginBottom="20dp"
+                    android:background="@drawable/image_rounding"
                     android:foregroundGravity="center"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
+                    app:layout_constraintHorizontal_bias="0.226"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.055"
+                    app:layout_constraintVertical_bias="0.0"
                     tools:srcCompat="@drawable/fruit" />
 
                 <TextView
                     android:id="@+id/collectionName"
-                    android:layout_width="183dp"
-                    android:layout_height="65dp"
+                    android:layout_width="323dp"
+                    android:layout_height="69dp"
                     android:layout_marginStart="43dp"
                     android:layout_marginTop="10dp"
                     android:layout_marginEnd="273dp"
                     android:layout_marginBottom="124dp"
+                    android:fontFamily="@font/nanumsquarer"
                     android:gravity="left"
                     android:text="리얼 후르츠"
                     android:textSize="30dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.333"
+                    app:layout_constraintHorizontal_bias="0.043"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/collectionImage"
-                    app:layout_constraintVertical_bias="0.0" />
+                    app:layout_constraintVertical_bias="1.0" />
 
                 <TextView
                     android:id="@+id/collectionDescription"
                     android:layout_width="451dp"
                     android:layout_height="34dp"
                     android:layout_marginStart="43dp"
+                    android:fontFamily="@font/nanumsquarer"
                     android:text="맛있고 신선한 제철과일을 매달 즐기세요!"
                     android:textSize="16dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
+                    app:layout_constraintHorizontal_bias="0.411"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/collectionImage"
-                    app:layout_constraintVertical_bias="0.263" />
+                    app:layout_constraintVertical_bias="0.329" />
 
                 <TextView
                     android:id="@+id/collectionPrice"
@@ -80,28 +83,15 @@
                     android:layout_marginTop="30dp"
                     android:layout_marginEnd="273dp"
                     android:layout_marginBottom="170dp"
+                    android:fontFamily="@font/nanumsquarer"
                     android:text="24,000원"
                     android:textSize="35dp"
                     app:layout_constraintBottom_toBottomOf="parent"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.33"
+                    app:layout_constraintHorizontal_bias="0.28"
                     app:layout_constraintStart_toStartOf="parent"
                     app:layout_constraintTop_toBottomOf="@+id/collectionDescription"
-                    app:layout_constraintVertical_bias="0.0" />
-
-                <TextView
-                    android:id="@+id/textView9"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginBottom="20dp"
-                    android:gravity="center"
-                    android:text="요금제 보기"
-                    android:textColor="#2196F3"
-                    android:textSize="40dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="0.39"
-                    app:layout_constraintStart_toStartOf="parent" />
+                    app:layout_constraintVertical_bias="0.133" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
@@ -127,6 +117,7 @@
                     android:layout_marginStart="50dp"
                     android:gravity="left"
                     android:text="구독 서비스 모아보기"
+                    android:fontFamily="@font/nanumsquarer"
                     android:textColor="#2196F3"
                     android:textSize="22dp"
                     app:layout_constraintBottom_toBottomOf="parent"
@@ -138,8 +129,9 @@
 
                 <TextView
                     android:id="@+id/collectionTitle"
-                    android:layout_width="138dp"
-                    android:layout_height="30dp"
+                    android:layout_width="220dp"
+                    android:layout_height="25dp"
+                    android:fontFamily="@font/nanumsquarer"
                     android:gravity="center"
                     android:text="REAL Fruit"
                     android:textSize="25dp"
@@ -150,5 +142,23 @@
                     app:layout_constraintVertical_bias="1.0" />
             </androidx.constraintlayout.widget.ConstraintLayout>
         </FrameLayout>
+
+        <Button
+            android:id="@+id/collectionButton"
+            android:layout_width="327dp"
+            android:layout_height="63dp"
+            android:layout_marginStart="90dp"
+            android:layout_marginTop="11dp"
+            android:layout_marginEnd="90dp"
+            android:layout_marginBottom="16dp"
+            android:background="@drawable/pricebutton"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="구독하러 가기"
+            android:textColor="@android:color/white"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/frameLayout"
+            tools:textSize="20sp" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </LinearLayout>

@@ -124,7 +124,8 @@ public class FragmentCollectionView extends Fragment {
             
             Intent intent = new Intent(getContext(), ChildActivity.class);
             intent.putExtra("group", listGroup.get(groupPosition));
-            intent.putExtra("child", listGroup.get((int) id));
+            intent.putExtra("child", (int) id);
+
             startActivity(intent);
             return false;
         }
