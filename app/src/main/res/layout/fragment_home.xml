@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+
+    android:layout_height="match_parent"
+    android:background="@color/white"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1.3">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="구독 For Me"
+            android:textColor="@color/mainColor"
+            android:textSize="17dp" />
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparentColor"
+            android:scaleType="fitCenter"
+            android:src="@drawable/setting" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="25dp"
+
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="8월,"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="45dp"
+
+            android:layout_gravity="start"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="44,000 원"
+            android:textColor="@color/mainColor"
+            android:textSize="35dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+
+            android:layout_gravity="start"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumsquarer"
+            android:lineSpacingExtra="3dp"
+            android:text="결제 될\n예정입니다."
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
+        <ListView
+            android:id="@+id/listview_home"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_margin="20dp"
+            android:layout_weight="6"
+
+            android:divider="@color/white"
+            android:dividerHeight="18dp">
+
+
+        </ListView>
+    </LinearLayout>
+
+</LinearLayout>
+

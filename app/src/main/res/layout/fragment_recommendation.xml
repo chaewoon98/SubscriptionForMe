@@ -15,8 +15,9 @@
             android:layout_gravity="left|center"
             android:layout_marginLeft="20dp"
             android:text="8월, 당신이 놓친 혜택!"
-            android:textSize="25dp"
-            android:textColor="@color/colorPurple"/>
+            android:textSize="20dp"
+            android:textColor="@color/colorPurple"
+            android:fontFamily="@font/nanumsquareb"/>
 
         <ImageView
             android:layout_width="30dp"
@@ -30,7 +31,8 @@
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9">
+        android:layout_weight="9"
+        android:layout_marginBottom="60dp">
 
         <ListView
             android:id="@+id/listView"
@@ -38,7 +40,7 @@
             android:layout_height="match_parent"
             android:layout_marginRight="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="30dp"
+            android:layout_marginTop="15dp"
             android:dividerHeight="30dp"
             android:divider="#00000000"/>
 

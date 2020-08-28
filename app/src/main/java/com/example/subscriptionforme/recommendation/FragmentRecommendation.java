@@ -2,6 +2,7 @@ package com.example.subscriptionforme.recommendation;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -16,16 +17,16 @@ import com.example.subscriptionforme.R;
 
 import java.util.ArrayList;
 
-public class RecommendationFragment extends Fragment {
+public class FragmentRecommendation extends Fragment {
 
     ArrayList<RecommendationList> recommendationList;
 
-    private RecommendationFragment(){
+    public FragmentRecommendation(){
 
     }
 
-    public static RecommendationFragment newInstance() {
-        RecommendationFragment fragment = new RecommendationFragment();
+    public static FragmentRecommendation newInstance() {
+        FragmentRecommendation fragment = new FragmentRecommendation();
         Bundle args = new Bundle();
         fragment.setArguments(args);
 
@@ -53,10 +54,13 @@ public class RecommendationFragment extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-//                    ((MainActivity)getActivity()).replaceFragment(DetailRecommendationFragment.newInstance());
-
-//                    Intent intent = DetailRecommendationActivity
                     Intent intent = new Intent(getContext(), DetailRecommendationActivity.class);
+
+                    intent.putExtra("name", recommendationList.get(i).getName());
+                    intent.putExtra("logo", recommendationList.get(i).getIcon());
+                    intent.putExtra("benefit", recommendationList.get(i).getBenefit());
+                    intent.putExtra("color", recommendationList.get(i).getColor());
+
                     startActivity(intent);
                 }
             });
@@ -68,9 +72,8 @@ public class RecommendationFragment extends Fragment {
     public void initList(){
 
         recommendationList = new ArrayList<RecommendationList>();
-        recommendationList.add(new RecommendationList("햄버거", "버거킹", "4700", "9800원", "5200원", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing)));
-        recommendationList.add(new RecommendationList("11번가", "11번가", "5000", "128000원", "15360원", R.drawable.ic_11st,getResources().getColor(R.color.color11st)));
-        recommendationList.add(new RecommendationList("햄버거", "버거킹3", "4700", "9800원", "5200원", R.drawable.ic_burgerking,getResources().getColor(R.color.colorBurgerKing)));
-        recommendationList.add(new RecommendationList("햄버거", "버거킹3", "4700", "9800원", "5200원", R.drawable.ic_burgerking,getResources().getColor(R.color.colorBurgerKing)));
+        recommendationList.add(new RecommendationList("11번가", "Smile Club Membership", "5,000", "128,000", "15,360", R.drawable.ic_11st,getResources().getColor(R.color.color11st), R.drawable.benefit_11st));
+        recommendationList.add(new RecommendationList("햄버거", "버거킹 정기 구독 서비스", "4,700", "9,800", "5,200", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing),R.drawable.benefit_burgerking));
+        recommendationList.add(new RecommendationList("쿠팡", "쿠팡 로켓 와우", "2,900", "19,000", "2,500", R.drawable.ic_coupang,getResources().getColor(R.color.colorCoupang),R.drawable.benefit_11st));
      }
 }
