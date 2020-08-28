@@ -1,3 +1,55 @@
 <resources>
     <string name="app_name">SubscriptionForMe</string>
+
+    <string name="group1">식당</string>
+    <string name="group2">문화</string>
+    <string name="group3">카페, 디저트</string>
+    <string name="group4">식품 배송</string>
+    <string name="group5">의류</string>
+    <string name="group6">생활</string>
+    <string name="group7">의류</string>
+    
+    <string-array name="group1">
+        <item>버거킹</item>
+        <item>GS25</item>
+    </string-array>
+
+    <string-array name="group2">
+        <item>밀리의 서재</item>
+        <item>CGV</item>
+    </string-array>
+
+    <string-array name="group3">
+        <item>item1</item>
+        <item>item2</item>
+    </string-array>
+
+    <string-array name="group4">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+    </string-array>
+
+    <string-array name="group5">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+    </string-array>
+
+    <string-array name="group6">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+    </string-array>
+
+    <string-array name="group7">
+        <item>item1</item>
+        <item>item2</item>
+        <item>item3</item>
+        <item>item4</item>
+    </string-array>
+
 </resources>

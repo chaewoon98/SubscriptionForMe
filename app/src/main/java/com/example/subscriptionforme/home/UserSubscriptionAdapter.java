@@ -1,7 +1,8 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.home;
 
 import android.content.Context;
 import android.content.Intent;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,15 +12,19 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.main.MainActivity;
+
+import java.util.ArrayList;
 import java.util.List;
 
 public class UserSubscriptionAdapter extends BaseAdapter {
 
     private Context context;
     private LayoutInflater layoutInflater;
-    private List<UserSubscriptionData> userSubscriptionDataList;
+    private ArrayList<UserSubscriptionData> userSubscriptionDataList;
 
-    public UserSubscriptionAdapter(Context context,List<UserSubscriptionData> userSubscriptionDataList) {
+    public UserSubscriptionAdapter(Context context,ArrayList<UserSubscriptionData> userSubscriptionDataList) {
         this.userSubscriptionDataList = userSubscriptionDataList;
         this.context = context;
 
@@ -60,7 +65,9 @@ public class UserSubscriptionAdapter extends BaseAdapter {
                 @Override
                 public void onClick(View view) {
                     MainActivity mainActivity = (MainActivity)context;
-                    Intent intent = new Intent(context,AddSubscriptionActivity.class);
+                    Intent intent = new Intent(context, AddSubscriptionActivity.class);
+
+                    intent.putParcelableArrayListExtra("subsciptionModelDataList",mainActivity.subsciptionModelDataList);
                     mainActivity.startActivity(intent);
 
                 }

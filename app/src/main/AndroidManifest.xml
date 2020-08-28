@@ -9,7 +9,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".MainActivity">
+
+  <activity android:name=".collection.ChildActivity"/>
+
+        <activity android:name=".main.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -17,8 +20,7 @@
             </intent-filter>
         </activity>
 
-        
-        <activity android:name=".AddSubscriptionActivity"/>
+        <activity android:name=".home.AddSubscriptionActivity"/>
         <activity android:name=".recommendation.DetailRecommendationActivity"/>
     </application>
     

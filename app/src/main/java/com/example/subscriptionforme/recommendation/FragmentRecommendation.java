@@ -16,16 +16,16 @@ import com.example.subscriptionforme.R;
 
 import java.util.ArrayList;
 
-public class RecommendationFragment extends Fragment {
+public class FragmentRecommendation extends Fragment {
 
     ArrayList<RecommendationList> recommendationList;
 
-    private RecommendationFragment(){
+    public FragmentRecommendation(){
 
     }
 
-    public static RecommendationFragment newInstance() {
-        RecommendationFragment fragment = new RecommendationFragment();
+    public static FragmentRecommendation newInstance() {
+        FragmentRecommendation fragment = new FragmentRecommendation();
         Bundle args = new Bundle();
         fragment.setArguments(args);
 
