@@ -1,9 +1,11 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.home;
 
 import android.content.Context;
 import android.view.View;
 import android.widget.ImageButton;
 import android.widget.Toast;
+
+import com.example.subscriptionforme.R;
 
 import java.util.List;
 

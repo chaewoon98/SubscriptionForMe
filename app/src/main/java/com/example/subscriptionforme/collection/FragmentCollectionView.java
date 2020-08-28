@@ -121,9 +121,11 @@ public class FragmentCollectionView extends Fragment {
     public class GroupClick implements ExpandableListView.OnChildClickListener {
         @Override
         public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
-            Log.d("박태순",String.valueOf(groupPosition));
-            Intent childIntent = new Intent(getActivity(), ChildActivity.class);
-            startActivity(childIntent);
+            
+            Intent intent = new Intent(getContext(), ChildActivity.class);
+            intent.putExtra("group", listGroup.get(groupPosition));
+            intent.putExtra("child", listGroup.get((int) id));
+            startActivity(intent);
             return false;
         }
     }

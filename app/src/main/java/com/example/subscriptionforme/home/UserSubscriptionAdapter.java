@@ -1,4 +1,4 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.home;
 
 import android.content.Context;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.main.MainActivity;
 
 import java.util.List;

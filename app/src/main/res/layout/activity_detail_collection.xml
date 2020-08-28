@@ -27,7 +27,7 @@
                 android:layout_height="492dp">
 
                 <ImageView
-                    android:id="@+id/imageView4"
+                    android:id="@+id/collectionImage"
                     android:layout_width="452dp"
                     android:layout_height="202dp"
                     android:foregroundGravity="center"
@@ -39,7 +39,7 @@
                     tools:srcCompat="@tools:sample/avatars" />
 
                 <TextView
-                    android:id="@+id/textView5"
+                    android:id="@+id/collectionName"
                     android:layout_width="183dp"
                     android:layout_height="65dp"
                     android:layout_marginStart="43dp"
@@ -53,11 +53,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.333"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    app:layout_constraintTop_toBottomOf="@+id/collectionImage"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
-                    android:id="@+id/textView6"
+                    android:id="@+id/collectionDescription"
                     android:layout_width="451dp"
                     android:layout_height="34dp"
                     android:layout_marginStart="43dp"
@@ -67,11 +67,11 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.33"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/imageView4"
+                    app:layout_constraintTop_toBottomOf="@+id/collectionImage"
                     app:layout_constraintVertical_bias="0.263" />
 
                 <TextView
-                    android:id="@+id/textView8"
+                    android:id="@+id/collectionPrice"
                     android:layout_width="204dp"
                     android:layout_height="54dp"
                     android:layout_marginStart="50dp"
@@ -84,7 +84,7 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintHorizontal_bias="0.33"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toBottomOf="@+id/textView6"
+                    app:layout_constraintTop_toBottomOf="@+id/collectionDescription"
                     app:layout_constraintVertical_bias="0.0" />
 
                 <TextView
@@ -135,7 +135,7 @@
                     app:layout_constraintVertical_bias="0.255" />
 
                 <TextView
-                    android:id="@+id/textView3"
+                    android:id="@+id/collectionTitle"
                     android:layout_width="138dp"
                     android:layout_height="30dp"
                     android:gravity="center"

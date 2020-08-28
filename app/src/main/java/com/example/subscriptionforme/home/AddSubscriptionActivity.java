@@ -1,9 +1,11 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.home;
 
 import android.app.Activity;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
+
+import com.example.subscriptionforme.R;
 
 public class AddSubscriptionActivity extends Activity {
 

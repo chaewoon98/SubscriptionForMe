@@ -9,11 +9,8 @@ import android.widget.ListView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentTransaction;
 
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.UserSubscriptionAdapter;
-import com.example.subscriptionforme.UserSubscriptionData;
 
 import java.util.ArrayList;
 import java.util.List;

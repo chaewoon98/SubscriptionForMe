@@ -22,7 +22,7 @@
 
 
         
-        <activity android:name=".AddSubscriptionActivity"/>
+        <activity android:name=".home.AddSubscriptionActivity"/>
         <activity android:name=".recommendation.DetailRecommendationActivity"/>
     </application>
     
