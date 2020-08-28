@@ -5,13 +5,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.SubsciptionModelData;
+
 
 import java.util.ArrayList;
 import java.util.List;
@@ -21,6 +20,7 @@ public class FragmentHome extends Fragment {
     private View view;
     private ArrayList<UserSubscriptionData> userSubscriptionDataList;
     private UserSubscriptionAdapter userSubscriptionAdapter;
+
 
     @Nullable
     @Override
@@ -32,8 +32,6 @@ public class FragmentHome extends Fragment {
         initializeExampleDataSet();
         return view;
     }
-
-
 
     @Override
     public void onActivityCreated(@Nullable Bundle savedInstanceState) {

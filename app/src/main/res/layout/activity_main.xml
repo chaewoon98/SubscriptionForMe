@@ -6,7 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".main.MainActivity"
+    tools:context=".MainActivity"
     android:orientation="vertical">
 
     <!-- 각각의 Fragment를 넣을 Container -->
@@ -19,6 +19,7 @@
             android:id="@+id/bottom_navigation_view"
             android:layout_width="match_parent"
             android:layout_height="50dp"
+
             android:layout_gravity="bottom"
             app:menu="@menu/menu_bottom"
             android:background="?android:attr/windowBackground" />

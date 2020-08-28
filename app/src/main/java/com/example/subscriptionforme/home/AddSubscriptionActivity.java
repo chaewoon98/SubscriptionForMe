@@ -7,6 +7,7 @@ import android.util.Log;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
+
 import androidx.annotation.Nullable;
 
 import com.example.subscriptionforme.R;
@@ -45,6 +46,5 @@ public class AddSubscriptionActivity extends Activity {
         }
 
     }
-
 
 }

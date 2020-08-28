@@ -5,7 +5,6 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import android.app.Activity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,13 +17,13 @@ import com.example.subscriptionforme.collection.FragmentCollectionView;
 import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.recommendation.FragmentRecommendation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     public  ArrayList<SubsciptionModelData> subsciptionModelDataList;
+
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
     private FragmentManager fragmentManager = getSupportFragmentManager();
     // 4개의 메뉴에 들어갈 Fragment들
@@ -33,7 +32,6 @@ public class MainActivity extends AppCompatActivity {
     private FragmentCollectionView fragmentCollectionView = new FragmentCollectionView();
     private FragmentTransaction transaction;
     private BackPressCloseHandler backPressCloseHandler;
-
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -180,5 +178,4 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
-
 }
