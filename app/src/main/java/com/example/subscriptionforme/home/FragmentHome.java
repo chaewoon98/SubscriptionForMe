@@ -9,11 +9,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.SubsciptionModelData;
 
 
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class FragmentHome extends Fragment {
 

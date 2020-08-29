@@ -3,7 +3,8 @@ package com.example.subscriptionforme.home;
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 
@@ -11,14 +12,13 @@ import android.widget.AutoCompleteTextView;
 import androidx.annotation.Nullable;
 
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.SubsciptionModelData;
+import com.example.subscriptionforme.SubscriptionModelData;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class AddSubscriptionActivity extends Activity {
 
-    private ArrayList<SubsciptionModelData> subsciptionModelDataList;
+    private ArrayList<SubscriptionModelData> subscriptionModelDataList;
     private ArrayList<String> subsciptionModelNameList;
 
     @Override
@@ -28,22 +28,12 @@ public class AddSubscriptionActivity extends Activity {
 
         Intent intent = getIntent();
 
-        subsciptionModelDataList = new ArrayList<SubsciptionModelData>();
-        subsciptionModelDataList = intent.getParcelableArrayListExtra("subsciptionModelDataList");
-
-        setNameList();
+        subscriptionModelDataList = new ArrayList<SubscriptionModelData>();
+        subscriptionModelDataList = intent.getParcelableArrayListExtra("subsciptionModelDataList");
 
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.auto_textview_ativity_add);
-        autoCompleteTextView.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,subsciptionModelNameList));
-    }
-
-    public void setNameList(){
-
-        subsciptionModelNameList = new ArrayList<>();
-
-        for(int index=0;index<subsciptionModelDataList.size();index++){
-            subsciptionModelNameList.add(subsciptionModelDataList.get(index).getName());
-        }
+        SubscriptionAutoCompleteAdapter adapter = new SubscriptionAutoCompleteAdapter(this,subscriptionModelDataList);
+        autoCompleteTextView.setAdapter(adapter);
 
     }
 

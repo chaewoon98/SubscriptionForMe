@@ -8,7 +8,7 @@
     <string name="group5">의류</string>
     <string name="group6">생활</string>
     <string name="group7">기타</string>
-    
+
     <string-array name="group1">
         <item>버거킹</item>
         <item>GS25</item>

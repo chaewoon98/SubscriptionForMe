@@ -16,7 +16,8 @@
             android:layout_marginLeft="20dp"
             android:text="8월, 당신이 놓친 혜택!"
             android:textColor="@color/colorPurple"
-            android:textSize="25dp" />
+            android:fontFamily="@font/nanumsquareb"
+            android:textSize="20dp" />
 
         <ImageView
             android:layout_width="30dp"
@@ -79,7 +80,7 @@
                     android:layout_marginTop="25dp"
                     android:text="상세정보"
                     android:textSize="15dp"
-                    android:textStyle="bold" />
+                    android:fontFamily="@font/nanumsquareb"/>
 
                 <TextView
                     android:layout_width="wrap_content"
@@ -87,11 +88,13 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
                     android:text="스마일 클럽은 G마켓, 옥션 G9 어디서나 최고의 혜택을 받는 쇼핑 멤버십입니다."
+                    android:fontFamily="@font/nanumsquarer"
                     android:textSize="15dp" />
 
                 <ImageView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
+                    android:id="@+id/benefit_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
                     android:src="@drawable/benefit_11st" />
 
             </LinearLayout>

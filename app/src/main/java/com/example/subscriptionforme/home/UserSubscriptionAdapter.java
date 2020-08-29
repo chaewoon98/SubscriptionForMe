@@ -17,8 +17,6 @@ import com.example.subscriptionforme.main.MainActivity;
 
 import java.util.ArrayList;
 
-import java.util.List;
-
 public class UserSubscriptionAdapter extends BaseAdapter {
 
     private Context context;
@@ -68,10 +66,8 @@ public class UserSubscriptionAdapter extends BaseAdapter {
                 public void onClick(View view) {
                     MainActivity mainActivity = (MainActivity) context;
                     Intent intent = new Intent(context, AddSubscriptionActivity.class);
-
-                    intent.putParcelableArrayListExtra("subsciptionModelDataList", mainActivity.subsciptionModelDataList);
+                    intent.putParcelableArrayListExtra("subsciptionModelDataList", mainActivity.subscriptionModelDataList);
                     mainActivity.startActivity(intent);
-
                 }
             });
             return view;
