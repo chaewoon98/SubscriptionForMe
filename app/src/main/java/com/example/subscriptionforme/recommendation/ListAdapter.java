@@ -1,7 +1,6 @@
 package com.example.subscriptionforme.recommendation;
 
 import android.content.Context;
-import android.graphics.Color;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -52,7 +51,7 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        View view = layoutInflater.inflate(R.layout.list_view,null);
+        View view = layoutInflater.inflate(R.layout.recommendation_list_view,null);
 
         TextView title = (TextView)view.findViewById(R.id.title_text);
         title.setText(list.get(position).getTitle());
@@ -64,6 +63,12 @@ public class ListAdapter extends BaseAdapter {
 
         ImageView icon = (ImageView)view.findViewById(R.id.icon_logo);
         icon.setImageResource(list.get(position).getIcon());
+
+        TextView consumption = (TextView)view.findViewById(R.id.consumption_text);
+        consumption.setText(list.get(position).getConsumption());
+
+        TextView discount = (TextView)view.findViewById(R.id.discount_text);
+        discount.setText(list.get(position).getDiscount());
 
         return view;
     }

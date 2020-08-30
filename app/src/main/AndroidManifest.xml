@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
 
-  <activity android:name=".collection.ChildActivity"/>
+        <activity android:name=".collection.ChildActivity" />
 
         <activity android:name=".main.MainActivity">
             <intent-filter>
@@ -20,12 +20,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".home.AddSubscriptionActivity" />
 
-        
-        <activity android:name=".home.AddSubscriptionActivity"/>
-        <activity android:name=".recommendation.DetailRecommendationActivity"/>
+        <activity android:name=".recommendation.DetailRecommendationActivity" />
     </application>
-    
 
 
 </manifest>

@@ -10,14 +10,13 @@ import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
 import android.widget.Toast;
 
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.main.MainActivity;
 
-import java.security.acl.Group;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -121,12 +120,12 @@ public class FragmentCollectionView extends Fragment {
     public class GroupClick implements ExpandableListView.OnChildClickListener {
         @Override
         public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
-            
             Intent intent = new Intent(getContext(), ChildActivity.class);
             intent.putExtra("group", listGroup.get(groupPosition));
             intent.putExtra("child", (int) id);
 
             startActivity(intent);
+
             return false;
         }
     }

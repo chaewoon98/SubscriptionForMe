@@ -5,21 +5,21 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ListView;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-
 import com.example.subscriptionforme.R;
 
+
 import java.util.ArrayList;
-import java.util.List;
+
 
 public class FragmentHome extends Fragment {
 
-    View view;
-    List<UserSubscriptionData> userSubscriptionDataList;
-    UserSubscriptionAdapter userSubscriptionAdapter;
+    private View view;
+    private ArrayList<UserSubscriptionData> userSubscriptionDataList;
+    private UserSubscriptionAdapter userSubscriptionAdapter;
+
 
     @Nullable
     @Override

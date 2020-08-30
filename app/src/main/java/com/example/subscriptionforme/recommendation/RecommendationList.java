@@ -9,8 +9,9 @@ public class RecommendationList {
     private String discount;  //할인금액
     private int icon;
     private int color;
+    private int benefit;
 
-    public RecommendationList(String title, String name, String price, String consumption, String discount, int icon, int color){
+    public RecommendationList(String title, String name, String price, String consumption, String discount, int icon, int color, int benefit){
         this.title = title;
         this.name = name;
         this.price = price;
@@ -18,6 +19,7 @@ public class RecommendationList {
         this.discount = discount;
         this.icon = icon;
         this.color = color;
+        this.benefit = benefit;
     }
 
     public String getTitle() { return title; }
@@ -69,4 +71,8 @@ public class RecommendationList {
     public int getColor() {
         return color;
     }
+
+    public void setBenefit(int benefit) { this.benefit = benefit; }
+
+    public int getBenefit() { return benefit; }
 }
