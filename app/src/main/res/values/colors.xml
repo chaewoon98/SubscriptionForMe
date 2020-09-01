@@ -5,10 +5,14 @@
     <color name="colorAccent">#03DAC5</color>
 
 
+    <color name="blue">#0000ff</color>
+    <color name="red">#ff0000</color>
     <color name="white">#ffffff</color>
     <color name="black">#000000</color>
     <color name="mainColor">#905ad9</color>
     <color name="transparentColor">#00000000</color>
+    <color name="transparentColorInTouch">#0D000000</color>
+    <color name="grayColor">#8b8b8b</color>
 
     <!--테마색-->
     <color name="colorPurple">#905ad9</color>

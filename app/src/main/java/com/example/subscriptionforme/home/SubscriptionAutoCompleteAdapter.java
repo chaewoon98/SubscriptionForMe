@@ -51,6 +51,8 @@ public class SubscriptionAutoCompleteAdapter extends ArrayAdapter<SubscriptionMo
         return convertView;
     }
 
+
+
     //---------아래로 자동 완성 찾아주는 코드
 
     @NonNull
@@ -72,6 +74,7 @@ public class SubscriptionAutoCompleteAdapter extends ArrayAdapter<SubscriptionMo
                 String filterPattern = constraint.toString().toLowerCase().trim();
 
                 for (SubscriptionModelData item : subscriptionModelDataList) {
+                    //초성 검색하는 부분
                     if (item.getName().toLowerCase().contains(filterPattern) || soundSearcher.matchString(item.getName().toLowerCase(),filterPattern)) {
                         suggestions.add(item);
                     }

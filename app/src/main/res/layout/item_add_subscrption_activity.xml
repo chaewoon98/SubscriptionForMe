@@ -34,7 +34,7 @@
         android:layout_height="match_parent"
         android:text="basic"
         android:fontFamily="@font/nanumsquarer"
-        android:textColor="#8b8b8b"
+        android:textColor="@color/grayColor"
         android:textSize="15dp"
 
         android:gravity="center_vertical"

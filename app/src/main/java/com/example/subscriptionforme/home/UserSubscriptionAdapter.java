@@ -50,7 +50,7 @@ public class UserSubscriptionAdapter extends BaseAdapter {
     public View getView(int position, View view, ViewGroup viewGroup) {
 
         /* View view;*/
-        TextView startingDate, dDayDate, nameOfSubscription, priceOfSubscription;
+        TextView startingDate, dDayDate, nameOfSubscription, priceOfSubscription, paymentSystemSubscription;
         ImageButton alarmButton, addSubscrpitionButton;
         ImageView imageOfSubscription;
         Button manageButton, cancleButton;
@@ -78,19 +78,21 @@ public class UserSubscriptionAdapter extends BaseAdapter {
         startingDate = view.findViewById(R.id.starting_date_subsciption_home);
         dDayDate = view.findViewById(R.id.d_day_date_subsciption_home);
         nameOfSubscription = view.findViewById(R.id.name_subsciption_home);
+        paymentSystemSubscription =view.findViewById(R.id.payment_system_subsciption_home);
         priceOfSubscription = view.findViewById(R.id.price_subsciption_home);
         imageOfSubscription = view.findViewById(R.id.image_subsciption_home);
         alarmButton = view.findViewById(R.id.alarm_button_subsciption_home);
         manageButton = view.findViewById(R.id.manage_button_subscription_home);
         cancleButton = view.findViewById(R.id.cancle_button_subscription_home);
 
-        startingDate.setText(userSubscriptionDataList.get(position).getStartingDate());
-        dDayDate.setText(userSubscriptionDataList.get(position).getDDayDate());
+        startingDate.setText(userSubscriptionDataList.get(position).getSubscriptionPayDate());
+        dDayDate.setText("D-21");
         nameOfSubscription.setText(userSubscriptionDataList.get(position).getSubscriptionName());
+        paymentSystemSubscription.setText(userSubscriptionDataList.get(position).getSubscriptionPaymentSystem());
         priceOfSubscription.setText(userSubscriptionDataList.get(position).getSubscriptionPrice());
         imageOfSubscription.setImageResource(userSubscriptionDataList.get(position).getSubscriptionImageID());
 
-        if (userSubscriptionDataList.get(position).isAlarmOn())
+        if (userSubscriptionDataList.get(position).isAlarmOn().equals("true"))
             alarmButton.setImageResource(R.drawable.alarm_button);
         else {
             alarmButton.setImageResource(R.drawable.alarm_cancel_button);
