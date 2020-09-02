@@ -1,6 +1,10 @@
 package com.example.subscriptionforme.setting.card;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.Adapter;
+import android.widget.AdapterView;
 import android.widget.GridView;
 
 import androidx.annotation.NonNull;
@@ -33,6 +37,23 @@ public class CardActivity extends AppCompatActivity {
         adapter = new GridAdapter(this, cards);
         gridView = (GridView)findViewById(R.id.cardGrid);
         gridView.setAdapter(adapter);
+    }
+
+    @Override
+    public void onStart() {
+
+        super.onStart();
+
+        gridView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                Intent intent = new Intent(getApplicationContext(), AgreementActivity.class);
+                startActivity(intent);
+            }
+
+        });
+
+
     }
 
 }

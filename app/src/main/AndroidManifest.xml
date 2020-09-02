@@ -28,6 +28,8 @@
         <activity android:name=".setting.SettingActivity"/>
         <!--   카드 선택 엑티비티 추가    -->
         <activity android:name=".setting.card.CardActivity"/>
+        <!--   약관 확인 엑티비티 추가     -->
+        <activity android:name=".setting.card.AgreementActivity"/>
     </application>
 
 
