@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="100dp"
+    android:background="@drawable/item_subscription_home"
+    android:orientation="vertical"
+    tools:background="#E2E2E2">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#FFFFFF">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@drawable/card_background"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/image_card_company"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:adjustViewBounds="true"
+                android:foregroundGravity="center"
+                android:paddingTop="10dp"
+                android:scaleType="centerInside"
+                android:src="@drawable/naver_logo"
+                tools:layout_gravity="center" />
+
+            <TextView
+                android:id="@+id/text_card_company"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_gravity="center"
+                android:layout_weight="1"
+                android:fontFamily="@font/nanumsquareb"
+                android:gravity="center_vertical|right"
+                android:text="현대카드"
+                android:textColor="@color/black"
+                android:textSize="14dp" />
+        </LinearLayout>
+
+    </RelativeLayout>
+
+
+</LinearLayout>
