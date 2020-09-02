@@ -14,8 +14,11 @@ import android.widget.TextView;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.codef.Codef;
+import com.example.subscriptionforme.csv.OpenCsv;
 import com.example.subscriptionforme.main.MainActivity;
+import com.example.subscriptionforme.setting.SettingActivity;
 
+import java.io.IOException;
 import java.util.ArrayList;
 
 import java.util.List;
@@ -121,18 +124,17 @@ public class UserSubscriptionAdapter extends BaseAdapter {
         cancleButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                // new Codef().getCodef();
+//                 new Codef().start();
+                try {
+                    new OpenCsv();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+
             }
         });
 
-        //설정 버튼
 
-//        imageOfSetting.setOnClickListener(new View.OnClickListener() {
-//            @Override
-//            public void onClick(View view) {
-//
-//            }
-//        });
 
         return view;
     }

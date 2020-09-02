@@ -13,14 +13,17 @@ import io.codef.api.EasyCodef;
 import io.codef.api.EasyCodefServiceType;
 import io.codef.api.EasyCodefUtil;
 
-public class Codef {
-
+public class Codef extends Thread{
+    EasyCodef codef;
+    HashMap<String, Object> parameterMap;
     public Codef(){
+
 
     }
 
-    public void getCodef(){
-        EasyCodef codef = new EasyCodef();
+    @Override
+    public void run(){
+        codef = new EasyCodef();
         codef.setClientInfoForDemo("7454792c-2646-4ac3-b944-ce0594c9b9d4","844bedbb-92e9-4782-b918-4ec3c0030fec");
         codef.setPublicKey("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAgIXikjjz1j/QdRhATsjpjJ25aS7hFnYx5E+e265nmloEVYAOwyxyRJmSgMQaWAeVtJbX8O2ZwOE0hOnsEO8h2k+sojD4WluB9TeSFhZwYAbrhvspB7nnsYKHgZMqSjyDKxdFwkrtarScMhxfYc0vn4/iHL0ldrCQQWwM949HoroihDG+1WPFklPydYoq0LAdZakQQvn0qnU99zc3zbLsvxsB+8hgbVhPHvfXPbkUHzrHj2eZgATb56QwGL4WdeEupOiUlFbYB9zWmkspX9ruXFh57odJgSukmcq1lV8EDtbEyWU8AiKINaphFxgcoebOiZUNAGr2Uk8u8XHakgZWNwIDAQAB");
 
@@ -36,21 +39,25 @@ public class Codef {
         accountMap.put("certType",  		"1");
 
         try {
-            accountMap.put("password",  EasyCodefUtil.encryptRSA("P@ssw0rd12", codef.getPublicKey()));
+            accountMap.put("password", EasyCodefUtil.encryptRSA("P@ssw0rd12", codef.getPublicKey()));
         } catch (Exception e) {
             e.printStackTrace();
             return;
         }
         accountList.add(accountMap);
 
-        HashMap<String, Object> parameterMap = new HashMap<String, Object> ();
+        parameterMap = new HashMap<>();
         parameterMap.put("accountList", accountList);
+
 
 /** #6.계정 등록 요청(Connected ID 발급 요청)	- 서비스타입(API:정식, DEMO:데모, SANDBOX:샌드박스) */
         String result = null;
 
         try {
-            result = codef.createAccount(EasyCodefServiceType.SANDBOX, parameterMap);
+            String accessToken = codef.requestToken(EasyCodefServiceType.DEMO);
+            Log.d("박태순",String.valueOf(accessToken));
+            result = codef.createAccount(EasyCodefServiceType.DEMO, parameterMap);
+            Thread.sleep(1000);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         } catch (JsonProcessingException e) {
@@ -61,6 +68,8 @@ public class Codef {
 
 /** #7.결과 확인	*/
         Log.d("박태순",String.valueOf(result));
+
+
     }
 
 

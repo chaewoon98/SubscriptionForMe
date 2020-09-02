@@ -4,14 +4,17 @@ import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
+import android.widget.ImageView;
 
 
 import androidx.annotation.Nullable;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.SubsciptionModelData;
+import com.example.subscriptionforme.setting.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,6 +38,7 @@ public class AddSubscriptionActivity extends Activity {
 
         AutoCompleteTextView autoCompleteTextView = findViewById(R.id.auto_textview_ativity_add);
         autoCompleteTextView.setAdapter(new ArrayAdapter<String>(this,android.R.layout.simple_dropdown_item_1line,subsciptionModelNameList));
+
     }
 
     public void setNameList(){
@@ -45,6 +49,12 @@ public class AddSubscriptionActivity extends Activity {
             subsciptionModelNameList.add(subsciptionModelDataList.get(index).getName());
         }
 
+    }
+
+    // 설정 페이지 엑티비티 가는 버튼
+    void onButtonClick(View v){
+        Intent intent  = new Intent(this, SettingActivity.class);
+        startActivity(intent);
     }
 
 }

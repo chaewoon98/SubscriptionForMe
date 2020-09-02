@@ -23,6 +23,10 @@
         <activity android:name=".home.AddSubscriptionActivity" />
 
         <activity android:name=".recommendation.DetailRecommendationActivity" />
+
+        <!--   설정 액티비티 추가     -->
+        <activity android:name=".setting.SettingActivity"/>
+
     </application>
 
 
