@@ -2,7 +2,6 @@ package com.example.subscriptionforme.collection;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -117,9 +116,12 @@ public class FragmentCollectionView extends Fragment {
     public class GroupClick implements ExpandableListView.OnChildClickListener {
         @Override
         public boolean onChildClick(ExpandableListView expandableListView, View view, int groupPosition, int childPosition, long id) {
-            Log.d("박태순",String.valueOf(groupPosition));
-            Intent childIntent = new Intent(getActivity(), ChildActivity.class);
-            startActivity(childIntent);
+            Intent intent = new Intent(getContext(), ChildActivity.class);
+            intent.putExtra("group", listGroup.get(groupPosition));
+            intent.putExtra("child", (int) id);
+
+            startActivity(intent);
+
             return false;
         }
     }

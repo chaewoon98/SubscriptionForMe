@@ -1,4 +1,4 @@
-package com.example.subscriptionforme;
+package com.example.subscriptionforme.home;
 
 public class UserSubscriptionData {
     private String startingDate,dDayDate,subscriptionName,subscriptionPrice;

@@ -7,7 +7,7 @@
     <string name="group4">식품 배송</string>
     <string name="group5">의류</string>
     <string name="group6">생활</string>
-    <string name="group7">의류</string>
+    <string name="group7">기타</string>
 
     <string-array name="group1">
         <item>버거킹</item>
@@ -16,40 +16,40 @@
 
     <string-array name="group2">
         <item>밀리의 서재</item>
-        <item>CGV</item>
+        <item>Youtube Primium</item>
+        <item>멜론</item>
+        <item>지니</item>
     </string-array>
 
     <string-array name="group3">
-        <item>item1</item>
-        <item>item2</item>
+        <item>뚜레쥬르</item>
+        <item>투썸플레이스</item>
     </string-array>
 
     <string-array name="group4">
-        <item>item1</item>
-        <item>item2</item>
-        <item>item3</item>
-        <item>item4</item>
+        <item>마켓 컬리</item>
+        <item>오아시스</item>
+        <item>헬로네이처</item>
+        <item>쿠팡</item>
     </string-array>
 
     <string-array name="group5">
-        <item>item1</item>
-        <item>item2</item>
-        <item>item3</item>
-        <item>item4</item>
+        <item>에어클로젯</item>
+        <item>STREAMINGWEAR</item>
+        <item>TRENDY</item>
+        <item>ZULY</item>
     </string-array>
 
     <string-array name="group6">
-        <item>item1</item>
-        <item>item2</item>
-        <item>item3</item>
-        <item>item4</item>
+        <item>LION CLEANERS</item>
+        <item>쿠팡 로켓와우</item>
     </string-array>
 
     <string-array name="group7">
-        <item>item1</item>
-        <item>item2</item>
-        <item>item3</item>
-        <item>item4</item>
+        <item>네이버 플러스 맴버쉽</item>
+        <item>스마일 클럽</item>
+        <item>요기요 슈퍼 클럽</item>
+
     </string-array>
 
 </resources>

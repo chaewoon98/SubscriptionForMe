@@ -1,11 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
-    tools:context=".AddSubscriptionActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical">
+    android:focusable="true"
+    android:focusableInTouchMode="true"
+    android:orientation="vertical"
+    tools:context=".home.AddSubscriptionActivity">
+
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -15,10 +17,10 @@
         <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-
-            android:gravity="center_horizontal"
             android:layout_marginTop="20dp"
             android:fontFamily="@font/nanumsquareb"
+            android:gravity="center_horizontal"
+
             android:text="이용 서비스 추가하기"
             android:textColor="@color/mainColor"
             android:textSize="17dp" />
@@ -38,61 +40,69 @@
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        android:layout_weight="9"
-        android:orientation="vertical"
         android:layout_margin="10dp"
-        android:background="@drawable/item_subscription_home">
+        android:layout_weight="9"
+        android:background="@drawable/item_subscription_home"
+        android:orientation="vertical">
+
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
-
-            android:text="구독 서비스 이름"
-            android:textSize="17dp"
             android:fontFamily="@font/nanumsquarer"
-            android:textColor="@color/black"/>
+            android:text="구독 서비스 이름"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
 
-        <EditText
+        <AutoCompleteTextView
+            android:id="@+id/auto_textview_ativity_add"
+
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
-            android:gravity="center_vertical"
+            android:backgroundTint="@color/mainColor"
 
-            android:textSize="20dp"
+            android:completionThreshold="0"
+            android:gravity="center_vertical"
             android:hint="서비스 이름 입력"
             android:maxLength="10"
             android:singleLine="true"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="20dp" />
 
         <Space
             android:layout_width="match_parent"
-            android:layout_height="40dp"/>
+            android:layout_height="40dp" />
 
         <TextView
             android:layout_width="match_parent"
             android:layout_height="30dp"
-            android:layout_marginLeft="20dp"
             android:layout_gravity=""
+            android:layout_marginLeft="20dp"
 
-            android:text="구독 서비스 가격"
-            android:textSize="17dp"
             android:fontFamily="@font/nanumsquarer"
-            android:textColor="@color/black"/>
+            android:text="구독 서비스 가격"
+            android:textColor="@color/black"
+            android:textSize="17dp" />
+
 
         <EditText
             android:layout_width="match_parent"
             android:layout_height="60dp"
             android:layout_marginLeft="20dp"
             android:layout_marginRight="20dp"
+            android:backgroundTint="@color/mainColor"
             android:gravity="center_vertical"
-
-            android:textSize="20dp"
             android:hint="서비스 금액 입력"
+
+            android:inputType="number"
             android:maxLength="10"
             android:singleLine="true"
-            android:textColorHint="@android:color/darker_gray" />
+            android:textColorHint="@android:color/darker_gray"
+            android:textSize="20dp" />
+
 
 
     </LinearLayout>
@@ -102,9 +112,10 @@
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/mainColor"
+        android:fontFamily="@font/nanumsquareb"
         android:text="서비스 추가하기"
         android:textColor="@color/white"
-        android:fontFamily="@font/nanumsquareb"
+
         android:textSize="20dp"
 
         />
