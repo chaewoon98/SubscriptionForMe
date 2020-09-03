@@ -24,6 +24,7 @@ public class SettingActivity extends AppCompatActivity {
 
     Button cardDataButton;    // 카드 정보 읽기 버튼
     Button cardCsvDataButton; // 카드 csv 정보 받기 버튼
+    Button subscriptionDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -38,6 +39,7 @@ public class SettingActivity extends AppCompatActivity {
         super.onStart();
         cardDataButton = findViewById(R.id.buttonCardData);
         cardCsvDataButton = findViewById(R.id.buttonCardDataCSV);
+        subscriptionDataButton = findViewById(R.id.buttonDataCSV);
         cardDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -62,6 +64,38 @@ public class SettingActivity extends AppCompatActivity {
 
                     Context context = getApplicationContext();
                     File filelocation = new File(getFilesDir(), "carddata.csv");
+                    Uri path = FileProvider.getUriForFile(context, "com.example.subscriptionforme.setting.fileprovider",filelocation);
+                    Intent fileIntent =  new Intent(Intent.ACTION_SEND);
+                    fileIntent.setType("text/csv");
+                    fileIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
+                    fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                    fileIntent.putExtra(Intent.EXTRA_STREAM, path);
+                    startActivity(Intent.createChooser(fileIntent, "Send mail"));
+
+                } catch (FileNotFoundException e) {
+                    e.printStackTrace();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        subscriptionDataButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                StringBuilder data = new StringBuilder();
+                data.append("startDate,endDate,resMemberStoreName,resPaymentAmt,useMoney,maxSale,manageMent,recommend");
+                for(int i=0;i<1;i++){
+                    data.append("\n"+"2020-06-15"+","+"2020-09-12"+","+"유튜브"+","+"12000"+","+"0"+","+"0"+","+"1"+","+"0");
+                }
+
+                try {
+                    FileOutputStream out = openFileOutput("subcriptionData.csv", Context.MODE_PRIVATE);
+                    out.write((data.toString()).getBytes());
+                    out.close();
+
+                    Context context = getApplicationContext();
+                    File filelocation = new File(getFilesDir(), "subcriptionData.csv");
                     Uri path = FileProvider.getUriForFile(context, "com.example.subscriptionforme.setting.fileprovider",filelocation);
                     Intent fileIntent =  new Intent(Intent.ACTION_SEND);
                     fileIntent.setType("text/csv");
