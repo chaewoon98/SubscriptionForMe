@@ -29,8 +29,7 @@ public class CardGridItem extends LinearLayout {
         cardName.setText(one.getName());
         cardImage.setImageResource(one.getImage());
 
-
-            cardImage.setVisibility(VISIBLE);
+        cardImage.setVisibility(VISIBLE);
 
 
     }

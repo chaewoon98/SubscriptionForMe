@@ -51,7 +51,7 @@
             android:layout_height="30dp"
             android:layout_marginLeft="20dp"
             android:fontFamily="@font/nanumsquarer"
-            android:text="카드를 선택해주세요."
+            android:text="은행을 선택해주세요."
             android:textColor="@color/black"
             android:textSize="25dp" />
 

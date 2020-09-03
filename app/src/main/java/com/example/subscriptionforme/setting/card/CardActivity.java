@@ -2,6 +2,7 @@ package com.example.subscriptionforme.setting.card;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
@@ -25,15 +26,16 @@ public class CardActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_select_card_company);
-        cards.add(new Card("신한카드",R.drawable.sinhan_logo));
-        cards.add(new Card("현대카드",R.drawable.hyundae_logo));
-        cards.add(new Card("삼성카드",R.drawable.sansung_logo));
-        cards.add(new Card("KB국민카드",R.drawable.kb_logo));
-        cards.add(new Card("롯데카드",R.drawable.lotte_logo));
-        cards.add(new Card("하나카드",R.drawable.hana_logo));
-        cards.add(new Card("우리카드",R.drawable.uri_logo));
-        cards.add(new Card("NH농협카드",R.drawable.nh_logo));
-        cards.add(new Card("BC카드",R.drawable.bc_logo));
+        cards.add(new Card("NH농협",R.drawable.nh_logo));
+        cards.add(new Card("우리",R.drawable.uri_logo));
+        cards.add(new Card("신한",R.drawable.sinhan_logo));
+        cards.add(new Card("KB국민",R.drawable.kb_logo));
+        cards.add(new Card("하나",R.drawable.hana_logo));
+        cards.add(new Card("씨티",R.drawable.city_logo));
+        cards.add(new Card("IBK기업",R.drawable.ibk_logo));
+        cards.add(new Card("케이뱅크",R.drawable.kbank_logo));
+        cards.add(new Card("카카오뱅크",R.drawable.kakaobank_logo));
+
         adapter = new GridAdapter(this, cards);
         gridView = (GridView)findViewById(R.id.cardGrid);
         gridView.setAdapter(adapter);
@@ -48,6 +50,7 @@ public class CardActivity extends AppCompatActivity {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 Intent intent = new Intent(getApplicationContext(), AgreementActivity.class);
+                intent.putExtra("card", i);
                 startActivity(intent);
             }
 
