@@ -30,6 +30,18 @@
         <activity android:name=".setting.card.CardActivity"/>
         <!--   약관 확인 엑티비티 추가     -->
         <activity android:name=".setting.card.AgreementActivity"/>
+        <!--    CSV 추출하기    -->
+
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.subscriptionforme.setting.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
     </application>
 
 
