@@ -3,16 +3,14 @@ package com.example.subscriptionforme.home.Dialog;
 import android.app.Dialog;
 import android.content.Context;
 import android.graphics.drawable.ColorDrawable;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionListener;
-import com.example.subscriptionforme.main.UserDatabase;
+import com.example.subscriptionforme.home.Data.UserDatabase;
 
 public class CheckDeleteUserSubscriptionDialog extends Dialog {
 

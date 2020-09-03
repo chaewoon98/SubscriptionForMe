@@ -42,7 +42,7 @@ public class DeleteUserSubscriptionDiaolg extends Dialog {
         deleteUrlTextView = findViewById(R.id.url_text_delete_dialog);
 
         subscriptionName.setText(userSubscriptionData.getSubscriptionName());
-        subscriptionDescription.setText(userSubscriptionData.getSubscriptionDescription());
+        subscriptionDescription.setText(userSubscriptionData.getSubscriptionDescription().replaceAll("\n",""));
         subscriptionPaymentSystem.setText(userSubscriptionData.getSubscriptionPaymentSystem());
         subscriptionImage.setImageResource(userSubscriptionData.getSubscriptionImageID());
 

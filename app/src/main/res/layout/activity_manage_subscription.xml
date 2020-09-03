@@ -6,7 +6,7 @@
     android:focusable="true"
     android:focusableInTouchMode="true"
     android:orientation="vertical"
-    tools:context=".home.Activity.AddSubscriptionActivity">
+    tools:context=".home.Activity.ManagementSusbscriptionActivity">
 
 
     <FrameLayout
@@ -21,23 +21,36 @@
             android:fontFamily="@font/nanumsquareb"
             android:gravity="center_horizontal"
 
-            android:text="이용 서비스 추가"
+            android:text="이용 서비스 관리"
             android:textColor="@color/mainColor"
             android:textSize="17dp" />
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:clickable="true"
+            android:fontFamily="@font/nanumsquarer"
+            android:gravity="center_horizontal"
+
+            android:text="해지"
+            android:textColor="@color/red"
+            android:textSize="17dp" />
+
         <ImageButton
+            android:id="@+id/bac"
             android:layout_width="20dp"
             android:layout_height="20dp"
-            android:padding="2.5dp"
             android:layout_marginLeft="20dp"
             android:layout_marginTop="24dp"
             android:adjustViewBounds="true"
             android:background="@color/transparentColor"
-            android:scaleType="fitCenter"
-            android:src="@drawable/back"
             android:onClick="backButton"
-            />
-
+            android:padding="2.5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back" />
     </FrameLayout>
 
     <ScrollView
@@ -46,106 +59,186 @@
         android:layout_marginTop="5dp"
         android:layout_weight="9"
         android:overScrollMode="never"
-        android:scrollbars="none"
-        >
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:orientation="vertical">
 
-            <TextView
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="10dp"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="구독 서비스 이름"
-                android:textColor="@color/black"
-                android:textSize="17dp" />
+                android:layout_height="80dp"
+                android:orientation="horizontal">
 
-            <AutoCompleteTextView
-                android:id="@+id/auto_textview_ativity_add"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:backgroundTint="@color/mainColor"
+                <ImageView
+                    android:id="@+id/logo_ativity_management_subscription"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_gravity="center"
+                    android:layout_marginLeft="20dp"
 
-                android:completionThreshold="1"
-                android:gravity="center_vertical"
-                android:hint="서비스 이름 입력"
-                android:maxLength="17"
-                android:singleLine="true"
-                android:textColorHint="@android:color/darker_gray"
-                android:textColor="@color/black"
-                android:textSize="19dp" />
+                    android:adjustViewBounds="true"
+                    android:scaleType="centerInside"
+                    android:src="@drawable/naver_logo" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/name_ativity_management_subscription"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/nanumsquarer"
+
+                        android:gravity="bottom|left"
+                        android:maxLines="1"
+                        android:paddingLeft="20dp"
+                        android:paddingBottom="2dp"
+                        android:text="네이버 플러스 멤버십"
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:id="@+id/payment_system_ativity_management_subscription"
+                        android:layout_width="match_parent"
+                        android:layout_height="0dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:fontFamily="@font/nanumsquarer"
+
+                        android:gravity="start|left"
+                        android:maxLines="1"
+                        android:paddingLeft="20dp"
+                        android:paddingTop="3dp"
+                        android:text="basic"
+                        android:textColor="@color/grayColor"
+                        android:textSize="17dp" />
+
+                </LinearLayout>
+
+            </LinearLayout>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="30dp" />
+                android:layout_height="15dp" />
 
-            <TextView
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="최초 결제일"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/beginnig_date_ativity_management_subscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+
+                    android:fontFamily="@font/nanumsquareb"
+                    android:text="20202년 7월 3일"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+            </FrameLayout>
+
+            <FrameLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity=""
+                android:layout_marginTop="12dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="예상 결제일"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+                <TextView
+                    android:id="@+id/pay_date_ativity_management_subscription"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginRight="20dp"
+
+                    android:fontFamily="@font/nanumsquareb"
+                    android:text="20202년 9월 3일"
+                    android:textColor="@color/black"
+                    android:textSize="17dp" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:layout_marginTop="35dp"
 
                 android:fontFamily="@font/nanumsquarer"
-                android:text="멤버십 종류"
+                android:text="결제 금액"
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
-
             <EditText
-                android:id="@+id/payment_system_ativity_add_subscription"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:backgroundTint="@color/mainColor"
-                android:gravity="center_vertical"
-                android:hint="멤버쉽 종류 입력"
-
-                android:maxLength="17"
-                android:singleLine="true"
-                android:textColorHint="@android:color/darker_gray"
-                android:textColor="@color/black"
-                android:textSize="19dp" />
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="30dp"
-                />
-
-            <TextView
+                android:id="@+id/price_ativity_management_subscription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity=""
-                android:layout_marginLeft="20dp"
-
-                android:fontFamily="@font/nanumsquarer"
-                android:text="가격"
-                android:textColor="@color/black"
-                android:textSize="17dp" />
-
-
-            <EditText
-                android:id="@+id/price_ativity_add_subscription"
-                android:layout_width="match_parent"
-                android:layout_height="60dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center_vertical"
                 android:hint="서비스 금액 입력"
-
+                android:text="4,900"
                 android:inputType="number"
                 android:maxLength="10"
                 android:singleLine="true"
                 android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/black"
-                android:textSize="19dp" />
+                android:textSize="17dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="15dp"
+
+                android:fontFamily="@font/nanumsquarer"
+                android:text="구독 해지 링크"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+            <EditText
+                android:id="@+id/delete_url_ativity_management_subscription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:backgroundTint="@color/mainColor"
+                android:gravity="center_vertical"
+                android:hint="URL(선택 등록 정보)"
+
+                android:maxLength="200"
+                android:singleLine="true"
+                android:textColorHint="@android:color/darker_gray"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
 
             <Space
                 android:layout_width="match_parent"
@@ -171,20 +264,20 @@
                     android:fontFamily="@font/nanumsquarer"
                     android:gravity="center_vertical"
 
-                    android:text="최초 결제일 선택"
+                    android:text="최초 결제일 수정"
                     android:textColor="@color/black"
                     android:textSize="17dp" />
 
                 <TextView
-                    android:id="@+id/pay_date_ativity_add_subscription"
+                    android:id="@+id/update_pay_date_ativity_management_subscription"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_gravity="right"
                     android:layout_marginRight="45dp"
                     android:fontFamily="@font/nanumsquarer"
-                    android:layout_gravity="right"
                     android:gravity="center_vertical"
 
-                    android:text="설정하기"
+                    android:text="2020년 7월 23일"
                     android:textColor="@color/mainColor"
                     android:textSize="17dp" />
 
@@ -201,11 +294,11 @@
                     android:src="@drawable/front_purple" />
 
                 <View
-                    android:id="@+id/pay_date_touch_view_ativity_add_subscription"
+                    android:id="@+id/pay_date_touch_view_ativity_management_subscription"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:background="@drawable/ripple_touch_event"/>
+                    android:background="@drawable/ripple_touch_event"
+                    android:clickable="true" />
 
             </FrameLayout>
 
@@ -225,21 +318,21 @@
                     android:fontFamily="@font/nanumsquarer"
                     android:gravity="center_vertical"
 
-                    android:text="결제 전 알림 설정"
+                    android:text="결제 전 알림 수정"
                     android:textColor="@color/black"
                     android:textSize="17dp" />
 
                 <TextView
-                    android:id="@+id/alarm_setting_ativity_add_subscription"
+                    android:id="@+id/alarm_setting_ativity_management_subscription"
                     android:layout_width="wrap_content"
                     android:layout_height="match_parent"
+                    android:layout_gravity="right"
                     android:layout_marginRight="45dp"
                     android:clickable="true"
                     android:fontFamily="@font/nanumsquarer"
-                    android:layout_gravity="right"
                     android:gravity="center_vertical"
 
-                    android:text="설정하기"
+                    android:text="1일 전"
                     android:textColor="@color/mainColor"
                     android:textSize="17dp" />
 
@@ -256,11 +349,11 @@
                     android:src="@drawable/front_purple" />
 
                 <View
-                    android:id="@+id/alarm_setting_touch_view_ativity_add_subscription"
+                    android:id="@+id/alarm_setting_touch_view_ativity_management_subscription"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
-                    android:clickable="true"
-                    android:background="@drawable/ripple_touch_event"/>
+                    android:background="@drawable/ripple_touch_event"
+                    android:clickable="true" />
             </FrameLayout>
 
             <Space
@@ -288,7 +381,7 @@
                 android:textSize="17dp" />
 
             <EditText
-                android:id="@+id/description_ativity_add_subscription"
+                android:id="@+id/description_ativity_management_subscription"
                 android:layout_width="match_parent"
                 android:layout_height="200dp"
                 android:layout_marginLeft="20dp"
@@ -298,28 +391,27 @@
                 android:hint="구독 서비스에 대한 설명, 메모를 입력해보세요."
 
                 android:maxLength="100"
-                android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="17dp" />
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
 
-
         </LinearLayout>
     </ScrollView>
 
     <Button
-        android:id="@+id/service_add_button_ativity_add_subscription"
+        android:id="@+id/service_update_button_ativity_management_subscription"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/mainColor"
         android:fontFamily="@font/nanumsquareb"
-        android:text="서비스 추가하기"
+        android:onClick="updateSubscriptionData"
+        android:text="서비스 정보 수정하기"
         android:textColor="@color/white"
-        android:onClick="addServiceButton"
 
         android:textSize="20dp"
 

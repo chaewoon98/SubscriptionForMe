@@ -22,9 +22,12 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".home.AddSubscriptionActivity" />
+        <activity android:name=".home.Activity.AddSubscriptionActivity" />
 
         <activity android:name=".recommendation.DetailRecommendationActivity" />
+
+        <activity android:name=".home.Activity.ManagementSusbscriptionActivity"/>
+
     </application>
 
 

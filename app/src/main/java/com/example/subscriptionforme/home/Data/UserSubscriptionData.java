@@ -1,13 +1,15 @@
 package com.example.subscriptionforme.home.Data;
 
-public class UserSubscriptionData {
+import java.io.Serializable;
+
+public class UserSubscriptionData implements Serializable {
     private String registerNumber,subscriptionPayDate,subscriptionNumberID,subscriptionName,subscriptionPaymentSystem,subscriptionPrice,alarmSetting,
-            isAlarmOn,beginningPayDate,subscriptionDescription;
+            isAlarmOn,beginningPayDate,subscriptionDescription,subscriptionDeleteURL;
 
     private int subscriptionImageID;
 
     public UserSubscriptionData(String registerNumber, String subscriptionNumberID,String subscriptionName, String subscriptionPaymentSystem
-            ,String subscriptionPrice,String beginningPayDate,String subscriptionPayDate,String alarmSetting,String isAlarmOn,String subscriptionDescription,int subscriptionImageID) {
+            ,String subscriptionPrice,String beginningPayDate,String subscriptionPayDate,String alarmSetting,String isAlarmOn,String subscriptionDescription,String subscriptionDeleteURL,int subscriptionImageID) {
         this.registerNumber = registerNumber;
         this.subscriptionNumberID = subscriptionNumberID;
         this.subscriptionPayDate = subscriptionPayDate;
@@ -19,6 +21,15 @@ public class UserSubscriptionData {
         this.isAlarmOn = isAlarmOn;
         this.subscriptionImageID = subscriptionImageID;
         this.subscriptionDescription = subscriptionDescription;
+        this.subscriptionDeleteURL = subscriptionDeleteURL;
+    }
+
+    public String getSubscriptionDeleteURL() {
+        return subscriptionDeleteURL;
+    }
+
+    public void setSubscriptionDeleteURL(String subscriptionDeleteURL) {
+        this.subscriptionDeleteURL = subscriptionDeleteURL;
     }
 
     public String getSubscriptionDescription() {

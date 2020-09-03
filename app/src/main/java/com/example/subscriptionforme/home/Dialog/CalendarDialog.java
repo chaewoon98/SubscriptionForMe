@@ -30,8 +30,10 @@ import com.prolificinteractive.materialcalendarview.DayViewFacade;
 import com.prolificinteractive.materialcalendarview.MaterialCalendarView;
 import com.prolificinteractive.materialcalendarview.OnDateSelectedListener;
 
+import java.text.SimpleDateFormat;
 import java.time.DayOfWeek;
 import java.util.Calendar;
+import java.util.Date;
 
 public class CalendarDialog extends Dialog {
 
@@ -40,6 +42,11 @@ public class CalendarDialog extends Dialog {
     private String payDate;
     private Button okaybutton;
     private TextView payDateTextView;
+
+    public CalendarDialog(@NonNull Context context) {
+        super(context);
+        this.context = context;
+    }
 
     @RequiresApi(api = Build.VERSION_CODES.O)
     public CalendarDialog(@NonNull final Context context, TextView textView) {
@@ -132,6 +139,46 @@ public class CalendarDialog extends Dialog {
                 payDate = date.getYear() + "년 " + (date.getMonth()+1) + "월 " + date.getDay() + "일";
             }
         });
+    }
 
+    /**실제로 결제할 날짜를 get하늕 메소드
+     * 최초 결제일 2020년 8월 11일 -> 현재 월 + 최초결제일의 일
+     * 최초 결제일이 현재 보다 늦을 경우 그대로 들어가게끔.
+     */
+    public String getPayDate(String subscriptionPayDateString) {
+
+        //현지 시간과 비교
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 M월 d일");
+
+        SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy년");
+        SimpleDateFormat monthDateFormat = new SimpleDateFormat("M월");
+        SimpleDateFormat dayDateFormat = new SimpleDateFormat("d일");
+
+        try {
+            Date nowDate = dateFormat.parse(dateFormat.format(date));
+            Date subscriptionPayDate = dateFormat.parse(subscriptionPayDateString);
+
+            //현재 시간보다 추가하는 구독 서비스의 최초결제일이 빠를 때
+            if (nowDate.after(subscriptionPayDate)) {
+
+                String paymentYearString = yearDateFormat.format(date);
+                String paymentMonthString = monthDateFormat.format(date);
+                String paymentDayString = dayDateFormat.format(subscriptionPayDate);
+
+                if (paymentDayString.equals("31일"))
+                    paymentDayString = "30일";
+
+                return paymentYearString + " " + paymentMonthString + " " + paymentDayString;
+            }
+
+            String paymentYearString = yearDateFormat.format(subscriptionPayDate);
+            String paymentMonthString = monthDateFormat.format(subscriptionPayDate);
+            String paymentDayString = dayDateFormat.format(subscriptionPayDate);
+            return paymentYearString + " " + paymentMonthString + " " + paymentDayString;
+
+        } catch (Exception e) {
+        }
+        return "";
     }
 }

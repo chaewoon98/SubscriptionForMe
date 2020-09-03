@@ -101,6 +101,8 @@
             android:layout_marginTop="5dp"
             android:lineSpacingExtra="2dp"
 
+            android:ellipsize="end"
+            android:maxLines="3"
             android:text="쇼핑할 때마다 네이버페이 포인트 5%! 다양한 혜택과 서비스"
             android:textColor="@color/black"
             android:textSize="15dp"
