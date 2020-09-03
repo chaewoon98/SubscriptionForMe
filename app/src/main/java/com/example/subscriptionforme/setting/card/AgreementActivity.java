@@ -17,11 +17,11 @@ import androidx.core.app.ActivityCompat;
 import com.example.subscriptionforme.R;
 
 import java.util.ArrayList;
+import java.util.regex.Pattern;
 
 public class AgreementActivity extends AppCompatActivity {
 
-    public static int MAX_COUNT = 15; // 계좌 최대 입력 갯수
-    public static int MIN_COUNT = 10; // 계좌 최소 입력 갯수
+    public int MAX_COUNT; // 계좌 최대 입력 갯수
     Button button; // 동의 버튼
     TextView bankName; // 은행 이름
     TextView warningText; // 경고 문고
@@ -33,6 +33,7 @@ public class AgreementActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_agreement);
+        MAX_COUNT = 15;
         button = findViewById(R.id.agreement_button);
         bankName = findViewById(R.id.bankText);
         accountNumberEditText = findViewById(R.id.accountNumberEdit);
@@ -49,28 +50,36 @@ public class AgreementActivity extends AppCompatActivity {
 
 
         accountNumberEditText.addTextChangedListener(new TextWatcher() {
-            @Override
-            public void beforeTextChanged(CharSequence charSequence, int start, int before, int count) {
+                @Override
+                public void beforeTextChanged(CharSequence charSequence, int start, int before, int count) {
 
-            }
-
-            @Override
-            public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
-                // 입력 글자 수 제한
-                if(charSequence.length() > MAX_COUNT){
-                    accountNumberEditText.setText(accountNumberEditText.getText().toString().substring(0,MAX_COUNT));
-                    accountNumberEditText.setSelection(accountNumberEditText.length());
                 }
 
-                if(charSequence.length() < MIN_COUNT && charSequence.length() > 0){
-                    warningText.setText("계좌번호 자릿 수를 확인 바랍니다.");
-                    canNextButton = false;
-                } else{
-                    warningText.setText("");
-                    canNextButton = true;
-                }
+                @Override
+                public void onTextChanged(CharSequence charSequence, int start, int before, int count) {
+                    // 입력 글자 수 제한
+                    if(charSequence.length() > MAX_COUNT){
+                        accountNumberEditText.setText(accountNumberEditText.getText().toString().substring(0,MAX_COUNT));
+                        accountNumberEditText.setSelection(accountNumberEditText.length());
+                    }
 
-            }
+                    Pattern ps = Pattern.compile("^[0-9]{11,15}|''+$");
+
+                    if (!ps.matcher(charSequence).matches()) {
+                        warningText.setText("계좌번호를 확인 바랍니다.");
+                        canNextButton = false;
+                    }
+                    else{
+                        warningText.setText("");
+                        canNextButton = true;
+                    }
+
+                    if(charSequence.length() == 0){
+                        warningText.setText("");
+                        canNextButton = false;
+                    }
+
+                }
 
             @Override
             public void afterTextChanged(Editable editable) {
@@ -83,7 +92,8 @@ public class AgreementActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 if(canNextButton == true){
-                    Log.d("태순","넘어감");
+                    Intent intent = new Intent(getApplicationContext(), AccountPasswordActivity.class);
+                    startActivity(intent);
                 }
             }
         });

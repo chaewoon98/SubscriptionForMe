@@ -26,12 +26,14 @@ public class FragmentHome extends Fragment {
     private ImageButton imageButton;
 
 
+
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
         userSubscriptionDataList = new ArrayList<>(2);
-
         //예시 데이터 셋팅
         initializeExampleDataSet();
         // 이미지 버튼 id 값 부여
