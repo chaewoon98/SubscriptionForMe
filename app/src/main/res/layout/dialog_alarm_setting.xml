@@ -89,7 +89,7 @@
             android:background="@drawable/alarm_setting_button"
             android:fontFamily="@font/nanumsquareb"
             android:text="설정 안함"
-            android:textColor="@color/white"
+            android:textColor="#ff4646"
             android:textSize="20dp" />
 
     </LinearLayout>

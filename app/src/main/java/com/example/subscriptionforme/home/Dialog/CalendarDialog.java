@@ -1,4 +1,4 @@
-package com.example.subscriptionforme.home;
+package com.example.subscriptionforme.home.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;
@@ -129,8 +129,9 @@ public class CalendarDialog extends Dialog {
         materialCalendarView.setOnDateChangedListener(new OnDateSelectedListener() {
             @Override
             public void onDateSelected(@NonNull MaterialCalendarView widget, @NonNull CalendarDay date, boolean selected) {
-                payDate = String.valueOf(date.getMonth() + 1) + "월 " + String.valueOf(date.getDay()) + "일";
+                payDate = date.getYear() + "년 " + (date.getMonth()+1) + "월 " + date.getDay() + "일";
             }
         });
+
     }
 }

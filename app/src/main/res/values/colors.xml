@@ -13,6 +13,7 @@
     <color name="transparentColor">#00000000</color>
     <color name="transparentColorInTouch">#0D000000</color>
     <color name="grayColor">#8b8b8b</color>
+    <color name="darkTransparentColor">#cc000000</color>
 
     <!--테마색-->
     <color name="colorPurple">#905ad9</color>

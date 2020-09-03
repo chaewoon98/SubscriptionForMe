@@ -5,10 +5,11 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
-import com.example.subscriptionforme.home.UserSubscriptionData;
+import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 
 public class UserDatabase extends SQLiteOpenHelper {
 
@@ -37,8 +38,8 @@ public class UserDatabase extends SQLiteOpenHelper {
 
     public void createTable(SQLiteDatabase database) {
 
-        String sqlString = "CREATE TABLE " + tableName + " (registerNumber TEXT,subscriptionNumberID TEXT,subscriptionName TEXT, subscriptionPaymentSystem TEXT, " +
-                "subscriptionPrice TEXT, subscriptionPayDate TEXT, subscriptionAlarmSetting TEXT, subscriptionIsAlarmOn TEXT, subscriptionImageID INTEGER)";
+        String sqlString = "CREATE TABLE " + tableName + " (registerNumber INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,subscriptionNumberID TEXT,subscriptionName TEXT, subscriptionPaymentSystem TEXT, " +
+                "subscriptionPrice TEXT, subscriptionBeginningPayDate TEXT,subscriptionPayDate TEXT, subscriptionAlarmSetting TEXT, subscriptionIsAlarmOn TEXT, subscriptionDescription TEXT, subscriptionImageID INTEGER)";
 
         try {
             database.execSQL(sqlString);
@@ -47,15 +48,16 @@ public class UserDatabase extends SQLiteOpenHelper {
         }
     }
 
-    public void insertSubcriptionData(SQLiteDatabase database,String registerNumber, String subscriptionNumberID, String subscriptionName, String subscriptionPaymentSystem, String subscriptionPrice,
-                                      String subscriptionPayDate, String subscriptionAlarmSetting,String subscriptionIsAlarmOn,int subscriptionImageID) {
+    public void insertSubcriptionData(SQLiteDatabase database, String subscriptionNumberID, String subscriptionName, String subscriptionPaymentSystem, String subscriptionPrice,
+                                      String subscriptionBeginningPayDate,String subscriptionPayDate, String subscriptionAlarmSetting,String subscriptionIsAlarmOn,String subscriptionDescription,int subscriptionImageID) {
 
         database.beginTransaction();
         try {
-            String sqlString = "insert into " + tableName + "(registerNumber, subscriptionNumberID,subscriptionName,subscriptionPaymentSystem," +
-                    "subscriptionPrice,subscriptionPayDate,subscriptionAlarmSetting, subscriptionIsAlarmOn, subscriptionImageID)"
-                    + " values('" + registerNumber + "', '" + subscriptionNumberID + "', '" + subscriptionName + "', '" + subscriptionPaymentSystem + "', '"
-                    + subscriptionPrice + "', '" + subscriptionPayDate + "', '" + subscriptionAlarmSetting + "', '" + subscriptionIsAlarmOn + "', " + subscriptionImageID + ")";
+            String sqlString = "insert into " + tableName + "( subscriptionNumberID,subscriptionName,subscriptionPaymentSystem," +
+                    "subscriptionPrice,subscriptionBeginningPayDate,subscriptionPayDate,subscriptionAlarmSetting, subscriptionIsAlarmOn, subscriptionDescription, subscriptionImageID)"
+                    + " values('" + subscriptionNumberID + "', '" + subscriptionName + "', '" + subscriptionPaymentSystem + "', '"
+                    + subscriptionPrice + "', '" + subscriptionBeginningPayDate + "', '" + subscriptionPayDate + "', '" + subscriptionAlarmSetting + "', '" +
+                    subscriptionIsAlarmOn + "', '" + subscriptionDescription + "', " + subscriptionImageID + ")";
             database.execSQL(sqlString);
             database.setTransactionSuccessful();
             database.endTransaction();
@@ -64,7 +66,9 @@ public class UserDatabase extends SQLiteOpenHelper {
         }
     }
 
-    public void deleteAdrress(SQLiteDatabase database, String registerNumber) {
+    public void deleteSubscription(SQLiteDatabase database, String registerNumberString) {
+
+        int registerNumber = Integer.parseInt(registerNumberString);
 
         String sqlString = "delete from " + tableName + " WHERE registerNumber = '" + registerNumber+ "'";
 
@@ -85,7 +89,7 @@ public class UserDatabase extends SQLiteOpenHelper {
 
             if (count == index)
                 return new UserSubscriptionData(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
-                        cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getInt(8));
+                        cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getInt(10));
             count++;
         }
         return null;

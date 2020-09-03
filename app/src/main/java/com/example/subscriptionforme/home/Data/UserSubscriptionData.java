@@ -1,21 +1,40 @@
-package com.example.subscriptionforme.home;
+package com.example.subscriptionforme.home.Data;
 
 public class UserSubscriptionData {
-    private String registerNumber,subscriptionPayDate,subscriptionNumberID,subscriptionName,subscriptionPaymentSystem,subscriptionPrice,alarmSetting,isAlarmOn;
+    private String registerNumber,subscriptionPayDate,subscriptionNumberID,subscriptionName,subscriptionPaymentSystem,subscriptionPrice,alarmSetting,
+            isAlarmOn,beginningPayDate,subscriptionDescription;
 
     private int subscriptionImageID;
 
     public UserSubscriptionData(String registerNumber, String subscriptionNumberID,String subscriptionName, String subscriptionPaymentSystem
-            ,String subscriptionPrice,String subscriptionPayDate,String alarmSetting,String isAlarmOn,int subscriptionImageID) {
+            ,String subscriptionPrice,String beginningPayDate,String subscriptionPayDate,String alarmSetting,String isAlarmOn,String subscriptionDescription,int subscriptionImageID) {
         this.registerNumber = registerNumber;
         this.subscriptionNumberID = subscriptionNumberID;
         this.subscriptionPayDate = subscriptionPayDate;
+        this.beginningPayDate = beginningPayDate;
         this.alarmSetting = alarmSetting;
         this.subscriptionName = subscriptionName;
         this.subscriptionPaymentSystem = subscriptionPaymentSystem;
         this.subscriptionPrice = subscriptionPrice;
         this.isAlarmOn = isAlarmOn;
         this.subscriptionImageID = subscriptionImageID;
+        this.subscriptionDescription = subscriptionDescription;
+    }
+
+    public String getSubscriptionDescription() {
+        return subscriptionDescription;
+    }
+
+    public void setSubscriptionDescription(String subscriptionDescription) {
+        this.subscriptionDescription = subscriptionDescription;
+    }
+
+    public String getBeginningPayDate() {
+        return beginningPayDate;
+    }
+
+    public void setBeginningPayDate(String beginningPayDate) {
+        this.beginningPayDate = beginningPayDate;
     }
 
     public String getIsAlarmOn() {

@@ -1,4 +1,4 @@
-package com.example.subscriptionforme.home;
+package com.example.subscriptionforme.home.Dialog;
 
 import android.app.Dialog;
 import android.content.Context;

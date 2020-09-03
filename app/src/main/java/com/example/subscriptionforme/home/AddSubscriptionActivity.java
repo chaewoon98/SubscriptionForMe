@@ -1,19 +1,14 @@
 package com.example.subscriptionforme.home;
 
 import android.app.Activity;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
-import android.graphics.drawable.ColorDrawable;
 import android.os.Build;
 import android.os.Bundle;
-import android.text.Editable;
-import android.text.TextWatcher;
 import android.util.Log;
-import android.view.MotionEvent;
 import android.view.View;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.AdapterView;
-import android.widget.ArrayAdapter;
 import android.widget.AutoCompleteTextView;
 import android.widget.EditText;
 import android.widget.TextView;
@@ -25,11 +20,14 @@ import androidx.annotation.RequiresApi;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.SubscriptionModelData;
+import com.example.subscriptionforme.home.Data.SubscriptionAutoCompleteAdapter;
+import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
+import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.main.UserDatabase;
 
-import org.w3c.dom.Text;
-
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 
 public class AddSubscriptionActivity extends Activity {
 
@@ -41,13 +39,16 @@ public class AddSubscriptionActivity extends Activity {
     private TextView payDateTextView, alarmSettingTextView;
     private View payDateView, alarmSettingView;
     private Context context;
-    private String selectedSubscriptionNumber;
+    private String selectedSubscriptionNumber,selectedSubscriptionDescription;
     private int selectedSubscriptionImageID;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_subscription);
+
+        //autoCompleteTextView 선택 번호를 null로 초기화하고 시작.
+        selectedSubscriptionNumber= "null";
 
         context = getApplicationContext();
 
@@ -75,10 +76,15 @@ public class AddSubscriptionActivity extends Activity {
                 SubscriptionModelData subscriptionModelData = new SubscriptionModelData();
                 subscriptionModelData = (SubscriptionModelData) adapterView.getItemAtPosition(position);
 
+                selectedSubscriptionDescription = subscriptionModelData.getDescrpition();
                 selectedSubscriptionImageID = subscriptionModelData.getImageID();
                 selectedSubscriptionNumber = subscriptionModelData.getNumberID();
                 priceEditText.setText(subscriptionModelData.getPrice());
                 paymentSystemEditText.setText(subscriptionModelData.getPaymentSystem());
+
+                //키보드 내리기
+                InputMethodManager inputMethodManager = (InputMethodManager)getSystemService(INPUT_METHOD_SERVICE);
+                inputMethodManager.hideSoftInputFromWindow(autoCompleteTextView.getWindowToken(),0);
             }
         });
 
@@ -148,16 +154,17 @@ public class AddSubscriptionActivity extends Activity {
 
 
         //DB 등록 번호 설정
-        int registerNumber = UserDatabase.getInstance(context).getDataCount(UserDatabase.getInstance(context).getReadableDatabase());
+        // registerNumber = UserDatabase.getInstance(context).getDataCount(UserDatabase.getInstance(context).getReadableDatabase());
 
         //아이템이 select 되지 않아서 설정값이 null로 들어갈경우
         if (selectedSubscriptionNumber.equals("null")) {
 
+            //수동으로 직접 등록 할 경우 예외처리 들어가야함.
             Log.d("123","123");
         } else {
-            UserDatabase.getInstance(context).insertSubcriptionData(UserDatabase.getInstance(context).getWritableDatabase(), Integer.toString(registerNumber), selectedSubscriptionNumber,
-                    autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), priceEditText.getText().toString(), payDateTextView.getText().toString(),
-                    alarmSettingTextView.getText().toString(),isAlarmOn,selectedSubscriptionImageID);
+            UserDatabase.getInstance(context).insertSubcriptionData(UserDatabase.getInstance(context).getWritableDatabase(), selectedSubscriptionNumber,
+                    autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), priceEditText.getText().toString(), payDateTextView.getText().toString()
+                    ,getPayDate(payDateTextView.getText().toString()),alarmSettingTextView.getText().toString(),isAlarmOn,selectedSubscriptionDescription,selectedSubscriptionImageID);
 
             onBackPressed();
         }
@@ -166,5 +173,46 @@ public class AddSubscriptionActivity extends Activity {
 
     public void backButton(View view) {
         onBackPressed();
+    }
+
+    /**실제로 결제할 날짜를 get하늕 메소드
+     * 최초 결제일 2020년 8월 11일 -> 현재 월 + 최초결제일의 일
+     * 최초 결제일이 현재 보다 늦을 경우 그대로 들어가게끔.
+     */
+    public String getPayDate(String subscriptionPayDateString) {
+
+        //현지 시간과 비교
+        Date date = new Date(System.currentTimeMillis());
+        SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy년 M월 d일");
+
+        SimpleDateFormat yearDateFormat = new SimpleDateFormat("yyyy년");
+        SimpleDateFormat monthDateFormat = new SimpleDateFormat("M월");
+        SimpleDateFormat dayDateFormat = new SimpleDateFormat("d일");
+
+        try {
+            Date nowDate = dateFormat.parse(dateFormat.format(date));
+            Date subscriptionPayDate = dateFormat.parse(subscriptionPayDateString);
+
+            //현재 시간보다 추가하는 구독 서비스의 최초결제일이 빠를 때
+            if (nowDate.after(subscriptionPayDate)) {
+
+                String paymentYearString = yearDateFormat.format(date);
+                String paymentMonthString = monthDateFormat.format(date);
+                String paymentDayString = dayDateFormat.format(subscriptionPayDate);
+
+                if (paymentDayString.equals("31일"))
+                    paymentDayString = "30일";
+
+                return paymentYearString + " " + paymentMonthString + " " + paymentDayString;
+            }
+
+            String paymentYearString = yearDateFormat.format(subscriptionPayDate);
+            String paymentMonthString = monthDateFormat.format(subscriptionPayDate);
+            String paymentDayString = dayDateFormat.format(subscriptionPayDate);
+            return paymentYearString + " " + paymentMonthString + " " + paymentDayString;
+
+        } catch (Exception e) {
+        }
+        return "";
     }
 }
