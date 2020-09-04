@@ -66,6 +66,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_weight="9.3"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             android:background="@drawable/recommendation_background">
 
             <LinearLayout
@@ -129,14 +131,14 @@
                             android:layout_gravity="center"
                             android:layout_marginTop="10dp"
                             android:fontFamily="@font/nanumsquareeb"
-                            android:text="37,000원" />
+                            android:text="최대 5% 포인트" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/nanumsquarer"
-                            android:text="스마일캐시 즉시지급" />
+                            android:text="마크가 붙은 상품 결제시" />
 
                     </LinearLayout>
 
@@ -148,8 +150,8 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
                             android:src="@drawable/ic_coin2" />
 
@@ -159,14 +161,14 @@
                             android:layout_gravity="center"
                             android:fontFamily="@font/nanumsquareeb"
                             android:layout_marginTop="10dp"
-                            android:text="최대 3%" />
+                            android:text="추가 적립" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/nanumsquarer"
-                            android:text="상시 지급" />
+                            android:text="20만원까지 4%\n20만원 부터 1%" />
 
                     </LinearLayout>
                 </LinearLayout>
@@ -185,77 +187,10 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="70dp"
+                            android:layout_height="70dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_discount"
-                            android:scaleType="fitCenter"
-                            />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/nanumsquareeb"
-                            android:text="37,000원" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/nanumsquarer"
-                            android:text="스마일캐시 즉시지급" />
-
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_delivery2" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/nanumsquareeb"
-                            android:text="무료 배송" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_gravity="center"
-                            android:fontFamily="@font/nanumsquarer"
-                            android:text="스마일 배송 상품" />
-
-                    </LinearLayout>
-                </LinearLayout>
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="150dp"
-                    android:orientation="horizontal"
-                    android:layout_gravity="center">
-
-                    <LinearLayout
-                        android:layout_width="0dp"
-                        android:layout_height="match_parent"
-                        android:layout_weight="1"
-                        android:orientation="vertical"
-                        android:gravity="center">
-
-                        <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
-                            android:layout_gravity="center"
-                            android:src="@drawable/ic_shopping_cart"
+                            android:src="@drawable/ic_content"
                             android:scaleType="fitCenter"
                             />
 
@@ -265,14 +200,14 @@
                             android:layout_gravity="center"
                             android:fontFamily="@font/nanumsquareeb"
                             android:layout_marginTop="10dp"
-                            android:text="장보기" />
+                            android:text="콘텐츠 혜택" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/nanumsquarer"
-                            android:text="매일 할인" />
+                            android:text="5가지 중 4가지 선택" />
 
                     </LinearLayout>
 
@@ -284,29 +219,28 @@
                         android:gravity="center">
 
                         <ImageView
-                            android:layout_width="60dp"
-                            android:layout_height="60dp"
+                            android:layout_width="55dp"
+                            android:layout_height="55dp"
                             android:layout_gravity="center"
-                            android:src="@drawable/ic_delivery" />
+                            android:src="@drawable/ic_free" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
-                            android:fontFamily="@font/nanumsquareeb"
                             android:layout_marginTop="10dp"
-                            android:text="365일" />
+                            android:fontFamily="@font/nanumsquareeb"
+                            android:text="무료 체험" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_gravity="center"
                             android:fontFamily="@font/nanumsquarer"
-                            android:text="배달 할인" />
+                            android:text="첫달 무료" />
 
                     </LinearLayout>
                 </LinearLayout>
-
 
             </LinearLayout>
 

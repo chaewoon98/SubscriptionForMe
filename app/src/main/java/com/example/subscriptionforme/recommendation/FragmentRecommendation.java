@@ -18,6 +18,8 @@ import com.example.subscriptionforme.recommendation.detail_recommendation.Detail
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_BurgerKing;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_CoffeePlease;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Coupang;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_GS25;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Naver;
 
 import java.util.ArrayList;
 
@@ -85,7 +87,13 @@ public class FragmentRecommendation extends Fragment {
                         }
 
                         case "네이버 플러스 멤버십":{
-                            Intent intent = new Intent(getContext(), Detail_11st.class);
+                            Intent intent = new Intent(getContext(), Detail_Naver.class);
+                            startActivity(intent);
+                            break;
+                        }
+
+                        case "GS 더 팝 플러스":{
+                            Intent intent = new Intent(getContext(), Detail_GS25.class);
                             startActivity(intent);
                             break;
                         }
@@ -114,5 +122,8 @@ public class FragmentRecommendation extends Fragment {
         recommendationList.add(new RecommendationList("11번가", "스마일 클럽 멤버십", "5,000", "128,000", "15,360", R.drawable.ic_11st,getResources().getColor(R.color.color11st), R.drawable.benefit_11st));
         recommendationList.add(new RecommendationList("햄버거", "버거킹 정기 구독 서비스", "4,700", "9,800", "5,200", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing),R.drawable.benefit_burgerking));
         recommendationList.add(new RecommendationList("쿠팡", "쿠팡 로켓 와우", "2,900", "19,000", "2,500", R.drawable.ic_coupang,getResources().getColor(R.color.colorCoupang),R.drawable.benefit_coupang));
+        recommendationList.add(new RecommendationList("커피", "커피 플리즈", "2,900", "19,000", "2,500", R.drawable.ic_coffeeplease,getResources().getColor(R.color.colorCoffeePlease),R.drawable.benefit_coupang));
+        recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
+        recommendationList.add(new RecommendationList("커피", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
      }
 }

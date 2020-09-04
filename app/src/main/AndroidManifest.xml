@@ -27,6 +27,8 @@
         <activity android:name=".recommendation.detail_recommendation.Detail_BurgerKing"/>
         <activity android:name=".recommendation.detail_recommendation.Detail_CoffeePlease"/>
         <activity android:name=".recommendation.detail_recommendation.Detail_Coupang"/>
+        <activity android:name=".recommendation.detail_recommendation.Detail_GS25"/>
+        <activity android:name=".recommendation.detail_recommendation.Detail_Naver"/>
 
     </application>
 

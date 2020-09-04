@@ -66,6 +66,8 @@
             android:layout_marginStart="15dp"
             android:layout_marginEnd="15dp"
             android:layout_weight="9.3"
+            android:overScrollMode="never"
+            android:scrollbars="none"
             android:background="@drawable/recommendation_background">
 
             <LinearLayout
@@ -79,34 +81,34 @@
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="25dp"
-                    android:text="상세정보"
                     android:fontFamily="@font/nanumsquareb"
-                    android:textSize="18dp"/>
+                    android:text="상세정보"
+                    android:textSize="18dp" />
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
                     android:layout_marginTop="10dp"
-                    android:text="쿠팡 로켓 와우로 로켓 배송 및 다양한 혜택을 누려보세요."
                     android:fontFamily="@font/nanumsquarer"
+                    android:text="쿠팡 로켓 와우로 로켓 배송 및 다양한 혜택을 누려보세요."
                     android:textSize="15dp" />
 
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="혜택"
-                    android:layout_marginTop="45dp"
                     android:layout_marginLeft="20dp"
+                    android:layout_marginTop="45dp"
                     android:fontFamily="@font/nanumsquareb"
-                    android:textSize="18dp"/>
+                    android:text="혜택"
+                    android:textSize="18dp" />
 
                 <GridLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:columnCount="2"
-                    android:layout_marginTop="15dp">
+                    android:layout_marginTop="15dp"
+                    android:columnCount="2">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -129,8 +131,8 @@
                                     android:layout_width="80dp"
                                     android:layout_height="80dp"
                                     android:layout_gravity="center"
-                                    android:src="@drawable/ic_delivery2"
-                                    android:scaleType="fitCenter"/>
+                                    android:scaleType="fitCenter"
+                                    android:src="@drawable/ic_delivery2" />
 
                                 <TextView
                                     android:layout_width="wrap_content"
