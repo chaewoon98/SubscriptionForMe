@@ -31,6 +31,11 @@ android {
             }
         }
     }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
 }
 
 dependencies {
@@ -45,4 +50,9 @@ dependencies {
     implementation 'com.github.prolificinteractive:material-calendarview:1.6.1'
 
     implementation 'com.android.support:design:27.1.1' // android bottomNav
+    // codef api
+    compile 'io.codef.api:easycodef-java:1.0.3'
+    // read csv
+    implementation group: 'com.opencsv', name: 'opencsv', version: '4.4'
+
 }

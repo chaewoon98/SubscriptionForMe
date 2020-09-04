@@ -2,10 +2,15 @@ package com.example.subscriptionforme.home;
 
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Build;
+
+import android.content.Intent;
+
 import android.os.Bundle;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -14,16 +19,19 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
 import com.example.subscriptionforme.R;
+
 import com.example.subscriptionforme.home.Data.UserDatabase;
 import com.example.subscriptionforme.home.Data.UserSubscriptionAdapter;
 import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 
+import com.example.subscriptionforme.setting.SettingActivity;
 import java.text.DecimalFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
+
 
 
 public class FragmentHome extends Fragment {
@@ -36,11 +44,13 @@ public class FragmentHome extends Fragment {
     private ListView listViewInHome;
     private TextView monthTextView,priceInMonthTextView;
 
+    private ImageButton imageButton;
+
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.fragment_home, container, false);
-
         return view;
     }
 
@@ -60,7 +70,6 @@ public class FragmentHome extends Fragment {
         listViewInHome = view.findViewById(R.id.listview_fragment_home);
         userSubscriptionAdapter = new UserSubscriptionAdapter(getActivity(),userSubscriptionDataList,this);
         listViewInHome.setAdapter(userSubscriptionAdapter);
-
         monthTextView = view.findViewById(R.id.month_fragment_home);
         priceInMonthTextView = view.findViewById(R.id.price_in_month_fragment_home);
 
@@ -71,9 +80,25 @@ public class FragmentHome extends Fragment {
 
         int priceInMonth = getPriceInMonth();
         priceInMonthTextView.setText(moneyFormat(priceInMonth) + " 원");
+    }
 
+    @Override
+    public void onStart() {
+        super.onStart();
 
+        imageButton = getActivity().findViewById(R.id.setting);
 
+        // 설정 페이지 엑티비티 가는 버튼
+        imageButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Intent intent  = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+
+            }
+        });
     }
 
     public int getPriceInMonth() {
@@ -132,5 +157,6 @@ public class FragmentHome extends Fragment {
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         return decimalFormat.format(intputMoney);
     }
+
 
 }

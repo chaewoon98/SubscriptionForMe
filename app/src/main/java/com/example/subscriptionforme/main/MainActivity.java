@@ -2,7 +2,6 @@ package com.example.subscriptionforme.main;
 
 import android.app.Activity;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -16,6 +15,7 @@ import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.SubscriptionModelData;
 
+import com.example.subscriptionforme.R;
 
 import com.example.subscriptionforme.collection.FragmentCollectionView;
 import com.example.subscriptionforme.home.FragmentHome;
@@ -23,7 +23,6 @@ import com.example.subscriptionforme.recommendation.FragmentRecommendation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 import java.util.List;
-
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -126,7 +125,6 @@ public class MainActivity extends AppCompatActivity {
     public void refreshInFragmentHome() {
         replaceFragment(new FragmentHome());
     }
-
 
     public void initializeSubscriptionModelData() {
         subscriptionModelDataList = new ArrayList<>();

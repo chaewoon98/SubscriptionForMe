@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:layout_marginLeft="20dp"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="데이터 설정"
+            android:textColor="@color/colorPurple"
+            android:textSize="20dp" />
+
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="242dp"
+                android:orientation="vertical">
+
+                <Button
+                    android:id="@+id/buttonCardData"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="계좌 데이터 불러오기" />
+
+                <Button
+                    android:id="@+id/buttonDataCSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="관리, 추천 데이터 추출하기" />
+
+                <Button
+                    android:id="@+id/buttonCardDataCSV"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="사용된 계좌 데이터 추출하기" />
+            </LinearLayout>
+        </FrameLayout>
+    </LinearLayout>
+
+
+</LinearLayout>

@@ -33,6 +33,27 @@
         <activity android:name=".recommendation.detail_recommendation.Detail_GS25" />
         <activity android:name=".recommendation.detail_recommendation.Detail_Naver" />
 
+        <!--   설정 액티비티 추가     -->
+        <activity android:name=".setting.SettingActivity"/>
+        <!--   계좌 선택 엑티비티 추가    -->
+        <activity android:name=".setting.card.CardActivity"/>
+        <!--   약관 확인 엑티비티 추가     -->
+        <activity android:name=".setting.card.AgreementActivity"/>
+        <!--   계좌 비밀번호 엑티비티 추가     -->
+        <activity android:name=".setting.card.AccountPasswordActivity"/>
+        <!--   계좌 얻는 엑티비티 추가     -->
+        <activity android:name=".setting.card.AccountGetDataActivity"/>
+        <!--    CSV 추출하기    -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.example.subscriptionforme.setting.fileprovider"
+            android:grantUriPermissions="true"
+            android:exported="false">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/provider_paths"/>
+        </provider>
+
     </application>
 
 

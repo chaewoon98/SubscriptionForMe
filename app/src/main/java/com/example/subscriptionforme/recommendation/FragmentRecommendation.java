@@ -60,7 +60,6 @@ public class FragmentRecommendation extends Fragment {
                 @Override
                 public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
 
-
                     switch (recommendationList.get(i).getName()){
                         case "스마일 클럽 멤버십":{
                             Intent intent = new Intent(getContext(), Detail_11st.class);
