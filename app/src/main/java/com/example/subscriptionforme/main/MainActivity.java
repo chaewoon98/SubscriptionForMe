@@ -126,10 +126,10 @@ public class MainActivity extends AppCompatActivity {
     public void initializeSubscriptionModelData() {
         subscriptionModelDataList = new ArrayList<>();
 
-        subscriptionModelDataList.add(new SubscriptionModelData("0", "네이버 플러스 멤버쉽", "basic", "한 달", "4,900",
+        subscriptionModelDataList.add(new SubscriptionModelData("0", "네이버 플러스 멤버십", "basic", "한 달", "4,900",
                 "쇼핑할 때마다 네이버페이 포인트 5%! 다양한 혜택과 서비스", "https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome", "https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome", R.drawable.naver_logo));
 
-        subscriptionModelDataList.add(new SubscriptionModelData("1", "스마일 클럽 멤버쉽", "basic", "한 달", "37,000",
+        subscriptionModelDataList.add(new SubscriptionModelData("1", "스마일 클럽 멤버십", "basic", "한 달", "37,000",
                 "G마켓, 옥션, g9 어디서나 최고의 혜택을 받는 최고의 쇼핑 멤버쉽", null, null, R.drawable.smileclub_logo));
 
         subscriptionModelDataList.add(new SubscriptionModelData("2", "쿠팡 로켓와우 클럽", "basic", "한 달", "2,900",

@@ -26,6 +26,7 @@
             android:textSize="17dp" />
 
         <TextView
+            android:id="@+id/delete_subscription_ativity_management_subscription"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="right"

@@ -26,7 +26,7 @@ public class DeleteUserSubscriptionDiaolg extends Dialog {
     private UserSubscriptionData userSubscriptionData;
     private DeleteUserSubscriptionListener deleteUserSubscriptionListener;
 
-    public DeleteUserSubscriptionDiaolg(@NonNull final Context context, final MainActivity mainActivity, final UserSubscriptionData userSubscriptionData) {
+    public DeleteUserSubscriptionDiaolg(@NonNull final Context context, final UserSubscriptionData userSubscriptionData) {
         super(context);
 
         this.userSubscriptionData = userSubscriptionData;
@@ -76,9 +76,10 @@ public class DeleteUserSubscriptionDiaolg extends Dialog {
         deleteUrlTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                String deleteUrl = mainActivity.subscriptionModelDataList.get(Integer.parseInt(userSubscriptionData.getSubscriptionNumberID())).getCancellationUrl();
+                //String deleteUrl = mainActivity.subscriptionModelDataList.get(Integer.parseInt(userSubscriptionData.getSubscriptionNumberID())).getCancellationUrl();
+                String deleteUrl = userSubscriptionData.getSubscriptionDeleteURL();
 
-                if (deleteUrl != null) {
+                if (deleteUrl != null && !deleteUrl.equals("null")) {
                     dismiss();
                     Intent intent = new Intent(Intent.ACTION_VIEW, Uri.parse(deleteUrl));
                     context.startActivity(intent);

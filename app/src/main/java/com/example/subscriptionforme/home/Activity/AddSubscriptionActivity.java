@@ -25,6 +25,7 @@ import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Data.UserDatabase;
 
+import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -168,6 +169,7 @@ public class AddSubscriptionActivity extends AppCompatActivity {
 
         CalendarDialog calendarDialog = new CalendarDialog(context);
         String paymentDay = calendarDialog.getPayDate(payDateTextView.getText().toString());
+        String price =moneyFormat(Integer.parseInt(priceEditText.getText().toString().replaceAll(",","")));
 
         //autoCompleteTextView를 선택하지 않은경우, 즉 수동으로 등록한 경우
         if (selectedSubscriptionNumber.equals("null")) {
@@ -176,7 +178,7 @@ public class AddSubscriptionActivity extends AppCompatActivity {
             Log.d("123","123");
         } else {
             UserDatabase.getInstance(context).insertSubcriptionData(UserDatabase.getInstance(context).getWritableDatabase(), selectedSubscriptionNumber,
-                    autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), priceEditText.getText().toString(), payDateTextView.getText().toString()
+                    autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), price, payDateTextView.getText().toString()
                     ,paymentDay,alarmSettingTextView.getText().toString(),isAlarmOn,selectedSubscriptionDescription,selectedSubscriptionDeleteURL,selectedSubscriptionImageID);
 
             onBackPressed();
@@ -188,4 +190,8 @@ public class AddSubscriptionActivity extends AppCompatActivity {
         onBackPressed();
     }
 
+    public String moneyFormat(int intputMoney){
+        DecimalFormat decimalFormat = new DecimalFormat("#,##0");
+        return decimalFormat.format(intputMoney);
+    }
 }

@@ -21,6 +21,7 @@ import com.example.subscriptionforme.home.Data.UserDatabase;
 import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
+import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.text.DecimalFormat;
@@ -32,7 +33,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
     private Context context;
     private UserSubscriptionData userSubscriptionData;
     private ImageView logoImage;
-    private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting;
+    private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting, deleteSubscriptionTextView;
     private EditText priceEditText, deleteUrlEditText, descriptionEditText;
     private View payDateView, alarmSettingView;
     private Button updateButton;
@@ -60,6 +61,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         updateButton = findViewById(R.id.service_update_button_ativity_management_subscription);
         name = findViewById(R.id.name_ativity_management_subscription);
         paymentSystem = findViewById(R.id.payment_system_ativity_management_subscription);
+        deleteSubscriptionTextView = findViewById(R.id.delete_subscription_ativity_management_subscription);
 
         logoImage.setImageResource(userSubscriptionData.getSubscriptionImageID());
         beginningDate.setText(userSubscriptionData.getBeginningPayDate());
@@ -93,6 +95,8 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
                 AlarmSettingDialog alarmSettingDialog = new AlarmSettingDialog(ManagementSusbscriptionActivity.this, updateAlarmSetting);
             }
         });
+
+        deleteSubscriptionTextView.setOnClickListener(new DeleteUserSubscriptionOnClickListener(ManagementSusbscriptionActivity.this, userSubscriptionData, this));
 
     }
 
