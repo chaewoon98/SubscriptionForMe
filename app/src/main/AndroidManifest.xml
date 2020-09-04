@@ -4,13 +4,13 @@
 
     <application
         android:allowBackup="true"
+        android:hardwareAccelerated="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
+        android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:hardwareAccelerated="true"
-        android:largeHeap="true">
+        android:theme="@style/AppTheme">
 
         <activity android:name=".collection.ChildActivity" />
 
@@ -23,10 +23,15 @@
         </activity>
 
         <activity android:name=".home.Activity.AddSubscriptionActivity" />
+        <activity android:name=".home.Activity.ManagementSusbscriptionActivity" />
 
         <activity android:name=".recommendation.DetailRecommendationActivity" />
-
-        <activity android:name=".home.Activity.ManagementSusbscriptionActivity"/>
+        <activity android:name=".recommendation.detail_recommendation.Detail_11st" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_BurgerKing" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_CoffeePlease" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_Coupang" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_GS25" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_Naver" />
 
     </application>
 

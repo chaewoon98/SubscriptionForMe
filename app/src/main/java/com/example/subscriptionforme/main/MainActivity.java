@@ -11,20 +11,25 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+import com.example.subscriptionforme.R;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.SubscriptionModelData;
+
 
 import com.example.subscriptionforme.collection.FragmentCollectionView;
 import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.recommendation.FragmentRecommendation;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+import java.util.ArrayList;
+import java.util.List;
 
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     public ArrayList<SubscriptionModelData> subscriptionModelDataList;
+
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
     private FragmentManager fragmentManager = getSupportFragmentManager();
     // 4개의 메뉴에 들어갈 Fragment들
@@ -182,6 +187,5 @@ public class MainActivity extends AppCompatActivity {
 
         subscriptionModelDataList.add(new SubscriptionModelData("18", "넷플릭스", "premium", "한 달", "14,500",
                 "영화, TV 프로그램을 무제한으로, 다양한 디바이스에서 시청하세요", null, null, R.drawable.nexflix_logo));
-
     }
 }

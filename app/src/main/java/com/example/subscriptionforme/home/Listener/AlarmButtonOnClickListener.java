@@ -27,15 +27,14 @@ public class AlarmButtonOnClickListener implements View.OnClickListener {
     @Override
     public void onClick(View view) {
 
-        if(userSubscriptionDataList.get(position).isAlarmOn().equals("true")){
+        if (userSubscriptionDataList.get(position).isAlarmOn().equals("true")) {
             alarmButton.setImageResource(R.drawable.alarm_cancel_button);
             userSubscriptionDataList.get(position).setAlarmOn("false");
-            Toast.makeText(context,"알람이 꺼졌습니다.",Toast.LENGTH_SHORT).show();
-        }
-        else{
+            Toast.makeText(context, "알람이 꺼졌습니다.", Toast.LENGTH_SHORT).show();
+        } else {
             alarmButton.setImageResource(R.drawable.alarm_button);
             userSubscriptionDataList.get(position).setAlarmOn("true");
-            Toast.makeText(context,"알람이 켜졌습니다.",Toast.LENGTH_SHORT).show();
-    }
+            Toast.makeText(context, "알람이 켜졌습니다.", Toast.LENGTH_SHORT).show();
+        }
     }
 }

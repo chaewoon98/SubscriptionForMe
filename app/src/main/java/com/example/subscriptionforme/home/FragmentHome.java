@@ -13,12 +13,10 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.fragment.app.Fragment;
-
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Data.UserDatabase;
 import com.example.subscriptionforme.home.Data.UserSubscriptionAdapter;
 import com.example.subscriptionforme.home.Data.UserSubscriptionData;
-import com.example.subscriptionforme.home.Data.UserDatabase;
-
 
 import java.text.DecimalFormat;
 import java.text.ParseException;

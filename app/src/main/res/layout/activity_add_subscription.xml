@@ -9,6 +9,7 @@
     tools:context=".home.Activity.AddSubscriptionActivity">
 
 
+
     <FrameLayout
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -170,7 +171,6 @@
                     android:layout_marginLeft="20dp"
                     android:fontFamily="@font/nanumsquarer"
                     android:gravity="center_vertical"
-
                     android:text="최초 결제일 선택"
                     android:textColor="@color/black"
                     android:textSize="17dp" />
@@ -320,9 +320,7 @@
         android:text="서비스 추가하기"
         android:textColor="@color/white"
         android:onClick="addServiceButton"
-
         android:textSize="20dp"
-
         />
 
 </LinearLayout>
