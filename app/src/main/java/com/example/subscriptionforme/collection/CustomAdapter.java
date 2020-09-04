@@ -65,7 +65,8 @@ public class CustomAdapter extends BaseExpandableListAdapter {
         String group = (String) getGroup(groupPosition);
         if(convertView == null){
             LayoutInflater layoutInflater = (LayoutInflater) this.context.getSystemService(Context.LAYOUT_INFLATER_SERVICE);
-            convertView = layoutInflater.inflate(R.layout.expandation_group, null);
+            //convertView = layoutInflater.inflate(R.layout.expandation_group, null);
+            convertView = layoutInflater.inflate(R.layout.expandation_group,viewGroup,false);
         }
 
         TextView textView = convertView.findViewById(R.id.list_parent);

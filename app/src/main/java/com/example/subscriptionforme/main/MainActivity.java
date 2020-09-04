@@ -56,7 +56,6 @@ public class MainActivity extends AppCompatActivity {
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
 
-
         @Override
         public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
             transaction = fragmentManager.beginTransaction();

@@ -24,6 +24,7 @@ import com.example.subscriptionforme.home.Data.SubscriptionAutoCompleteAdapter;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Data.UserDatabase;
+import com.example.subscriptionforme.main.MainActivity;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
@@ -181,7 +182,9 @@ public class AddSubscriptionActivity extends AppCompatActivity {
                     autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), price, payDateTextView.getText().toString()
                     ,paymentDay,alarmSettingTextView.getText().toString(),isAlarmOn,selectedSubscriptionDescription,selectedSubscriptionDeleteURL,selectedSubscriptionImageID);
 
-            onBackPressed();
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+            startActivity(intent);
         }
 
     }
