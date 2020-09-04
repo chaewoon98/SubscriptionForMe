@@ -42,7 +42,9 @@
             android:layout_marginLeft="20dp"
             android:layout_marginTop="15dp"
             android:dividerHeight="30dp"
-            android:divider="#00000000"/>
+            android:divider="#00000000"
+            android:overScrollMode="never"
+            android:scrollbars="none"/>
 
     </FrameLayout>
 

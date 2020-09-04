@@ -13,4 +13,8 @@
 
     </style>
 
+    <style name="CalendarDialogAnimation">
+        <item name="android:windowEnterAnimation">@anim/enter_from_bottom</item>
+        <item name="android:windowExitAnimation">@anim/exit_to_bottom</item>
+    </style>
 </resources>

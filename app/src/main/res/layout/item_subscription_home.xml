@@ -1,12 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
-    xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="150dp"
     android:background="@drawable/item_subscription_home"
-    android:orientation="vertical"
-    >
+    android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
@@ -69,32 +67,58 @@
             android:scaleType="centerInside"
             android:src="@drawable/naver_logo" />
 
-        <TextView
-            android:id="@+id/name_subsciption_home"
+        <LinearLayout
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:gravity="center_vertical|left"
-            android:paddingLeft="10dp"
+            android:layout_weight="2"
+            android:orientation="vertical">
 
-            android:fontFamily="@font/nanumsquarer"
-            android:text="Naver Plus\nMembership"
-            android:textSize="15dp"
-            android:textColor="@color/black"
-            />
+            <TextView
+                android:id="@+id/name_subsciption_home"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/nanumsquarer"
+
+                android:gravity="bottom|left"
+                android:paddingBottom="2dp"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:text="Naver Plus"
+                android:textColor="@color/black"
+                android:textSize="15dp" />
+
+            <TextView
+                android:id="@+id/payment_system_subsciption_home"
+                android:layout_width="match_parent"
+                android:layout_height="0dp"
+                android:layout_weight="1"
+                android:ellipsize="end"
+                android:fontFamily="@font/nanumsquarer"
+
+                android:gravity="top|left"
+                android:maxLines="1"
+                android:paddingLeft="10dp"
+                android:paddingTop="2dp"
+                android:text="Naver Plus"
+                android:textColor="@color/grayColor"
+                android:textSize="15dp" />
+
+        </LinearLayout>
 
         <TextView
             android:id="@+id/price_subsciption_home"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_weight="1"
-            android:gravity="center_vertical|right"
-            android:paddingRight="10dp"
-
             android:fontFamily="@font/nanumsquareb"
+            android:gravity="center_vertical|right"
+
+            android:paddingRight="10dp"
             android:text="3,900원"
-            android:textSize="18dp"
-            android:textColor="@color/black"/>
+            android:textColor="@color/black"
+            android:textSize="18dp" />
 
     </LinearLayout>
 

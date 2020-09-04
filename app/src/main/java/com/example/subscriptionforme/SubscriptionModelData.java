@@ -3,11 +3,15 @@ package com.example.subscriptionforme;
 import android.os.Parcel;
 import android.os.Parcelable;
 
-public class SubsciptionModelData implements Parcelable {
-    private String name,paymentSystem,paymentCycle,price,descrpition,registrationUrl,cancellationUrl;
+public class SubscriptionModelData implements Parcelable {
+    private String numberID,name,paymentSystem,paymentCycle,price,descrpition,registrationUrl,cancellationUrl;
     private int imageID;
 
-    public SubsciptionModelData(String name, String paymentSystem, String paymentCycle, String price, String descrpition, String registrationUrl, String cancellationUrl, int imageID) {
+    public SubscriptionModelData() {
+    }
+
+    public SubscriptionModelData(String numberID,String name, String paymentSystem, String paymentCycle, String price, String descrpition, String registrationUrl, String cancellationUrl, int imageID) {
+        this.numberID = numberID;
         this.name = name;
         this.paymentSystem = paymentSystem;
         this.paymentCycle = paymentCycle;
@@ -18,7 +22,8 @@ public class SubsciptionModelData implements Parcelable {
         this.imageID = imageID;
     }
 
-    protected SubsciptionModelData(Parcel in) {
+    protected SubscriptionModelData(Parcel in) {
+        numberID = in.readString();
         name = in.readString();
         paymentSystem = in.readString();
         paymentCycle = in.readString();
@@ -29,17 +34,25 @@ public class SubsciptionModelData implements Parcelable {
         imageID = in.readInt();
     }
 
-    public static final Creator<SubsciptionModelData> CREATOR = new Creator<SubsciptionModelData>() {
+    public static final Creator<SubscriptionModelData> CREATOR = new Creator<SubscriptionModelData>() {
         @Override
-        public SubsciptionModelData createFromParcel(Parcel in) {
-            return new SubsciptionModelData(in);
+        public SubscriptionModelData createFromParcel(Parcel in) {
+            return new SubscriptionModelData(in);
         }
 
         @Override
-        public SubsciptionModelData[] newArray(int size) {
-            return new SubsciptionModelData[size];
+        public SubscriptionModelData[] newArray(int size) {
+            return new SubscriptionModelData[size];
         }
     };
+
+    public String getNumberID() {
+        return numberID;
+    }
+
+    public void setNumberID(String numberID) {
+        this.numberID = numberID;
+    }
 
     public String getName() {
         return name;
@@ -112,6 +125,7 @@ public class SubsciptionModelData implements Parcelable {
 
     @Override
     public void writeToParcel(Parcel parcel, int i) {
+        parcel.writeString(numberID);
         parcel.writeString(name);
         parcel.writeString(paymentSystem);
         parcel.writeString(paymentCycle);
