@@ -41,7 +41,7 @@ public class FragmentCollectionView extends Fragment {
         listGroup = new ArrayList<>();
         listItem = new HashMap<>();
         adapter = new CustomAdapter(getContext(), listGroup,listItem);
-        expandableListView.setIndicatorBounds(950,0); // 화살표 위치
+        //expandableListView.setIndicatorBounds(950,0); // 화살표 위치
         expandableListView.setAdapter(adapter);
         initListData();
         expandableListView.setOnChildClickListener(new GroupClick());

@@ -7,13 +7,14 @@
     android:padding="10dp">
 
     <ImageView
+        android:id="@+id/image_list_child"
         android:layout_width="40dp"
         android:layout_height="40dp"
         android:layout_gravity="center"
         android:layout_marginLeft="15dp"
 
         android:adjustViewBounds="true"
-        android:scaleType="centerInside"
+        android:scaleType="fitXY"
         android:src="@drawable/naver_logo" />
 
     <LinearLayout
@@ -23,7 +24,7 @@
         android:orientation="vertical">
 
         <TextView
-            android:id="@+id/list_child"
+            android:id="@+id/name_list_child"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -39,6 +40,7 @@
             android:textSize="15dp" />
 
         <TextView
+            android:id="@+id/description_list_child"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_weight="1"
@@ -51,7 +53,7 @@
             android:paddingTop="2dp"
             android:text="Naver Plus"
             android:textColor="@color/grayColor"
-            android:textSize="15dp" />
+            android:textSize="12dp" />
 
     </LinearLayout>
 </LinearLayout>

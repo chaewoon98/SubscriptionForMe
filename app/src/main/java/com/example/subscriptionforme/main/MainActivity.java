@@ -50,7 +50,6 @@ public class MainActivity extends AppCompatActivity {
         // 첫 화면 지정
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, new FragmentHome()).commitAllowingStateLoss();
-
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
     }
 

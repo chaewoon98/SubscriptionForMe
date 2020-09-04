@@ -93,6 +93,7 @@
         android:overScrollMode="never"
         android:scrollbars="none"
         android:divider="@color/transparentColor"
+        android:groupIndicator="@null"
         >
 
     </ExpandableListView>
