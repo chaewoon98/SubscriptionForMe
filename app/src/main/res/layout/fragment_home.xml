@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-
     android:layout_height="match_parent"
     android:background="@color/white"
     android:orientation="vertical">
@@ -22,6 +21,7 @@
             android:textSize="17dp" />
 
         <ImageButton
+            android:id="@+id/setting"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="right"
@@ -41,6 +41,7 @@
         android:orientation="vertical">
 
         <TextView
+            android:id="@+id/month_fragment_home"
             android:layout_width="match_parent"
             android:layout_height="25dp"
 
@@ -51,6 +52,7 @@
             android:textSize="17dp" />
 
         <TextView
+            android:id="@+id/price_in_month_fragment_home"
             android:layout_width="match_parent"
             android:layout_height="45dp"
 
@@ -74,18 +76,24 @@
             android:textSize="17dp" />
 
         <ListView
-            android:id="@+id/listview_home"
+            android:id="@+id/listview_fragment_home"
             android:layout_width="match_parent"
             android:layout_height="0dp"
             android:layout_margin="20dp"
             android:layout_weight="6"
+            android:overScrollMode="never"
 
+            android:scrollbars="none"
             android:divider="@color/white"
             android:dividerHeight="18dp">
 
 
         </ListView>
     </LinearLayout>
+    
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
 
 </LinearLayout>
 

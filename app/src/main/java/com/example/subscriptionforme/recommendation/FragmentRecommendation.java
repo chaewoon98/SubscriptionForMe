@@ -55,60 +55,6 @@ public class FragmentRecommendation extends Fragment {
         if(recommendationList != null) {
             final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList);
             listView.setAdapter(listAdapter);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-
-                    switch (recommendationList.get(i).getName()){
-                        case "스마일 클럽 멤버십":{
-                            Intent intent = new Intent(getContext(), Detail_11st.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "버거킹 정기 구독 서비스":{
-                            Intent intent = new Intent(getContext(), Detail_BurgerKing.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "쿠팡 로켓 와우":{
-                            Intent intent = new Intent(getContext(), Detail_Coupang.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "커피 플리즈":{
-                            Intent intent = new Intent(getContext(), Detail_CoffeePlease.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "네이버 플러스 멤버십":{
-                            Intent intent = new Intent(getContext(), Detail_Naver.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "GS 더 팝 플러스":{
-                            Intent intent = new Intent(getContext(), Detail_GS25.class);
-                            startActivity(intent);
-                            break;
-                        }
-                    }
-
-//                    Intent intent = new Intent(getContext(), DetailRecommendationActivity.class);
-//
-//                    intent.putExtra("name", recommendationList.get(i).getName());
-//                    intent.putExtra("logo", recommendationList.get(i).getIcon());
-//                    intent.putExtra("benefit", recommendationList.get(i).getBenefit());
-//                    intent.putExtra("color", recommendationList.get(i).getColor());
-//
-//                    startActivity(intent);
-                }
-            });
         }
 
         return view;
@@ -125,5 +71,6 @@ public class FragmentRecommendation extends Fragment {
         recommendationList.add(new RecommendationList("커피", "커피 플리즈", "2,900", "19,000", "2,500", R.drawable.ic_coffeeplease,getResources().getColor(R.color.colorCoffeePlease),R.drawable.benefit_coupang));
         recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
         recommendationList.add(new RecommendationList("커피", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
+        recommendationList.add(new RecommendationList("배달음식", "요기요 슈퍼클럽", "9,900", "19,000", "2,500", R.drawable.ic_yogiyo,getResources().getColor(R.color.colorYogiyo),R.drawable.benefit_coupang));
      }
 }

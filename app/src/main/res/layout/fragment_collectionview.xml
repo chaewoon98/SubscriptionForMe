@@ -32,6 +32,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:text="구독 서비스 모아보기"
+                android:textColor="@color/mainColor"
                 android:textSize="22dp" />
 
             <FrameLayout
@@ -48,31 +49,7 @@
                     android:layout_weight="1"
                     android:gravity="center_horizontal"
                     android:orientation="horizontal"
-                    android:visibility="visible">
-
-
-                    <ImageButton
-                        android:id="@+id/imageButton"
-                        android:layout_width="wrap_content"
-                        android:layout_height="51dp"
-                        android:layout_weight="1"
-                        andorid:srcCompat="@android:drawable/ic_search_category_default" />
-
-                    <androidx.appcompat.widget.AppCompatEditText
-                        android:id="@+id/search_edit_text"
-                        android:layout_width="298dp"
-                        android:layout_height="51dp"
-                        android:layout_marginLeft="0dp"
-                        android:layout_weight="1"
-                        android:ems="10"
-                        android:hint="구독 검색"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
-                        android:maxLength="50"
-                        android:maxLines="1"
-                        android:paddingBottom="10dp"
-                        tools:background="@drawable/searchbox" />
-                </LinearLayout>
+                    android:visibility="visible"/>
 
 
             </FrameLayout>

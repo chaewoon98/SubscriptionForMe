@@ -24,6 +24,7 @@
             android:layout_height="30dp"
             android:layout_gravity="right|center"
             android:layout_marginRight="10dp"
+            android:onClick="onButtonClick"
             android:src="@drawable/ic_baseline_settings_24" />
 
     </FrameLayout>

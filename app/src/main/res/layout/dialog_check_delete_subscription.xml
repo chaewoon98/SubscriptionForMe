@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="150dp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/nanumsquarer"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="정말 관리 목록에서 삭제하시겠습니까?"
+        android:textColor="@color/black"
+        android:textSize="17dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/nanumsquarer"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:text="실제 서비스에 영향을 주지는 않습니다."
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/cancel_button_check_delete_dialog"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="취소"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/delete_button_check_delete_dialog"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="삭제"
+            android:textColor="#ff0000"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

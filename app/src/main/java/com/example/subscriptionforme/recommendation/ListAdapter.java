@@ -1,6 +1,8 @@
 package com.example.subscriptionforme.recommendation;
 
 import android.content.Context;
+import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -9,6 +11,13 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_11st;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_BurgerKing;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_CoffeePlease;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Coupang;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_GS25;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Naver;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Yogiyo;
 
 import java.util.ArrayList;
 
@@ -69,6 +78,57 @@ public class ListAdapter extends BaseAdapter {
 
         TextView discount = (TextView)view.findViewById(R.id.discount_text);
         discount.setText(list.get(position).getDiscount());
+
+        View viewTouch = view.findViewById(R.id.test_1);
+        viewTouch.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                switch (list.get(position).getName()){
+                    case "스마일 클럽 멤버십":{
+                        Intent intent = new Intent(context, Detail_11st.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "버거킹 정기 구독 서비스":{
+                        Intent intent = new Intent(context, Detail_BurgerKing.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "쿠팡 로켓 와우":{
+                        Intent intent = new Intent(context, Detail_Coupang.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "커피 플리즈":{
+                        Intent intent = new Intent(context, Detail_CoffeePlease.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "네이버 플러스 멤버십":{
+                        Intent intent = new Intent(context, Detail_Naver.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "GS 더 팝 플러스":{
+                        Intent intent = new Intent(context, Detail_GS25.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "요기요 슈퍼클럽":{
+                        Intent intent = new Intent(context, Detail_Yogiyo.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+                }
+            }
+        });
 
         return view;
     }
