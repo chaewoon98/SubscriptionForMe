@@ -4,7 +4,7 @@ package com.example.subscriptionforme.setting.card;
 public class AccountVO {
 
     private String resAccountTrDate; // 결제 날짜 ex) 20200805  yyyy/mm/dd
-    private String getResAccountTrTime; // 결제 시간 ex) 130812 hh/mm/ss
+    private String resAccountTrTime; // 결제 시간 ex) 130812 hh/mm/ss
     private String resAccountOut; // 출금 ex) 50000
     private String resAccountIn; // 입금
     private String resAccountDesc1; // 입금자/받는 사람
@@ -14,13 +14,24 @@ public class AccountVO {
 
     public AccountVO(){
         resAccountTrDate = "";
-        getResAccountTrTime = "";
+        resAccountTrTime = "";
         resAccountIn = "";
         resAccountOut = "";
         resAccountDesc1 = "";
         resAccountDesc2 = "";
         resAccountDesc3 = "";
         resAfterTranBalance = "";
+    }
+
+    public AccountVO(String resAccountTrDate, String resAccountTrTime, String resAccountOut, String resAccountIn, String resAccountDesc1, String resAccountDesc2, String resAccountDesc3, String resAfterTranBalance){
+        this.resAccountTrDate = resAccountTrDate;
+        this.resAccountTrTime = resAccountTrTime;
+        this.resAccountOut = resAccountOut;
+        this.resAccountIn = resAccountIn;
+        this.resAccountDesc1 = resAccountDesc1;
+        this.resAccountDesc2 = resAccountDesc2;
+        this.resAccountDesc3 = resAccountDesc3;
+        this.resAfterTranBalance = resAfterTranBalance;
     }
 
 
@@ -72,13 +83,7 @@ public class AccountVO {
         this.resAccountOut = resAccountOut;
     }
 
-    public String getGetResAccountTrTime() {
-        return getResAccountTrTime;
-    }
 
-    public void setGetResAccountTrTime(String getResAccountTrTime) {
-        this.getResAccountTrTime = getResAccountTrTime;
-    }
 
     public String getResAccountTrDate() {
         return resAccountTrDate;
@@ -86,5 +91,13 @@ public class AccountVO {
 
     public void setResAccountTrDate(String resAccountTrDate) {
         this.resAccountTrDate = resAccountTrDate;
+    }
+
+    public String getResAccountTrTime() {
+        return resAccountTrTime;
+    }
+
+    public void setResAccountTrTime(String resAccountTrTime) {
+        this.resAccountTrTime = resAccountTrTime;
     }
 }
