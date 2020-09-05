@@ -18,6 +18,7 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.home.Data.AccountDatabase;
+import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
 import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.main.MainActivity;
 import com.example.subscriptionforme.recommendation.RecommendationList;
@@ -76,10 +77,11 @@ public class AccountGetDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                if(accountList.size() != 0)
-                {
-                    accountList.clear(); // 전에 있는 내용 삭제
-                }
+
+                    accountList.clear(); // 전에 있는 전체 내용 삭제
+                    AccountDatabase.getInstance(getApplicationContext()).deleteAccount(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase());
+                    SubscriptionDatabase.getInstance(getApplicationContext()).deleteSubscription(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase());
+
 
                 if(recommendationList.size() != 0)
                 {
@@ -94,7 +96,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                Log.d("태순", String.valueOf(AccountDatabase.getInstance(getApplicationContext()).getDataCount(AccountDatabase.getInstance(getApplicationContext()).getReadableDatabase())));
                 startActivity(intent);
             }
         });
@@ -201,7 +202,14 @@ public class AccountGetDataActivity extends AppCompatActivity {
         }
 
         if(naverAccount > 2000){
-            recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
+
+            // recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
+
+            SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                    "네이버","네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang
+            );
+
+            Log.d("태순숫자","안녕");
 
             for(int i=0;i<50;i++){
                 if(naverAccountIndex[i] == 1){
@@ -213,7 +221,12 @@ public class AccountGetDataActivity extends AppCompatActivity {
         }
 
         if(burgerkingAccount > 5000){
-            recommendationList.add(new RecommendationList("햄버거", "버거킹 정기 구독 서비스", "4,700", "9,800", "5,200", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing),R.drawable.benefit_burgerking));
+
+            SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                    "햄버거", "버거킹 정기 구독 서비스", "4,700", "9,800", "5,200", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing),R.drawable.benefit_burgerking
+            );
+
+            Log.d("태순숫자","안녕1");
 
             for(int i=0;i<50;i++){
                 if(burgerkingAccountIndex[i] == 1){
@@ -225,7 +238,14 @@ public class AccountGetDataActivity extends AppCompatActivity {
         }
 
         if(cupangAccount > 5000){
+
             recommendationList.add(new RecommendationList("쿠팡", "쿠팡 로켓 와우", "2,900", "19,000", "2,500", R.drawable.ic_coupang,getResources().getColor(R.color.colorCoupang),R.drawable.benefit_coupang));
+
+            SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                    "쿠팡", "쿠팡 로켓 와우", "2,900", "19,000", "2,500", R.drawable.ic_coupang,getResources().getColor(R.color.colorCoupang),R.drawable.benefit_coupang
+            );
+
+            Log.d("태순숫자","안녕2");
 
             for(int i=0;i<50;i++){
                 if(cupangAccountIndex[i] == 1){
@@ -238,6 +258,12 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
         if(gsAccount > 5000){
             recommendationList.add(new RecommendationList("커피", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
+
+            SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                    "커피", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang
+            );
+
+            Log.d("태순숫자","안녕3");
 
             for(int i=0;i<50;i++){
                 if(gsAccountIndex[i] == 1){

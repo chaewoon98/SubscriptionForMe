@@ -8,6 +8,8 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.subscriptionforme.recommendation.RecommendationList;
+
 public class AccountDatabase extends SQLiteOpenHelper {
 
     private static AccountDatabase databaseInstance = null;
@@ -26,7 +28,9 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
+
         createTable(sqLiteDatabase);
+
     }
 
     @Override
@@ -60,13 +64,12 @@ public class AccountDatabase extends SQLiteOpenHelper {
         } catch (SQLException e) {
             e.printStackTrace();
         }
+
     }
 
-    public void deleteSubscription(SQLiteDatabase database, String registerNumberString) {
+    public void deleteAccount(SQLiteDatabase database) {
 
-        int registerNumber = Integer.parseInt(registerNumberString);
-
-        String sqlString = "delete from " + tableNameAccount + " WHERE registerNumber = '" + registerNumber+ "'";
+        String sqlString = "delete from " + tableNameAccount;
 
         database.beginTransaction();
         database.execSQL(sqlString);
@@ -89,22 +92,7 @@ public class AccountDatabase extends SQLiteOpenHelper {
         database.endTransaction();
     }
 
-    public UserSubscriptionData getUserData(SQLiteDatabase database, int index) {
-        String sqlSelect = "SELECT * FROM " + tableNameAccount;
-        Cursor cursor = null;
-        int count = 0;
 
-        cursor = database.rawQuery(sqlSelect, null);
-
-        while (cursor.moveToNext()) {
-
-            if (count == index)
-                return new UserSubscriptionData(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
-                        cursor.getString(5),cursor.getString(6),cursor.getString(7),cursor.getString(8),cursor.getString(9),cursor.getString(10),cursor.getInt(11));
-            count++;
-        }
-        return null;
-    }
 
     //총 데이타 수를 get
     public Integer getDataCount(SQLiteDatabase database) {
@@ -114,4 +102,6 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
         return cursor.getCount();
     }
+
+
 }
