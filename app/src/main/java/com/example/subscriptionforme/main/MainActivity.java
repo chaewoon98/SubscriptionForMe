@@ -1,7 +1,12 @@
 package com.example.subscriptionforme.main;
 
 import android.app.Activity;
+import android.app.AppOpsManager;
+import android.content.Context;
+import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.MenuItem;
 import android.widget.Toast;
 
@@ -10,19 +15,17 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-import com.example.subscriptionforme.R;
 
 import com.example.subscriptionforme.R;
+
 import com.example.subscriptionforme.SubscriptionModelData;
-
-import com.example.subscriptionforme.R;
 
 import com.example.subscriptionforme.collection.FragmentCollectionView;
 import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.recommendation.FragmentRecommendation;
+import com.example.subscriptionforme.AppUsedTimeData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.ArrayList;
-import java.util.List;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
@@ -51,6 +54,31 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, new FragmentHome()).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
+        Log.d("creat","create");
+
+        //퍼미션 체크
+        boolean granted = false;
+        AppOpsManager appOps = (AppOpsManager)getSystemService(Context.APP_OPS_SERVICE);
+        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,android.os.Process.myUid(), getPackageName());
+
+        if (mode == AppOpsManager.MODE_DEFAULT) {
+            granted = (checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
+        } else {
+            granted = (mode == AppOpsManager.MODE_ALLOWED);
+        }
+
+        if (granted == false)
+        {
+            // 권한이 없을 경우 권한 요구 페이지 이동
+            Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
+            startActivity(intent);
+        }
+
+        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
+        Long youtubeUseTime = appUsedTimeData.getAppUsedTime(MainActivity.this,"youtube")/(60*1000);
+        Log.d("youtube", String.valueOf(youtubeUseTime));
+/*        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
+        appUsedTimeData.printCurrentUsageStatus(MainActivity.this);*/
     }
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -126,7 +154,6 @@ public class MainActivity extends AppCompatActivity {
 
     public void initializeSubscriptionModelData() {
         subscriptionModelDataList = new ArrayList<>();
-
         subscriptionModelDataList.add(new SubscriptionModelData("0", "네이버 플러스 멤버십", "basic", "한 달", "4,900",
                 "쇼핑할 때마다 네이버페이 포인트 5%! 다양한 혜택과 서비스", "https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome", "https://nid.naver.com/nidlogin.login?svctype=1&url=https%3A%2F%2Forder.pay.naver.com%2Fhome", R.drawable.naver_logo));
 
