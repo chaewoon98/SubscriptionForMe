@@ -17,6 +17,7 @@ import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.main.MainActivity;
 import com.example.subscriptionforme.recommendation.RecommendationList;
@@ -27,12 +28,18 @@ import java.util.regex.Pattern;
 
 public class AccountGetDataActivity extends AppCompatActivity {
 
-    private List<AccountVO> accountList;
+    private List<AccountVO> accountList; // 전체 계좌
+    private List<AccountVO> accountRecommendationList; // 추천에 쓰인 계좌
     private int naverAccount;
     private int gsAccount;
     private int burgerkingAccount;
     private int cupangAccount;
     private int smailAccount;
+    private int[] naverAccountIndex; // 네이버 추천인덱스
+    private int[] gsAccountIndex;
+    private int[] burgerkingAccountIndex;
+    private int[] cupangAccountIndex;
+    private int[] smailAccountIndex;
     public static ArrayList<RecommendationList> recommendationList;
 
     Button button; // 데이터 얻는 버튼
@@ -44,12 +51,18 @@ public class AccountGetDataActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_get_data);
         accountList = new ArrayList<AccountVO>();
+        accountRecommendationList = new ArrayList<AccountVO>();
         recommendationList = new ArrayList<RecommendationList>();
         naverAccount = 0;
         gsAccount = 0;
         burgerkingAccount = 0;
         cupangAccount = 0;
         smailAccount = 0;
+        naverAccountIndex = new int[50];
+        gsAccountIndex = new int[50];
+        burgerkingAccountIndex = new int[50];
+        cupangAccountIndex = new int[50];
+        smailAccountIndex = new int[50];
 
         button = findViewById(R.id.account_data_get_button);
     }
@@ -78,8 +91,10 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
                 setAccountNaverList();
                 setSubscriptionList();
+
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                Log.d("태순", String.valueOf(AccountDatabase.getInstance(getApplicationContext()).getDataCount(AccountDatabase.getInstance(getApplicationContext()).getReadableDatabase())));
                 startActivity(intent);
             }
         });
@@ -158,43 +173,79 @@ public class AccountGetDataActivity extends AppCompatActivity {
             accountList.add(accountV34);
     }
 
+
     public void setSubscriptionList(){
 
         for(int i=0; i<accountList.size(); i++){
 
             if(accountList.get(i).getResAccountDesc3().contains("네이버")){
                 naverAccount += Integer.valueOf(accountList.get(i).getResAccountOut());
+                naverAccountIndex[i] = 1;
             }
 
             if(accountList.get(i).getResAccountDesc3().contains("버거킹") || accountList.get(i).getResAccountDesc3().contains("롯데리아") || accountList.get(i).getResAccountDesc3().contains("맥도날드") || accountList.get(i).getResAccountDesc3().contains("롯데리아") ){
                 burgerkingAccount += Integer.valueOf(accountList.get(i).getResAccountOut());
+                burgerkingAccountIndex[i] = 1;
             }
 
             if(accountList.get(i).getResAccountDesc3().contains("쿠팡")){
                 cupangAccount += Integer.valueOf(accountList.get(i).getResAccountOut());
+                cupangAccountIndex[i] = 1;
             }
 
             if(accountList.get(i).getResAccountDesc3().contains("GS")){
                 gsAccount += Integer.valueOf(accountList.get(i).getResAccountOut());
+                gsAccountIndex[i] = 1;
             }
 
         }
 
         if(naverAccount > 2000){
             recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
-            Log.d("박태순","안녕");
+
+            for(int i=0;i<50;i++){
+                if(naverAccountIndex[i] == 1){
+                    AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                            accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
+                            ,accountList.get(i).getResAccountDesc3(),accountList.get(i).getResAfterTranBalance());
+                }
+            }
         }
 
-        if(burgerkingAccount >5000){
+        if(burgerkingAccount > 5000){
             recommendationList.add(new RecommendationList("햄버거", "버거킹 정기 구독 서비스", "4,700", "9,800", "5,200", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing),R.drawable.benefit_burgerking));
+
+            for(int i=0;i<50;i++){
+                if(burgerkingAccountIndex[i] == 1){
+                    AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                            accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
+                            ,accountList.get(i).getResAccountDesc3(),accountList.get(i).getResAfterTranBalance());
+                }
+            }
         }
 
-        if(cupangAccount >5000){
+        if(cupangAccount > 5000){
             recommendationList.add(new RecommendationList("쿠팡", "쿠팡 로켓 와우", "2,900", "19,000", "2,500", R.drawable.ic_coupang,getResources().getColor(R.color.colorCoupang),R.drawable.benefit_coupang));
+
+            for(int i=0;i<50;i++){
+                if(cupangAccountIndex[i] == 1){
+                    AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                            accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
+                            ,accountList.get(i).getResAccountDesc3(),accountList.get(i).getResAfterTranBalance());
+                }
+            }
         }
 
-        if(gsAccount >5000){
+        if(gsAccount > 5000){
             recommendationList.add(new RecommendationList("커피", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
+
+            for(int i=0;i<50;i++){
+                if(gsAccountIndex[i] == 1){
+                    AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                            accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
+                            ,accountList.get(i).getResAccountDesc3(),accountList.get(i).getResAfterTranBalance());
+                }
+            }
         }
     }
 

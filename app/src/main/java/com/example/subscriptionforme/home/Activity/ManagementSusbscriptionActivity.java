@@ -22,7 +22,6 @@ import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
-import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
