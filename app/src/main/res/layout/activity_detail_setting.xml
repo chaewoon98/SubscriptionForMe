@@ -53,6 +53,13 @@
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:text="사용된 계좌 데이터 추출하기" />
+
+                <Button
+                    android:id="@+id/buttonSurvey"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="설문조사" />
+
             </LinearLayout>
         </FrameLayout>
     </LinearLayout>

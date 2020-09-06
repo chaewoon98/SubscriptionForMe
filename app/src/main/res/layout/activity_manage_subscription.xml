@@ -248,7 +248,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
-                android:background="@color/colorLightGray" />
+                android:background="@color/colorGray" />
 
             <Space
                 android:layout_width="match_parent"
@@ -364,7 +364,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
-                android:background="@color/colorLightGray" />
+                android:background="@color/colorGray" />
 
             <Space
                 android:layout_width="match_parent"

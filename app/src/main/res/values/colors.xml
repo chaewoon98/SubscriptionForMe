@@ -18,6 +18,7 @@
     <!--테마색-->
     <color name="colorPurple">#905ad9</color>
     <color name="colorLightGray">#f9f9f9</color>
+    <color name="colorGray">#f1f1f1</color>
 
     <!--서비스별 폰트 색상-->
     <color name="colorBurgerKing">#f5ac1b</color>
@@ -27,6 +28,9 @@
     <color name="colorCoffeePlease">#a78b6b</color>
     <color name="colorNaver">#45b860</color>
     <color name="colorGS25">#006db6</color>
+    <color name="colorYogiyo">#f0001e</color>
+    <color name="colorMillie">#a451f7</color>
+    <color name="colorYoutube">#ff0000</color>
 
 
 

@@ -44,8 +44,12 @@ public class DeleteUserSubscriptionOnClickListener implements View.OnClickListen
             public void deleteButtonClicked() {
                 if (isInMainActivity)
                     mainActivity.refreshInFragmentHome();
-                else
-                    managementSusbscriptionActivity.backButton(view);
+                else{
+                    Intent intent = new Intent(context, MainActivity.class);
+                    intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                    context.startActivity(intent);
+                }
+
             }
         });
     }
