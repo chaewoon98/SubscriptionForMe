@@ -12,6 +12,6 @@ public class Detail_BurgerKing extends AppCompatActivity {
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_burgerking_recommendation2);
+        setContentView(R.layout.activity_burgerking_recommendation);
     }
 }
