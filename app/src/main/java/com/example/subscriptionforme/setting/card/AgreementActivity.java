@@ -9,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.GridView;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -28,6 +29,7 @@ public class AgreementActivity extends AppCompatActivity {
     TextView warningText; // 경고 문고
     EditText accountNumberEditText;
     boolean canNextButton;
+    ImageView back_btn;
     int index;
 
     @Override
@@ -39,6 +41,7 @@ public class AgreementActivity extends AppCompatActivity {
         button = findViewById(R.id.agreement_button);
         bankName = findViewById(R.id.bankText);
         accountNumberEditText = findViewById(R.id.accountNumberEdit);
+        back_btn = findViewById(R.id.agreement_back_btn);
         warningText = findViewById(R.id.warningText);
         warningText.setText("");
         BANK = 0;
@@ -99,6 +102,13 @@ public class AgreementActivity extends AppCompatActivity {
                     intent.putExtra("card", index);
                     startActivity(intent);
                 }
+            }
+        });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
     }

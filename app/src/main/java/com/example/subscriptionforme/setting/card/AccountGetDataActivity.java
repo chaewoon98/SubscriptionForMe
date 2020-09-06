@@ -8,6 +8,7 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -45,9 +46,11 @@ public class AccountGetDataActivity extends AppCompatActivity {
     private int[] gsAccountIndex;
     private int[] burgerkingAccountIndex;
     private int[] yokiyoAccountIndex;
+    private int yokiyoCount;
     private int[] cupangAccountIndex;
     private int[] smailAccountIndex;
     public static ArrayList<RecommendationList> recommendationList;
+    ImageButton back_btn;
 
     Button button; // 데이터 얻는 버튼
 
@@ -62,6 +65,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
         recommendationList = new ArrayList<RecommendationList>();
         naverAccount = 0;
         gsAccount = 0;
+        yokiyoCount = 0;
         burgerkingAccount = 0;
         cupangAccount = 0;
         smailAccount = 0;
@@ -73,6 +77,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
         cupangAccountIndex = new int[50];
         smailAccountIndex = new int[50];
         button = findViewById(R.id.account_data_get_button);
+        back_btn = findViewById(R.id.get_data_back_btn);
     }
 
     @Override
@@ -110,6 +115,13 @@ public class AccountGetDataActivity extends AppCompatActivity {
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
                 startActivity(intent);
+            }
+        });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
             }
         });
 
@@ -239,43 +251,43 @@ public class AccountGetDataActivity extends AppCompatActivity {
     public void setAccountGS25List(){
         AccountVO accountVO1 = new AccountVO("20200801","042103","19000","0","박태순","","우아한형제들","1000000");
         accountList.add(accountVO1);
-        AccountVO accountVO2 = new AccountVO("20200802","205211","6800","0","박태순","","옥션","974000");
+        AccountVO accountVO2 = new AccountVO("20200802","205211","26000","0","박태순","","옥션","974000");
         accountList.add(accountVO2);
-        AccountVO accountVO3 = new AccountVO("20200803","043141","35000","0","박태순","","GS25세종대점","970000");
+        AccountVO accountVO3 = new AccountVO("20200803","043141","4000","0","박태순","","GS25세종대점","970000");
         accountList.add(accountVO3);
-        AccountVO accountVO4 = new AccountVO("20200804","205211","50000","0","박태순","","GS25세종대점","965800");
+        AccountVO accountVO4 = new AccountVO("20200804","205211","4200","0","박태순","","GS25세종대점","965800");
         accountList.add(accountVO4);
-        AccountVO accountVO5 = new AccountVO("20200805","042358","19000","0","박태순","","GS25세종대점","961500");
+        AccountVO accountVO5 = new AccountVO("20200805","042358","4300","0","박태순","","GS25세종대점","961500");
         accountList.add(accountVO5);
         AccountVO accountVO6 = new AccountVO("20200806","011237","4100","0","박태순","","GS25세종대점","957400");
         accountList.add(accountVO6);
-        AccountVO accountVO7 = new AccountVO("20200807","185045","3000","0","박태순","","GS25세종대점","953150");
+        AccountVO accountVO7 = new AccountVO("20200807","185045","4250","0","박태순","","GS25세종대점","953150");
         accountList.add(accountVO7);
-        AccountVO accountVO8 = new AccountVO("20200808","025253","25000","0","박태순","","G마켓","925150");
+        AccountVO accountVO8 = new AccountVO("20200808","025253","28000","0","박태순","","G마켓","925150");
         accountList.add(accountVO8);
-        AccountVO accountVO9 = new AccountVO("20200809","025306","4100","0","박태순","","옥션","854150");
+        AccountVO accountVO9 = new AccountVO("20200809","025306","71000","0","박태순","","옥션","854150");
         accountList.add(accountVO9);
-        AccountVO accountV10 = new AccountVO("20200810","232111","4100","0","박태순","","GS25세종대점","849780");
+        AccountVO accountV10 = new AccountVO("20200810","232111","4370","0","박태순","","GS25세종대점","849780");
         accountList.add(accountV10);
-        AccountVO accountV11 = new AccountVO("20200811","232119","27000","0","박태순","","GS25세종대점","845370");
+        AccountVO accountV11 = new AccountVO("20200811","232119","4410","0","박태순","","GS25세종대점","845370");
         accountList.add(accountV11);
-        AccountVO accountV12 = new AccountVO("20200812","174257","2000","0","박태순","","GS25세종대점","840920");
+        AccountVO accountV12 = new AccountVO("20200812","174257","4450","0","박태순","","GS25세종대점","840920");
         accountList.add(accountV12);
-        AccountVO accountV13 = new AccountVO("20200813","174312","4100","0","박태순","","GS25세종대점","836430");
+        AccountVO accountV13 = new AccountVO("20200813","174312","4490","0","박태순","","GS25세종대점","836430");
         accountList.add(accountV13);
-        AccountVO accountV14 = new AccountVO("20200814","200904","10000","0","박태순","","GS25세종대점","831900");
+        AccountVO accountV14 = new AccountVO("20200814","200904","4530","0","박태순","","GS25세종대점","831900");
         accountList.add(accountV14);
-        AccountVO accountV15 = new AccountVO("20200815","233931","2000","0","박태순","","G마켓","801900");
+        AccountVO accountV15 = new AccountVO("20200815","233931","30000","0","박태순","","G마켓","801900");
         accountList.add(accountV15);
-        AccountVO accountV16 = new AccountVO("20200816","001231","4100","0","박태순","","G마켓","777900");
+        AccountVO accountV16 = new AccountVO("20200816","001231","24000","0","박태순","","G마켓","777900");
         accountList.add(accountV16);
-        AccountVO accountV17 = new AccountVO("20200817","195516","18000","0","박태순","","GS25세종대점","773210");
+        AccountVO accountV17 = new AccountVO("20200817","195516","4690","0","박태순","","GS25세종대점","773210");
         accountList.add(accountV17);
-        AccountVO accountV18 = new AccountVO("20200818","131244","4100","0","박태순","","GS25세종대점","768520");
+        AccountVO accountV18 = new AccountVO("20200818","131244","4690","0","박태순","","GS25세종대점","768520");
         accountList.add(accountV18);
-        AccountVO accountV19 = new AccountVO("20200819","181134","4100","0","박태순","","GS25세종대점","763790");
+        AccountVO accountV19 = new AccountVO("20200819","181134","4730","0","박태순","","GS25세종대점","763790");
         accountList.add(accountV19);
-        AccountVO accountV20 = new AccountVO("20200820","030137","18000","0","박태순","","GS25세종대점","759020");
+        AccountVO accountV20 = new AccountVO("20200820","030137","4770","0","박태순","","GS25세종대점","759020");
         accountList.add(accountV20);
         AccountVO accountV21 = new AccountVO("20200821","084617","1500","0","박태순","","회덕농협","757520");
         accountList.add(accountV21);
@@ -328,6 +340,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
             if(accountList.get(i).getResAccountDesc3().contains("우아한") || accountList.get(i).getResAccountDesc3().contains("요기요")){
                 yokiyoAccount += Integer.valueOf(accountList.get(i).getResAccountOut());
+                yokiyoCount++;
                 yokiyoAccountIndex[i] = 1;
             }
 
@@ -411,12 +424,15 @@ public class AccountGetDataActivity extends AppCompatActivity {
             }
         }
 
-        if(yokiyoAccount > 30000){
+        // 바꿈 카운트부분!!
+        if(yokiyoCount > 3){
             recommendationList.add(new RecommendationList("요기요", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
 
             SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
-                    "요기요", "요기요", "2,900", String.valueOf(yokiyoAccount),"12000" , R.drawable.ic_yogiyo,getResources().getColor(R.color.colorYogiyo),R.drawable.benefit_coupang
-            );
+                    "요기요", "요기요", "9,900", String.valueOf(yokiyoAccount),String.valueOf(3000*yokiyoCount) , R.drawable.ic_yogiyo,getResources().getColor(R.color.colorYogiyo),R.drawable.benefit_coupang
+            ); // 여기도 바꿈 내용은 추가바람.
+
+
 
             Log.d("태순숫자","안녕3");
 
