@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.subscriptionforme.recommendation.RecommendationList;
+import com.example.subscriptionforme.setting.card.AccountVO;
 
 public class AccountDatabase extends SQLiteOpenHelper {
 
@@ -77,19 +78,21 @@ public class AccountDatabase extends SQLiteOpenHelper {
         database.endTransaction();
     }
 
-    public void updateSubscruption(SQLiteDatabase database,String registerNumberString, String subscriptionPrice, String subscriptionBeginningPayDate,String subscriptionPayDate,
-                                   String subscriptionAlarmSetting,String subscriptionIsAlarmOn,String subscriptionDescription,String subscriptionDeleteURL){
+    public AccountVO getAccountData(SQLiteDatabase database, int index) {
+        String sqlSelect = "SELECT * FROM " + tableNameAccount;
+        Cursor cursor = null;
+        int count = 0;
 
-        int registerNumber = Integer.parseInt(registerNumberString);
+        cursor = database.rawQuery(sqlSelect, null);
 
-        String sqlString = "UPDATE " + tableNameAccount + " SET subscriptionPrice = '" + subscriptionPrice + "', subscriptionBeginningPayDate = '" + subscriptionBeginningPayDate + "', subscriptionPayDate = '"
-                + subscriptionPayDate + "', subscriptionAlarmSetting = '" + subscriptionAlarmSetting + "', subscriptionIsAlarmOn = '" + subscriptionIsAlarmOn + "', subscriptionDescription = '" + subscriptionDescription +
-                "', subscriptionDeleteURL = '" + subscriptionDeleteURL + "' WHERE registerNumber = '" + registerNumber+ "'";
+        while (cursor.moveToNext()) {
 
-        database.beginTransaction();
-        database.execSQL(sqlString);
-        database.setTransactionSuccessful();
-        database.endTransaction();
+            if (count == index)
+                return new AccountVO(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
+                        cursor.getString(5),cursor.getString(6),cursor.getString(7));
+            count++;
+        }
+        return null;
     }
 
 

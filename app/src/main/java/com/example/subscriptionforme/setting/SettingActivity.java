@@ -5,6 +5,7 @@ import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
@@ -15,8 +16,12 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
+import com.example.subscriptionforme.home.Data.UserDatabase;
+import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.recommendation.RecommendationList;
+import com.example.subscriptionforme.setting.card.AccountVO;
 import com.example.subscriptionforme.setting.card.CardActivity;
 
 import java.io.File;
@@ -33,11 +38,16 @@ public class SettingActivity extends AppCompatActivity {
     LinearLayout recommendationCsvDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
     LinearLayout surveyButton; //설문조사 버튼
 
+    int userDataCount;
+    int accountDataCount;
+
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         dataCount = 0;
+        userDataCount = 0;
+        accountDataCount = 0;
         setContentView(R.layout.activity_detail_setting);
     }
 
@@ -65,11 +75,21 @@ public class SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                StringBuilder data = new StringBuilder();
-                data.append("name,resUsedDate,resMemberStoreName,resPaymentAmt");
 
-                for(int i=0;i<1;i++){
-                    data.append("\n"+"스마일 클럽"+","+"2020-08-13"+","+"11번가"+","+"50000");
+                SQLiteDatabase accountDatabase = AccountDatabase.getInstance(getApplicationContext()).getReadableDatabase();
+                ArrayList<AccountVO> accountList = new ArrayList<AccountVO>();
+                accountDataCount = AccountDatabase.getInstance(getApplicationContext()).getDataCount(AccountDatabase.getInstance(getApplicationContext()).getReadableDatabase());
+
+                for(int i=0;i<accountDataCount;i++){
+                    accountList.add(AccountDatabase.getInstance(getApplicationContext()).getAccountData(accountDatabase, i));
+                }
+
+                StringBuilder data = new StringBuilder();
+                data.append("결제 날짜,결제 시간,출금 금액,입금 금액,입금자,예금자,통장 잔고");
+
+
+                for(int i=0;i<accountDataCount;i++){
+                    data.append("\n"+accountList.get(i).getResAccountTrDate()+","+accountList.get(i).getResAccountTrTime()+","+accountList.get(i).getResAccountOut()+","+accountList.get(i).getResAccountIn()+","+accountList.get(i).getResAccountDesc1()+","+accountList.get(i).getResAccountDesc3()+","+accountList.get(i).getResAfterTranBalance());
                 }
 
                 try {
@@ -102,18 +122,35 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 StringBuilder data = new StringBuilder();
-                ArrayList<RecommendationList> list = new ArrayList<RecommendationList>();
-                SQLiteDatabase subscriptionDatabase = SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase();;
+                ArrayList<RecommendationList> recommendationLists = new ArrayList<RecommendationList>();
+                ArrayList<UserSubscriptionData> userSubscriptionData = new ArrayList<UserSubscriptionData>();
+                SQLiteDatabase subscriptionDatabase = SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase();
+                SQLiteDatabase userDatabase = UserDatabase.getInstance(getApplicationContext()).getReadableDatabase();
                 dataCount = SubscriptionDatabase.getInstance(getApplicationContext()).getDataCount(SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase());
+                userDataCount = UserDatabase.getInstance(getApplicationContext()).getDataCount(UserDatabase.getInstance(getApplicationContext()).getReadableDatabase());
 
                 for(int i =0; i<dataCount;i++){
-                    list.add(SubscriptionDatabase.getInstance(getApplicationContext()).getSubscriptionData(subscriptionDatabase, i));
+                    recommendationLists.add(SubscriptionDatabase.getInstance(getApplicationContext()).getSubscriptionData(subscriptionDatabase, i));
                 }
 
-                data.append("startDate,endDate,resMemberStoreName,resPaymentAmt,useMoney,maxSale,manageMent,recommend");
+                for(int i =0; i<userDataCount;i++){
+                    userSubscriptionData.add(UserDatabase.getInstance(getApplicationContext()).getUserData(userDatabase, i));
+                }
+
+                Log.d("태순", String.valueOf(recommendationLists.get(0).getPrice()));
+                Log.d("태순", String.valueOf(recommendationLists.get(0).getDiscount()));
+                Log.d("태순", String.valueOf(recommendationLists.get(0).getConsumption()));
+
+
+                data.append("paymentDay,resMemberStoreName,resPaymentAmt,useMoney,maxSale,manageMent,recommend");
 
                 for(int i=0;i<dataCount;i++){
-                    data.append("\n"+"2020-06-15"+","+"2020-09-12"+","+"유튜브"+","+"12000"+","+"0"+","+"0"+","+"1"+","+"0");
+                    data.append("\n"+'X'+","+recommendationLists.get(i).getName()+","+recommendationLists.get(i).getPrice().replace(",","")+","+recommendationLists.get(i).getConsumption().replace(",","")+","+recommendationLists.get(i).getDiscount().replace(",","")+"," + 'X' + "," + 'O');
+                    //data.append("\n"+accountList.get(i).getResAccountTrDate()+","+accountList.get(i).getResAccountTrTime()+","+accountList.get(i).getResAccountOut()+","+accountList.get(i).getResAccountIn()+","+accountList.get(i).getResAccountDesc1()+","+accountList.get(i).getResAccountDesc3()+","+accountList.get(i).getResAfterTranBalance());
+                }
+
+                for(int i=0;i<userDataCount;i++){
+                    data.append("\n"+userSubscriptionData.get(i).getBeginningPayDate()+","+userSubscriptionData.get(i).getSubscriptionName()+","+userSubscriptionData.get(i).getSubscriptionPrice().replace(",","")+","+"X"+","+"X"+","+"O"+","+"X");
                 }
 
                 try {

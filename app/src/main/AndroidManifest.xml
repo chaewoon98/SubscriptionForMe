@@ -40,7 +40,7 @@
         <activity android:name=".recommendation.detail_recommendation.Detail_Yogiyo"/>
         <activity android:name=".recommendation.detail_recommendation.Detail_Millie"/>
         <activity android:name=".recommendation.detail_recommendation.Detail_Youtube"/>
-
+        <activity android:name=".setting.card.AccountGetDataActivity"/>
 
         <!--   설정 액티비티 추가     -->
         <activity android:name=".setting.SettingActivity"/>
