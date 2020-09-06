@@ -60,10 +60,8 @@ public class FragmentRecommendation extends Fragment {
         return view;
     }
 
-
     //임시 추천 리스트
     public void initList(){
-
         recommendationList = new ArrayList<RecommendationList>();
         recommendationList.add(new RecommendationList("11번가", "스마일 클럽 멤버십", "5,000", "128,000", "15,360", R.drawable.ic_11st,getResources().getColor(R.color.color11st), R.drawable.benefit_11st));
         recommendationList.add(new RecommendationList("햄버거", "버거킹 정기 구독 서비스", "4,700", "9,800", "5,200", R.drawable.ic_burgerking, getResources().getColor(R.color.colorBurgerKing),R.drawable.benefit_burgerking));
@@ -72,5 +70,7 @@ public class FragmentRecommendation extends Fragment {
         recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
         recommendationList.add(new RecommendationList("커피", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
         recommendationList.add(new RecommendationList("배달음식", "요기요 슈퍼클럽", "9,900", "19,000", "2,500", R.drawable.ic_yogiyo,getResources().getColor(R.color.colorYogiyo),R.drawable.benefit_coupang));
-     }
+        recommendationList.add(new RecommendationList("책", "밀리의 서재", "9,900", "19,000", "2,500", R.drawable.ic_millie,getResources().getColor(R.color.colorMillie),R.drawable.benefit_coupang));
+        recommendationList.add(new RecommendationList("유튜브", "유튜브 프리미엄", "9,900", "19,000", "2,500", R.drawable.ic_youtube,getResources().getColor(R.color.colorYoutube),R.drawable.benefit_coupang));
+    }
 }

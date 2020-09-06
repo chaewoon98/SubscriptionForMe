@@ -16,8 +16,10 @@ import com.example.subscriptionforme.recommendation.detail_recommendation.Detail
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_CoffeePlease;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Coupang;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_GS25;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Millie;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Naver;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Yogiyo;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Youtube;
 
 import java.util.ArrayList;
 
@@ -123,6 +125,18 @@ public class ListAdapter extends BaseAdapter {
 
                     case "요기요 슈퍼클럽":{
                         Intent intent = new Intent(context, Detail_Yogiyo.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "밀리의 서재":{
+                        Intent intent = new Intent(context, Detail_Millie.class);
+                        context.startActivity(intent);
+                        break;
+                    }
+
+                    case "유튜브 프리미엄":{
+                        Intent intent = new Intent(context, Detail_Youtube.class);
                         context.startActivity(intent);
                         break;
                     }

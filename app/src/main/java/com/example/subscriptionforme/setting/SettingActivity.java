@@ -25,6 +25,7 @@ public class SettingActivity extends AppCompatActivity {
     Button cardDataButton;    // 카드 정보 읽기 버튼
     Button cardCsvDataButton; // 카드 csv 정보 받기 버튼
     Button subscriptionDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
+    Button surveyButton; //설문조사 버튼
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class SettingActivity extends AppCompatActivity {
         cardDataButton = findViewById(R.id.buttonCardData);
         cardCsvDataButton = findViewById(R.id.buttonCardDataCSV);
         subscriptionDataButton = findViewById(R.id.buttonDataCSV);
+        surveyButton = findViewById(R.id.buttonSurvey);
+
         cardDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -112,5 +115,13 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
+        surveyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), SurveyActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }

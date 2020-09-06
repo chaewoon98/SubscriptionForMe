@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/smile_club_image" />
+                android:src="@drawable/millie_image" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/nanumsquareb"
-                android:text="스마일 클럽 멤버십"
+                android:text="밀리의 서재"
                 android:textColor="@color/black"
                 android:textSize="27dp" />
 
@@ -59,7 +59,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="스마일 클럽은 G마켓, 옥션, G9 어디서나 최고의\n혜택을 받는 쇼핑 멤버십입니다."
+                android:text="독서와 무제한 친해지리"
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -80,7 +80,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="4,900 원"
+                android:text="15,900 원"
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -101,7 +101,7 @@
                 android:textSize="20dp" />
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp">
 
@@ -112,7 +112,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/naver_image2" />
+                    android:src="@drawable/millie_benefit1" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -128,7 +128,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="스마일캐시 37,000원을 즉시 지급해드립니다. 최대 3%를 상시 적립 가능하며 최고 등급 할인은 12%까지 가능하답니다!\n당일배송 상품을 장보면 매일 할인받을 수 있어요!"
+                android:text="전자책 무제한 10만 권, 밀리 단독 콘텐츠 오디오북과 챗북을 통해 시간을 가치있게 채워 나가세요!\n최고 작가의 신작 종이책을 배송받아 보세요.\n한정판 가입선물을 100% 증정해드립니다."
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -136,37 +136,6 @@
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/benefit_11st_2" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/round_frame" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="365일 배달료를 할인받으세요!\n매일 스마일배송상품 무료배송 쿠폰 또한 드립니다."
-                android:textColor="@color/black"
-                android:textSize="17dp" />
 
             <View
                 android:layout_width="match_parent"
@@ -401,13 +370,13 @@
                             android:textSize="17dp" />
 
                         <ImageView
-                            android:layout_width="120dp"
-                            android:layout_height="match_parent"
-                            android:src="@drawable/arrow"
-                            android:paddingRight="20dp"
+                            android:layout_width="match_parent"
+                            android:layout_height="76dp"
                             android:layout_gravity="right"
                             android:gravity="right"
-                            android:scaleType="fitXY"/>
+                            android:paddingRight="20dp"
+                            android:scaleType="fitXY"
+                            android:src="@drawable/arrow" />
 
                     </FrameLayout>
 

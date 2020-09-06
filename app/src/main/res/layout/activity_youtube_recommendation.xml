@@ -21,7 +21,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="210dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/smile_club_image" />
+                android:src="@drawable/youtube_image" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/nanumsquareb"
-                android:text="스마일 클럽 멤버십"
+                android:text="유튜브 프리미엄"
                 android:textColor="@color/black"
                 android:textSize="27dp" />
 
@@ -59,7 +59,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="스마일 클럽은 G마켓, 옥션, G9 어디서나 최고의\n혜택을 받는 쇼핑 멤버십입니다."
+                android:text="광고 없는 YouTube를 만나 보세요."
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -80,7 +80,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="4,900 원"
+                android:text="9,500 원"
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -101,7 +101,7 @@
                 android:textSize="20dp" />
 
             <FrameLayout
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15dp">
 
@@ -112,7 +112,7 @@
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/naver_image2" />
+                    android:src="@drawable/youtube_benefit1" />
 
                 <ImageView
                     android:layout_width="match_parent"
@@ -128,45 +128,13 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="스마일캐시 37,000원을 즉시 지급해드립니다. 최대 3%를 상시 적립 가능하며 최고 등급 할인은 12%까지 가능하답니다!\n당일배송 상품을 장보면 매일 할인받을 수 있어요!"
+                android:text="화⁠면⁠을 끄⁠거⁠나 다⁠른 앱⁠을 사⁠용⁠하⁠면⁠서 광⁠고 없⁠이 동⁠영⁠상⁠을 시⁠청⁠해 보⁠세⁠요.\n동⁠영⁠상⁠을 저⁠장⁠하⁠여 기⁠내, 출⁠퇴⁠근⁠길 등⁠에⁠서⁠도 시⁠청⁠하⁠세⁠요.\nYouTube Music⁠에⁠서 맞⁠춤 동⁠영⁠상⁠, 재⁠생⁠목⁠록⁠, 라⁠이⁠브 음⁠원 등⁠을 감⁠상⁠해 보⁠세⁠요."
                 android:textColor="@color/black"
                 android:textSize="17dp" />
-
 
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/benefit_11st_2" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/round_frame" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="365일 배달료를 할인받으세요!\n매일 스마일배송상품 무료배송 쿠폰 또한 드립니다."
-                android:textColor="@color/black"
-                android:textSize="17dp" />
 
             <View
                 android:layout_width="match_parent"

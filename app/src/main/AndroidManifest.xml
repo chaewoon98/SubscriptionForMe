@@ -33,6 +33,8 @@
         <activity android:name=".recommendation.detail_recommendation.Detail_GS25" />
         <activity android:name=".recommendation.detail_recommendation.Detail_Naver" />
         <activity android:name=".recommendation.detail_recommendation.Detail_Yogiyo"/>
+        <activity android:name=".recommendation.detail_recommendation.Detail_Millie"/>
+        <activity android:name=".recommendation.detail_recommendation.Detail_Youtube"/>
 
         <!--   설정 액티비티 추가     -->
         <activity android:name=".setting.SettingActivity"/>
@@ -44,6 +46,9 @@
         <activity android:name=".setting.card.AccountPasswordActivity"/>
         <!--   계좌 얻는 엑티비티 추가     -->
         <activity android:name=".setting.card.AccountGetDataActivity"/>
+
+        <activity android:name=".setting.SurveyActivity"/>
+
         <!--    CSV 추출하기    -->
         <provider
             android:name="androidx.core.content.FileProvider"

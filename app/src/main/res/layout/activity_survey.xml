@@ -1,0 +1,465 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|center"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="설문"
+            android:textColor="@color/colorPurple"
+            android:textSize="20dp" />
+
+    </FrameLayout>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="1. 해당하는 나이에 체크해주세요."
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/check_age"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="19세 이하"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="20 ~ 29세"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="30 ~ 39세"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="40 ~ 49세"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="50세 이상"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="2. 해당하는 직업에 체크해주세요."
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/check_job"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="학생"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="직장인"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="주부"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="기타"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="3. 관심있는 항목에 모두 체크해 주세요. (중복 가능)"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <CheckBox
+                android:id="@+id/interest_clothes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="의류"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_restaurant"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="식당"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_grocery"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="식품 배송"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_culture"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="문화"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_life"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="생활"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_dessert"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="카페 / 디저트"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="4. 해당하는 가구원 수에 체크해주세요."
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/check_family_number"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="1인"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="2인"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="3 ~ 5인"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="6인 이상"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="5. 0 ~ 7세 사이의 자녀를 키우고 계십니까?"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/check_baby"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="예"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="아니오"
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="6. 식사는 주로 외식을 하는 편이다."
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <RadioGroup
+                android:id="@+id/check_meal_type"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginLeft="20dp">
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="예. 외식을 하거나 배달음식을 먹습니다."
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+
+                <RadioButton
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="15dp"
+                    android:fontFamily="@font/nanumsquarer"
+                    android:text="아니오. 주로 집에서 먹습니다."
+                    android:textColor="@color/black"
+                    android:buttonTint="@color/colorPurple"
+                    android:textSize="17dp" />
+            </RadioGroup>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="25dp"
+                android:layout_marginBottom="10dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="7. 문화 서비스 중에서 관심있는 항목을 모두 체크해주세요. (중복 가능)"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <CheckBox
+                android:id="@+id/interest_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="책"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_video"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="동영상 스트리밍"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_music"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="음원 스트리밍"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_audio_book"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="오디오북"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_webtoon"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="웹툰"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <CheckBox
+                android:id="@+id/interest_museum"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="전시회/박물관"
+                android:textColor="@color/black"
+                android:buttonTint="@color/colorPurple"
+                android:textSize="17dp"/>
+
+            <Button
+                android:id="@+id/submit_survey_button"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:text="제출하기"
+                android:textSize="20dp"
+                android:textColor="@color/white"
+                android:fontFamily="@font/nanumsquarer"
+                android:layout_gravity="center"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"
+                android:background="@color/colorPurple"/>
+
+        </LinearLayout>
+
+    </ScrollView>
+</LinearLayout>
