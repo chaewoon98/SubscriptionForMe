@@ -25,6 +25,7 @@ import java.util.ArrayList;
 
 public class ListAdapter extends BaseAdapter {
 
+    View view;
     Context context = null;
     LayoutInflater layoutInflater = null;
     ArrayList<RecommendationList> list;
@@ -37,18 +38,13 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+
+        if(list.size() == 0){
+            return 1;
+        }
+
         return list.size();
     }
-//    public ListAdapter(Context context){
-//        this.context = context;
-//
-//        layoutInflater = LayoutInflater.from(context);
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return 3;
-//    }
 
     @Override
     public Object getItem(int position) {
@@ -62,7 +58,14 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        View view = layoutInflater.inflate(R.layout.recommendation_list_view,null);
+
+        if(list.size() == 0){
+            view = layoutInflater.inflate(R.layout.recommendation_null_list,viewGroup,false);
+
+            return view;
+        }
+
+        view = layoutInflater.inflate(R.layout.recommendation_list_view,null);
 
         TextView title = (TextView)view.findViewById(R.id.title_text);
         title.setText(list.get(position).getTitle());

@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">SubscriptionForMe</string>
+    <string name="app_name">구독 For Me</string>
 
     <string name="group1">식당</string>
     <string name="group2">문화</string>
@@ -16,7 +16,8 @@
 
     <string-array name="group2">
         <item>밀리의 서재</item>
-        <item>Youtube Primium</item>
+        <item>Youtube Premium</item>
+
         <item>넷플릭스</item>
         <item>멜론</item>
         <item>지니</item>

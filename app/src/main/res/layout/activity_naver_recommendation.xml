@@ -4,37 +4,13 @@
     android:layout_height="match_parent"
     android:orientation="vertical">
 
-<!--    <FrameLayout-->
-<!--        android:layout_width="match_parent"-->
-<!--        android:layout_height="0dp"-->
-<!--        android:layout_weight="1">-->
-
-<!--        <TextView-->
-<!--            android:layout_width="wrap_content"-->
-<!--            android:layout_height="wrap_content"-->
-<!--            android:layout_gravity="left|center"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:fontFamily="@font/nanumsquareb"-->
-<!--            android:text="8월, 당신이 놓친 혜택!"-->
-<!--            android:textColor="@color/colorPurple"-->
-<!--            android:textSize="20dp" />-->
-
-<!--        <ImageView-->
-<!--            android:layout_width="30dp"-->
-<!--            android:layout_height="30dp"-->
-<!--            android:layout_gravity="right|center"-->
-<!--            android:layout_marginRight="10dp"-->
-<!--            android:src="@drawable/ic_baseline_settings_24" />-->
-
-<!--    </FrameLayout>-->
-
     <ScrollView
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9.3"
+        android:background="@color/colorLightGray"
         android:overScrollMode="never"
-        android:scrollbars="none"
-        android:background="@color/colorLightGray">
+        android:scrollbars="none">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -125,41 +101,41 @@
                 android:textSize="20dp" />
 
             <FrameLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp">
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
 
-            <ImageView
-                android:id="@+id/naver_benefit_1"
-                android:layout_width="match_parent"
-                android:layout_height="190dp"
-                android:layout_margin="5dp"
-                android:scaleType="fitXY"
-                android:layout_gravity="center"
-                android:src="@drawable/naver_image2" />
+                <ImageView
+                    android:id="@+id/naver_benefit_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/naver_image2" />
 
-            <ImageView
-                android:layout_width="match_parent"
-                android:layout_height="200dp"
-                android:layout_gravity="center"
-                android:src="@drawable/round_frame" />
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_frame" />
 
-        </FrameLayout>
+            </FrameLayout>
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="네이버 플러스 마크가 있는 상품 결제시\n최대 5% 포인트 적립해드려요.\n\n20만원까지 4%,
-20만원부터 계속 1%씩 멤버십 추가 적립이 됩니다."
-                android:fontFamily="@font/nanumsquarer"
-                android:textSize="17dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textColor="@color/black"/>
+                android:fontFamily="@font/nanumsquarer"
+                android:text="네이버 플러스 마크가 있는 상품 결제시\n최대 5% 포인트 적립해드려요.\n\n20만원까지 4%,
+20만원부터 계속 1%씩 멤버십 추가 적립이 됩니다."
+                android:textColor="@color/black"
+                android:textSize="17dp" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp"/>
+                android:layout_height="20dp" />
 
             <FrameLayout
                 android:layout_width="wrap_content"
@@ -169,9 +145,9 @@
                 <ImageView
                     android:layout_width="match_parent"
                     android:layout_height="220dp"
+                    android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:scaleType="fitXY"
-                    android:layout_gravity="center"
                     android:src="@drawable/naver_image3" />
 
                 <ImageView
@@ -185,12 +161,12 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="네이버 바이브, 네이버 웹툰·시리즈, 시리즈on, 네이버 클라우드, 오디오클립 5가지 서비스중 최대 4개까지 누릴 수 있어요."
-                android:fontFamily="@font/nanumsquarer"
-                android:textSize="17dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:textColor="@color/black"/>
+                android:fontFamily="@font/nanumsquarer"
+                android:text="네이버 바이브, 네이버 웹툰·시리즈, 시리즈on, 네이버 클라우드, 오디오클립 5가지 서비스중 최대 4개까지 누릴 수 있어요."
+                android:textColor="@color/black"
+                android:textSize="17dp" />
 
             <View
                 android:layout_width="match_parent"
@@ -210,23 +186,22 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="100dp"/>
+                android:layout_height="100dp" />
 
         </LinearLayout>
 
     </ScrollView>
 
     <Button
-        android:id="@+id/service_add_button_ativity_add_subscription"
+        android:id="@+id/service_add_button_ativity_detail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/mainColor"
         android:fontFamily="@font/nanumsquareb"
         android:onClick="addServiceButton"
-        android:text="서비스 추가하기"
+        android:text="서비스 가입하기"
         android:textColor="@color/white"
         android:textSize="20dp" />
-
 
 </LinearLayout>

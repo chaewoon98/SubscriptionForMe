@@ -6,6 +6,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,28 +23,30 @@ import java.io.IOException;
 
 public class SettingActivity extends AppCompatActivity {
 
-    Button cardDataButton;    // 카드 정보 읽기 버튼
-    Button cardCsvDataButton; // 카드 csv 정보 받기 버튼
-    Button subscriptionDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
-    Button surveyButton; //설문조사 버튼
+    LinearLayout cardRegisterButton; // 카드 정보 읽기 버튼
+    LinearLayout cardCsvDataButton; // 카드 csv 정보 받기 버튼
+    LinearLayout recommendationCsvDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
+    LinearLayout surveyButton; //설문조사 버튼
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
-
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_detail_setting);
     }
 
     @Override
     public void onStart() {
-
         super.onStart();
-        cardDataButton = findViewById(R.id.buttonCardData);
-        cardCsvDataButton = findViewById(R.id.buttonCardDataCSV);
-        subscriptionDataButton = findViewById(R.id.buttonDataCSV);
-        surveyButton = findViewById(R.id.buttonSurvey);
 
-        cardDataButton.setOnClickListener(new View.OnClickListener() {
+        cardRegisterButton = findViewById(R.id.card_register_layout);
+        recommendationCsvDataButton = findViewById(R.id.recommendation_data_csv_layout);
+        cardCsvDataButton = findViewById(R.id.card_data_csv_layout);
+        surveyButton = findViewById(R.id.survey_layout);
+
+        //카드 등록 하기 버튼 이벤트
+        cardRegisterButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 Intent intent  = new Intent(view.getContext(), CardActivity.class);
@@ -51,11 +54,14 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
+        //카드 사용 내역 CSV 내려받기 버튼 이벤트
         cardCsvDataButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 StringBuilder data = new StringBuilder();
                 data.append("name,resUsedDate,resMemberStoreName,resPaymentAmt");
+
                 for(int i=0;i<1;i++){
                     data.append("\n"+"스마일 클럽"+","+"2020-08-13"+","+"11번가"+","+"50000");
                 }
@@ -83,7 +89,10 @@ public class SettingActivity extends AppCompatActivity {
             }
         });
 
-        subscriptionDataButton.setOnClickListener(new View.OnClickListener() {
+
+        //서비스 추천 CSV 데이터 버튼 이벤트
+        recommendationCsvDataButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
                 StringBuilder data = new StringBuilder();
@@ -116,6 +125,7 @@ public class SettingActivity extends AppCompatActivity {
         });
 
         surveyButton.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -123,5 +133,6 @@ public class SettingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
     }
 }

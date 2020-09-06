@@ -5,69 +5,102 @@
     android:id="@+id/background"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
     android:orientation="vertical">
 
 
-    <RelativeLayout
-        android:id="@+id/layout_stamp_search"
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="100dp">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanumsquareb"
+            android:text="모아 보기"
+            android:textColor="@color/mainColor"
+            android:textSize="17dp" />
+
+        <ImageButton
+            android:layout_width="25dp"
+            android:layout_height="25dp"
+            android:layout_gravity="right"
+            android:layout_marginTop="20dp"
+            android:layout_marginRight="20dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparentColor"
+            android:scaleType="fitCenter"
+            android:src="@drawable/setting" />
+
+    </FrameLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp">
+
+        <AutoCompleteTextView
+            android:id="@+id/auto_textview_fragment_collection"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:background="@drawable/search_box"
+            android:completionThreshold="1"
+
+            android:gravity="center_vertical"
+            android:hint="서비스 이름 검색"
+            android:maxLength="17"
+            android:paddingLeft="43dp"
+            android:singleLine="true"
+            android:textColor="@color/black"
+            android:textColorHint="@android:color/darker_gray"
+            android:fontFamily="@font/nanumsquarer"
+            android:textSize="17dp" />
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:src="@drawable/search_glass"
+            android:scaleType="fitCenter"
+            android:layout_gravity="center_vertical"
+            android:layout_marginLeft="13dp"
+            />
+
+    </FrameLayout>
+
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_weight="0">
+        android:layout_marginLeft="28dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="30dp"
 
-
-        <LinearLayout
-            android:id="@+id/linear"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:paddingLeft="30dp"
-            android:paddingTop="10dp"
-            android:paddingRight="30dp"
-            android:paddingBottom="10dp">
-
-            <TextView
-                android:id="@+id/title_stamp"
-                android:layout_width="379dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="24dp"
-                android:text="구독 서비스 모아보기"
-                android:textColor="@color/mainColor"
-                android:textSize="22dp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="40dp"
-                android:background="@drawable/searchbox">
-
-                <LinearLayout
-                    android:id="@+id/list_stamp"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-
-                    android:layout_weight="1"
-                    android:gravity="center_horizontal"
-                    android:orientation="horizontal"
-                    android:visibility="visible"/>
-
-
-            </FrameLayout>
-
-        </LinearLayout>
-
-
-    </RelativeLayout>
-
+        android:text="#넷플릭스  #유튜브 프리미엄  #멜론  #지니\n#커피 리브레  #쿠팡 로켓 와우  #GS 25  #TRENDY"
+        android:textSize="15dp"
+        android:textColor="@color/mainColor"
+        android:fontFamily="@font/nanumsquarer"
+        />
 
     <ExpandableListView
         android:id="@+id/expandable_listview"
         android:layout_width="match_parent"
-        android:layout_height="488dp">
+        android:layout_marginRight="20dp"
+        android:layout_marginLeft="20dp"
+        android:layout_height="0dp"
+        android:layout_weight="9"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        android:divider="@color/transparentColor"
+        android:groupIndicator="@null"
+        >
 
     </ExpandableListView>
 
-
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="50dp" />
 
 
 </LinearLayout>

@@ -1,11 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
     package="com.example.subscriptionforme">
+
+    <uses-permission
+        android:name="android.permission.PACKAGE_USAGE_STATS"
+        tools:ignore="ProtectedPermissions" />
 
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher"
+        android:icon="@mipmap/logo2"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -35,6 +40,7 @@
         <activity android:name=".recommendation.detail_recommendation.Detail_Yogiyo"/>
         <activity android:name=".recommendation.detail_recommendation.Detail_Millie"/>
         <activity android:name=".recommendation.detail_recommendation.Detail_Youtube"/>
+
 
         <!--   설정 액티비티 추가     -->
         <activity android:name=".setting.SettingActivity"/>

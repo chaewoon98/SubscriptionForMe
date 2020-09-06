@@ -72,6 +72,8 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
                 android:backgroundTint="@color/mainColor"
+          android:fontFamily="@font/nanumsquarer"
+
 
                 android:completionThreshold="1"
                 android:gravity="center_vertical"
@@ -91,7 +93,6 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity=""
                 android:layout_marginLeft="20dp"
-
                 android:fontFamily="@font/nanumsquarer"
                 android:text="멤버십 종류"
                 android:textColor="@color/black"
@@ -107,6 +108,7 @@
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center_vertical"
                 android:hint="멤버쉽 종류 입력"
+                android:fontFamily="@font/nanumsquarer"
 
                 android:maxLength="17"
                 android:singleLine="true"
@@ -140,6 +142,7 @@
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center_vertical"
                 android:hint="서비스 금액 입력"
+                android:fontFamily="@font/nanumsquarer"
 
                 android:inputType="number"
                 android:maxLength="10"
