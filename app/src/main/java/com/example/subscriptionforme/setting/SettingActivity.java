@@ -148,7 +148,7 @@ public class SettingActivity extends AppCompatActivity {
                     }
 
 
-                    data.append("paymentDay,resMemberStoreName,resPaymentAmt,useMoney,maxSale,manageMent,recommend");
+                    data.append("구독 결제 날짜, 구독명, 구독 금액, 사용한 금액, 최대 할인율 , 관리, 추천");
 
                     for (int i = 0; i < dataCount; i++) {
                         data.append("\n" + 'X' + "," + recommendationLists.get(i).getName() + "," + recommendationLists.get(i).getPrice().replace(",", "") + "," + recommendationLists.get(i).getConsumption().replace(",", "") + "," + recommendationLists.get(i).getDiscount().replace(",", "") + "," + 'X' + "," + 'O');
