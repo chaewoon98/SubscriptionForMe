@@ -22,9 +22,8 @@ import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
+import com.example.subscriptionforme.main.MainActivity;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
-
-
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
@@ -147,7 +146,9 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         UserDatabase.getInstance(context).updateSubscruption(UserDatabase.getInstance(context).getWritableDatabase(), userSubscriptionData.getRegisterNumber(),
                 price,updatePayDate.getText().toString(),paymentDay,updateAlarmSetting.getText().toString(),isAlarmOn,description,deleteURL);
 
-        onBackPressed();
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
 
     }
 

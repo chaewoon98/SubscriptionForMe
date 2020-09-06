@@ -62,75 +62,22 @@ public class FragmentRecommendation extends Fragment {
         View view = inflater.inflate(R.layout.fragment_recommendation,container,false);
         ListView listView = view.findViewById(R.id.listView);
 
-
         if(dataCount != 0) {
             final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList);
             listView.setAdapter(listAdapter);
-
-            listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-                @Override
-                public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-
-                    switch (recommendationList.get(i).getName()){
-                        case "스마일 클럽 멤버십":{
-                            Intent intent = new Intent(getContext(), Detail_11st.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "버거킹 정기 구독 서비스":{
-                            Intent intent = new Intent(getContext(), Detail_BurgerKing.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "쿠팡 로켓 와우":{
-                            Intent intent = new Intent(getContext(), Detail_Coupang.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "커피 플리즈":{
-                            Intent intent = new Intent(getContext(), Detail_CoffeePlease.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "네이버 플러스 멤버십":{
-                            Intent intent = new Intent(getContext(), Detail_Naver.class);
-                            startActivity(intent);
-                            break;
-                        }
-
-                        case "GS 더 팝 플러스":{
-                            Intent intent = new Intent(getContext(), Detail_GS25.class);
-                            startActivity(intent);
-                            break;
-                        }
-                    }
-
-//                    Intent intent = new Intent(getContext(), DetailRecommendationActivity.class);
-//
-//                    intent.putExtra("name", recommendationList.get(i).getName());
-//                    intent.putExtra("logo", recommendationList.get(i).getIcon());
-//                    intent.putExtra("benefit", recommendationList.get(i).getBenefit());
-//                    intent.putExtra("color", recommendationList.get(i).getColor());
-//
-//                    startActivity(intent);
-                }
-            });
         }
 
         return view;
     }
 
-
     //임시 추천 리스트
     public void initList(){
+
         for(int i=0;i<dataCount;i++)
         {
             recommendationList.add(SubscriptionDatabase.getInstance(getActivity()).getSubscriptionData(subscriptionDatabase, i));
         }
 
      }
+
 }

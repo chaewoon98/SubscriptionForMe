@@ -25,6 +25,7 @@ public class SettingActivity extends AppCompatActivity {
     Button cardDataButton;    // 카드 정보 읽기 버튼
     Button cardCsvDataButton; // 카드 csv 정보 받기 버튼
     Button subscriptionDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
+    Button surveyButton; //설문조사 버튼
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -40,6 +41,8 @@ public class SettingActivity extends AppCompatActivity {
         cardDataButton = findViewById(R.id.buttonCardData);
         cardCsvDataButton = findViewById(R.id.buttonCardDataCSV);
         subscriptionDataButton = findViewById(R.id.buttonDataCSV);
+        surveyButton = findViewById(R.id.buttonSurvey);
+
         cardDataButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +56,6 @@ public class SettingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 StringBuilder data = new StringBuilder();
                 data.append("name,resUsedDate,resMemberStoreName,resPaymentAmt");
-
 
                 for(int i=0;i<1;i++){
                     data.append("\n"+"스마일 클럽"+","+"2020-08-13"+","+"11번가"+","+"50000");
@@ -111,6 +113,15 @@ public class SettingActivity extends AppCompatActivity {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            }
+        });
+
+        surveyButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+                Intent intent = new Intent(view.getContext(), SurveyActivity.class);
+                startActivity(intent);
             }
         });
 

@@ -25,6 +25,9 @@ import com.example.subscriptionforme.recommendation.RecommendationList;
 
 import java.util.ArrayList;
 import java.util.List;
+import com.example.subscriptionforme.home.FragmentHome;
+import com.example.subscriptionforme.main.MainActivity;
+
 import java.util.regex.Pattern;
 
 public class AccountGetDataActivity extends AppCompatActivity {
@@ -45,12 +48,12 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
     Button button; // 데이터 얻는 버튼
 
-
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_get_data);
+
         accountList = new ArrayList<AccountVO>();
         accountRecommendationList = new ArrayList<AccountVO>();
         recommendationList = new ArrayList<RecommendationList>();
@@ -64,7 +67,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
         burgerkingAccountIndex = new int[50];
         cupangAccountIndex = new int[50];
         smailAccountIndex = new int[50];
-
         button = findViewById(R.id.account_data_get_button);
     }
 
@@ -76,7 +78,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
 
                 accountList.clear(); // 전에 있는 전체 내용 삭제
                 AccountDatabase.getInstance(getApplicationContext()).deleteAccount(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase());
@@ -98,7 +99,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-
     }
 
     // 계좌 데이터

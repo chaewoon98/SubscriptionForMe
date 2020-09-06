@@ -206,12 +206,12 @@
                 android:backgroundTint="@color/mainColor"
                 android:gravity="center_vertical"
                 android:hint="서비스 금액 입력"
-                android:text="4,900"
                 android:inputType="number"
                 android:maxLength="10"
                 android:singleLine="true"
-                android:textColorHint="@android:color/darker_gray"
+                android:text="4,900"
                 android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="17dp" />
 
             <TextView
@@ -237,23 +237,129 @@
 
                 android:maxLength="200"
                 android:singleLine="true"
-                android:textColorHint="@android:color/darker_gray"
                 android:textColor="@color/black"
+                android:textColorHint="@android:color/darker_gray"
                 android:textSize="17dp" />
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="30dp" />
+
+            <LinearLayout
+                android:id="@+id/use_status_layout_ativity_management_subscription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="15dp"
+                    android:background="@color/colorGray" />
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginLeft="20dp"
+                        android:layout_marginTop="30dp"
+
+                        android:fontFamily="@font/nanumsquarer"
+                        android:text="지난 달 서비스 이용 현황"
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="30dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/nanumsquarer"
+
+                        android:gravity="right"
+                        android:text="4,000 원"
+                        android:textColor="@color/black"
+                        android:textSize="17dp" />
+
+                </FrameLayout>
+
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="35dp"
+
+                            android:fontFamily="@font/nanumsquarer"
+                            android:text="지난 달 이용 총평"
+                            android:textColor="@color/black"
+                            android:textSize="17dp" />
+
+                        <ImageView
+                            android:layout_width="30dp"
+                            android:layout_height="20dp"
+                            android:layout_marginTop="25dp"
+                            android:src="@drawable/warning"
+                            android:scaleType="fitCenter"/>
+
+
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="35dp"
+                        android:layout_marginRight="20dp"
+                        android:fontFamily="@font/nanumsquarer"
+
+                        android:gravity="right"
+                        android:text="해지 추천"
+                        android:textColor="@color/red"
+                        android:textSize="17dp" />
+
+                </FrameLayout>
+
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="10dp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:fontFamily="@font/nanumsquarer"
+
+                    android:text="저번달 사용액 대비 혜택 받는 금액이 더 적을 것 으로 예상됩니다."
+                    android:textColor="@color/black"
+                    android:textSize="15dp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="30dp" />
+
+            </LinearLayout>
 
             <View
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:background="@color/colorGray" />
 
-
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
+
 
             <FrameLayout
                 android:layout_width="match_parent"
@@ -367,10 +473,9 @@
                 android:layout_height="15dp"
                 android:background="@color/colorGray" />
 
-
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="30dp" />
 
             <TextView
                 android:layout_width="match_parent"

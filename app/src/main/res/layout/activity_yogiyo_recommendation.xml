@@ -8,9 +8,9 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="9.3"
-        android:background="@color/colorLightGray"
         android:overScrollMode="never"
-        android:scrollbars="none">
+        android:scrollbars="none"
+        android:background="@color/colorLightGray">
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -19,9 +19,9 @@
 
             <ImageView
                 android:layout_width="match_parent"
-                android:layout_height="220dp"
+                android:layout_height="210dp"
                 android:scaleType="fitXY"
-                android:src="@drawable/coffee_please_image" />
+                android:src="@drawable/yogiyo_image" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -29,7 +29,7 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="30dp"
                 android:fontFamily="@font/nanumsquareb"
-                android:text="커피 플리즈"
+                android:text="요기요 슈퍼클럽"
                 android:textColor="@color/black"
                 android:textSize="27dp" />
 
@@ -59,7 +59,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="매주 찾아오는 신선한 즐거움"
+                android:text="주문할 때마다 자동할인. 중복할인."
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -80,7 +80,7 @@
                 android:layout_marginTop="10dp"
                 android:layout_marginRight="20dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="30,800 원"
+                android:text="9,900 원"
                 android:textColor="@color/black"
                 android:textSize="17dp" />
 
@@ -101,22 +101,22 @@
                 android:textSize="20dp" />
 
             <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp">
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
 
                 <ImageView
                     android:id="@+id/naver_benefit_1"
                     android:layout_width="match_parent"
-                    android:layout_height="200dp"
+                    android:layout_height="210dp"
                     android:layout_gravity="center"
                     android:layout_margin="5dp"
                     android:scaleType="fitXY"
-                    android:src="@drawable/coffeeplease_benefit1" />
+                    android:src="@drawable/yogiyo_benefit1" />
 
                 <ImageView
                     android:layout_width="match_parent"
-                    android:layout_height="210dp"
+                    android:layout_height="220dp"
                     android:layout_gravity="center"
                     android:src="@drawable/round_frame" />
 
@@ -125,17 +125,16 @@
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
+                android:text="슈퍼클럽을 통해 주문할 때마다 할인을 받아보세요.\n매월 3,000원씩 자동 할인을 받을 수 있어요. 게다가 모든 혜택을 중복할인 받을 수 있어요!"
+                android:fontFamily="@font/nanumsquarer"
+                android:textSize="17dp"
                 android:layout_marginLeft="20dp"
                 android:layout_marginRight="20dp"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="맛있는 콜드브루 커피 및 음료를 보틀에 담아 매주 배송해드립니다.\n커피 플리즈와 함께 편리한 생활, 커피값 절약을 해보세요!"
-                android:textColor="@color/black"
-                android:textSize="17dp" />
-
+                android:textColor="@color/black"/>
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="20dp" />
+                android:layout_height="20dp"/>
 
             <View
                 android:layout_width="match_parent"
@@ -155,7 +154,7 @@
 
             <Space
                 android:layout_width="match_parent"
-                android:layout_height="100dp" />
+                android:layout_height="100dp"/>
 
         </LinearLayout>
 
