@@ -23,6 +23,8 @@ public class AccountPasswordActivity extends AppCompatActivity {
     TextView warningText;
     boolean canNextButton;
     Button button; // 동의 버튼
+    int index;
+    Intent secondIntent;
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -33,6 +35,8 @@ public class AccountPasswordActivity extends AppCompatActivity {
         warningText = findViewById(R.id.warningPasswordText);
         passwordEditText = findViewById(R.id.accountPasswordEdit);
         button = findViewById(R.id.account_data_button);
+        index = 0;
+
     }
 
     @Override

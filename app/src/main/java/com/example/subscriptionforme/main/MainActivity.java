@@ -209,5 +209,8 @@ public class MainActivity extends AppCompatActivity {
 
         subscriptionModelDataList.add(new SubscriptionModelData("18", "넷플릭스", "premium", "한 달", "14,500",
                 "영화, TV 프로그램을 무제한으로, 다양한 디바이스에서 시청하세요", null, null, R.drawable.nexflix_logo));
+
+        subscriptionModelDataList.add(new SubscriptionModelData("19", "유튜브 프리미엄", "basic", "한 달", "9,500",
+                "프리미엄 유튜브, 편리하고 다양하게 즐기세요.", null, null, R.drawable.logo_yotube));
     }
 }

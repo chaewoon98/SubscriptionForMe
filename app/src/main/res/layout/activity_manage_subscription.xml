@@ -272,6 +272,7 @@
                         android:textSize="17dp" />
 
                     <TextView
+                        android:id="@+id/use_status_ativity_management_subscription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="30dp"
@@ -306,6 +307,7 @@
                             android:textSize="17dp" />
 
                         <ImageView
+                            android:id="@+id/warnnig_ativity_management_subscription"
                             android:layout_width="30dp"
                             android:layout_height="20dp"
                             android:layout_marginTop="25dp"
@@ -316,6 +318,7 @@
                     </LinearLayout>
 
                     <TextView
+                        android:id="@+id/recommendation_ativity_management_subscription"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="35dp"
@@ -335,6 +338,7 @@
                     android:layout_height="10dp" />
 
                 <TextView
+                    android:id="@+id/review_ativity_management_subscription"
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="20dp"
