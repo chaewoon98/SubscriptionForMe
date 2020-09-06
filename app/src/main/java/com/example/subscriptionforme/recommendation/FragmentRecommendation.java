@@ -1,28 +1,18 @@
 package com.example.subscriptionforme.recommendation;
 
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.AdapterView;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
-
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_11st;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_BurgerKing;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_CoffeePlease;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Coupang;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_GS25;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Naver;
 
 import java.util.ArrayList;
 

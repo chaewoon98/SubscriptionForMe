@@ -10,19 +10,15 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.setting.SettingActivity;
 
-import java.util.ArrayList;
-import java.util.List;
-
-public class Detail_11st extends AppCompatActivity {
+public class Detail_SmileClub extends AppCompatActivity {
 
     Button button;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_11st_recommendation);
+        setContentView(R.layout.activity_smileclub_recommendation);
 
         button = findViewById(R.id.service_add_button_ativity_detail);
 

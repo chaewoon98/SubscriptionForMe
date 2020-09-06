@@ -2,7 +2,6 @@ package com.example.subscriptionforme.recommendation;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_11st;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_SmileClub;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_BurgerKing;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_CoffeePlease;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Coupang;
@@ -91,7 +90,7 @@ public class ListAdapter extends BaseAdapter {
 
                 switch (list.get(position).getName()){
                     case "스마일 클럽 멤버십":{
-                        Intent intent = new Intent(context, Detail_11st.class);
+                        Intent intent = new Intent(context, Detail_SmileClub.class);
                         context.startActivity(intent);
                         break;
                     }

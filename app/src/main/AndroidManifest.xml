@@ -31,7 +31,7 @@
         <activity android:name=".home.Activity.ManagementSusbscriptionActivity" />
 
         <activity android:name=".recommendation.DetailRecommendationActivity" />
-        <activity android:name=".recommendation.detail_recommendation.Detail_11st" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_SmileClub" />
         <activity android:name=".recommendation.detail_recommendation.Detail_BurgerKing" />
         <activity android:name=".recommendation.detail_recommendation.Detail_CoffeePlease" />
         <activity android:name=".recommendation.detail_recommendation.Detail_Coupang" />
