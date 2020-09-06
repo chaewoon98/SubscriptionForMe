@@ -2,7 +2,6 @@ package com.example.subscriptionforme.recommendation;
 
 import android.content.Context;
 import android.content.Intent;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,7 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.subscriptionforme.R;
-import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_11st;
+import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_SmileClub;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_BurgerKing;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_CoffeePlease;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Coupang;
@@ -25,6 +24,7 @@ import java.util.ArrayList;
 
 public class ListAdapter extends BaseAdapter {
 
+    View view;
     Context context = null;
     LayoutInflater layoutInflater = null;
     ArrayList<RecommendationList> list;
@@ -37,18 +37,13 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public int getCount() {
+
+        if(list.size() == 0){
+            return 1;
+        }
+
         return list.size();
     }
-//    public ListAdapter(Context context){
-//        this.context = context;
-//
-//        layoutInflater = LayoutInflater.from(context);
-//    }
-//
-//    @Override
-//    public int getCount() {
-//        return 3;
-//    }
 
     @Override
     public Object getItem(int position) {
@@ -62,7 +57,14 @@ public class ListAdapter extends BaseAdapter {
 
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
-        View view = layoutInflater.inflate(R.layout.recommendation_list_view,null);
+
+        if(list.size() == 0){
+            view = layoutInflater.inflate(R.layout.recommendation_null_list,viewGroup,false);
+
+            return view;
+        }
+
+        view = layoutInflater.inflate(R.layout.recommendation_list_view,null);
 
         TextView title = (TextView)view.findViewById(R.id.title_text);
         title.setText(list.get(position).getTitle());
@@ -88,7 +90,7 @@ public class ListAdapter extends BaseAdapter {
 
                 switch (list.get(position).getName()){
                     case "스마일 클럽 멤버십":{
-                        Intent intent = new Intent(context, Detail_11st.class);
+                        Intent intent = new Intent(context, Detail_SmileClub.class);
                         context.startActivity(intent);
                         break;
                     }

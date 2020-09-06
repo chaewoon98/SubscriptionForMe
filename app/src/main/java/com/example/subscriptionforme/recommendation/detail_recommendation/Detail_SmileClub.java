@@ -11,14 +11,14 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.subscriptionforme.R;
 
-public class Detail_Coupang extends AppCompatActivity {
+public class Detail_SmileClub extends AppCompatActivity {
 
     Button button;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_coupang_recommendation);
+        setContentView(R.layout.activity_smileclub_recommendation);
 
         button = findViewById(R.id.service_add_button_ativity_detail);
 
@@ -26,7 +26,7 @@ public class Detail_Coupang extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("https://loyalty.coupang.com/loyalty/sign-up/home")));
+                startActivity(new Intent(Intent.ACTION_VIEW, Uri.parse("http://m.auction.co.kr/corners/smileclub")));
             }
         });
     }

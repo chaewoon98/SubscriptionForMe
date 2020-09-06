@@ -398,16 +398,15 @@
     </ScrollView>
 
     <Button
-        android:id="@+id/service_add_button_ativity_add_subscription"
+        android:id="@+id/service_add_button_ativity_detail"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="1"
         android:background="@color/mainColor"
         android:fontFamily="@font/nanumsquareb"
         android:onClick="addServiceButton"
-        android:text="서비스 추가하기"
+        android:text="서비스 가입하기"
         android:textColor="@color/white"
         android:textSize="20dp" />
-
 
 </LinearLayout>

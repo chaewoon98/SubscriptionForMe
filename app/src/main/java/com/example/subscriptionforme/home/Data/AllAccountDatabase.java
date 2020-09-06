@@ -9,6 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
 import androidx.annotation.Nullable;
 
 import com.example.subscriptionforme.recommendation.RecommendationList;
+import com.example.subscriptionforme.setting.card.AccountVO;
 
 public class AllAccountDatabase extends SQLiteOpenHelper {
 
@@ -76,6 +77,22 @@ public class AllAccountDatabase extends SQLiteOpenHelper {
         database.endTransaction();
     }
 
+    public AccountVO getAccountdata(SQLiteDatabase database, int index) {
+        String sqlSelect = "SELECT * FROM " + tableNameAllAccount;
+        Cursor cursor = null;
+        int count = 0;
+
+        cursor = database.rawQuery(sqlSelect, null);
+
+        while (cursor.moveToNext()) {
+
+            if (count == index)
+                return new AccountVO(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
+                        cursor.getString(5),cursor.getString(6),cursor.getString(7));
+            count++;
+        }
+        return null;
+    }
 
 
 

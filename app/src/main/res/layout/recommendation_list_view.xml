@@ -155,22 +155,6 @@
 
         </LinearLayout>
 
-
-<!--        <FrameLayout-->
-<!--            android:layout_width="60dp"-->
-<!--            android:layout_height="60dp"-->
-<!--            android:layout_marginLeft="20dp"-->
-<!--            android:background="@drawable/icon_circle_background">-->
-
-<!--            <ImageView-->
-<!--                android:id="@+id/icon_logo"-->
-<!--                android:layout_width="wrap_content"-->
-<!--                android:layout_height="wrap_content"-->
-<!--                android:scaleType="fitCenter"-->
-<!--                android:src="@drawable/ic_burgerking" />-->
-
-<!--        </FrameLayout>-->
-
             <View
                 android:id="@+id/test_1"
                 android:layout_width="match_parent"

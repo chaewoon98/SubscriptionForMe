@@ -166,7 +166,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
         accountList.add(accountV17);
         AccountVO accountV18 = new AccountVO("20200818","131244","2500","0","박태순","","명량핫도그","856860");
         accountList.add(accountV18);
-        AccountVO accountV19 = new AccountVO("20200819","181134","18000","0","박태순","","요기요","838860");
+        AccountVO accountV19 = new AccountVO("20200819","181134","18000","0","박태순","","회덕농협","838860");
         accountList.add(accountV19);
         AccountVO accountV20 = new AccountVO("20200820","030137","1500","0","박태순","","회덕농협","837360");
         accountList.add(accountV20);
@@ -174,7 +174,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
         accountList.add(accountV21);
         AccountVO accountV22 = new AccountVO("20200822","190229","1500","0","박태순","","회덕농협","822460");
         accountList.add(accountV22);
-        AccountVO accountV23 = new AccountVO("20200823","191120","16000","0","박태순","","요기요","806460");
+        AccountVO accountV23 = new AccountVO("20200823","191120","16000","0","박태순","","회덕농협","806460");
         accountList.add(accountV23);
         AccountVO accountV24 = new AccountVO("20200824","140049","7000","0","박태순","","쿠팡","799460");
         accountList.add(accountV24);
@@ -351,7 +351,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
         }
 
-        if(naverAccount > 2000){
+        if(naverAccount > 5000){
 
             // recommendationList.add(new RecommendationList("네이버", "네이버 플러스 멤버십", "2,900", "19,000", "2,500", R.drawable.ic_naver,getResources().getColor(R.color.colorNaver),R.drawable.benefit_coupang));
 
@@ -426,10 +426,10 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
         // 바꿈 카운트부분!!
         if(yokiyoCount > 3){
-            recommendationList.add(new RecommendationList("요기요", "GS 더 팝 플러스", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
+            recommendationList.add(new RecommendationList("요기요", "요기요 슈퍼클럽", "2,900", "19,000", "2,500", R.drawable.ic_gs25,getResources().getColor(R.color.colorGS25),R.drawable.benefit_coupang));
 
             SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
-                    "요기요", "요기요", "9,900", String.valueOf(yokiyoAccount),String.valueOf(3000*yokiyoCount) , R.drawable.ic_yogiyo,getResources().getColor(R.color.colorYogiyo),R.drawable.benefit_coupang
+                    "요기요", "요기요 슈퍼클럽", "9,900", String.valueOf(yokiyoAccount),String.valueOf(3000*yokiyoCount) , R.drawable.ic_yogiyo,getResources().getColor(R.color.colorYogiyo),R.drawable.benefit_coupang
             ); // 여기도 바꿈 내용은 추가바람.
 
 
@@ -444,6 +444,24 @@ public class AccountGetDataActivity extends AppCompatActivity {
                 }
             }
         }
+
+        if(smailAccount > 37000){
+            recommendationList.add(new RecommendationList("스마일 클럽", "스마일 클럽", "3,000", "19,000", "2,500", R.drawable.smileclub_logo,getResources().getColor(R.color.color11st),R.drawable.benefit_coupang));
+
+            SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                    "스마일 클럽", "스마일 클럽", "3,000", String.valueOf(smailAccount*0.12),String.valueOf(3000*yokiyoCount) , R.drawable.smileclub_logo,getResources().getColor(R.color.color11st),R.drawable.benefit_coupang
+            ); // 여기도 바꿈 내용은 추가바람.
+
+
+            for(int i=0;i<50;i++){
+                if(gsAccountIndex[i] == 1){
+                    AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                            accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
+                            ,accountList.get(i).getResAccountDesc3(),accountList.get(i).getResAfterTranBalance());
+                }
+            }
+        }
+
 
     }
 
