@@ -22,11 +22,13 @@ import java.util.regex.Pattern;
 public class AgreementActivity extends AppCompatActivity {
 
     public int MAX_COUNT; // 계좌 최대 입력 갯수
+    public static int BANK;
     Button button; // 동의 버튼
     TextView bankName; // 은행 이름
     TextView warningText; // 경고 문고
     EditText accountNumberEditText;
     boolean canNextButton;
+    int index;
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -39,8 +41,9 @@ public class AgreementActivity extends AppCompatActivity {
         accountNumberEditText = findViewById(R.id.accountNumberEdit);
         warningText = findViewById(R.id.warningText);
         warningText.setText("");
-
+        BANK = 0;
         setCardName(); // 카드 이름 세팅
+        Intent secondIntent = getIntent();
     }
 
     @Override
@@ -93,6 +96,7 @@ public class AgreementActivity extends AppCompatActivity {
             public void onClick(View view) {
                 if(canNextButton == true){
                     Intent intent = new Intent(getApplicationContext(), AccountPasswordActivity.class);
+                    intent.putExtra("card", index);
                     startActivity(intent);
                 }
             }
@@ -104,22 +108,31 @@ public class AgreementActivity extends AppCompatActivity {
         Intent secondIntent = getIntent();
 
         if(secondIntent.getIntExtra("card",0) == 0){
+            BANK = 0;
             bankName.setText("NH농협은행");
         } else if(secondIntent.getIntExtra("card",1) == 1){
+            BANK = 1;
             bankName.setText("우리은행");
         } else if(secondIntent.getIntExtra("card",2) == 2){
+            BANK = 2;
             bankName.setText("신한은행");
         } else if(secondIntent.getIntExtra("card",3) == 3){
+
             bankName.setText("KB국민은행");
         } else if(secondIntent.getIntExtra("card",4) == 4){
+
             bankName.setText("하나은행");
         } else if(secondIntent.getIntExtra("card",5) == 5){
+
             bankName.setText("씨티은행");
         } else if(secondIntent.getIntExtra("card",6) == 6){
+
             bankName.setText("IBK기업은행");
         } else if(secondIntent.getIntExtra("card",7) == 7){
+
             bankName.setText("케이뱅크");
         } else if(secondIntent.getIntExtra("card",8) == 8){
+
             bankName.setText("카카오뱅크");
         }
 

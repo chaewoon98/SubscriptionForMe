@@ -2,6 +2,7 @@ package com.example.subscriptionforme.setting;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
@@ -13,12 +14,15 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.FileProvider;
 
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
+import com.example.subscriptionforme.recommendation.RecommendationList;
 import com.example.subscriptionforme.setting.card.CardActivity;
 
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.ArrayList;
 
 public class SettingActivity extends AppCompatActivity {
 
@@ -26,11 +30,13 @@ public class SettingActivity extends AppCompatActivity {
     Button cardCsvDataButton; // 카드 csv 정보 받기 버튼
     Button subscriptionDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
     Button surveyButton; //설문조사 버튼
+    int dataCount;
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
 
         super.onCreate(savedInstanceState);
+        dataCount = 0;
         setContentView(R.layout.activity_detail_setting);
     }
 
@@ -88,8 +94,17 @@ public class SettingActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 StringBuilder data = new StringBuilder();
+                ArrayList<RecommendationList> list = new ArrayList<RecommendationList>();
+                SQLiteDatabase subscriptionDatabase = SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase();;
+                dataCount = SubscriptionDatabase.getInstance(getApplicationContext()).getDataCount(SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase());
+
+                for(int i =0; i<dataCount;i++){
+                    list.add(SubscriptionDatabase.getInstance(getApplicationContext()).getSubscriptionData(subscriptionDatabase, i));
+                }
+
                 data.append("startDate,endDate,resMemberStoreName,resPaymentAmt,useMoney,maxSale,manageMent,recommend");
-                for(int i=0;i<1;i++){
+
+                for(int i=0;i<dataCount;i++){
                     data.append("\n"+"2020-06-15"+","+"2020-09-12"+","+"유튜브"+","+"12000"+","+"0"+","+"0"+","+"1"+","+"0");
                 }
 
