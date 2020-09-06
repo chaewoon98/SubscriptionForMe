@@ -250,6 +250,7 @@
                 android:layout_height="15dp"
                 android:background="@color/colorGray" />
 
+
             <Space
                 android:layout_width="match_parent"
                 android:layout_height="20dp" />
@@ -365,6 +366,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="15dp"
                 android:background="@color/colorGray" />
+
 
             <Space
                 android:layout_width="match_parent"

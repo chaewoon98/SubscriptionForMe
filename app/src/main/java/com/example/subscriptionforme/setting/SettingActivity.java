@@ -53,6 +53,8 @@ public class SettingActivity extends AppCompatActivity {
             public void onClick(View view) {
                 StringBuilder data = new StringBuilder();
                 data.append("name,resUsedDate,resMemberStoreName,resPaymentAmt");
+
+
                 for(int i=0;i<1;i++){
                     data.append("\n"+"스마일 클럽"+","+"2020-08-13"+","+"11번가"+","+"50000");
                 }

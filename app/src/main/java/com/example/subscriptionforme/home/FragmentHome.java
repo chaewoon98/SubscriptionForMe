@@ -32,8 +32,6 @@ import java.util.ArrayList;
 import java.util.Comparator;
 import java.util.Date;
 
-
-
 public class FragmentHome extends Fragment {
 
     private View view;

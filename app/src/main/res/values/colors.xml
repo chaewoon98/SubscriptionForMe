@@ -18,6 +18,7 @@
     <!--테마색-->
     <color name="colorPurple">#905ad9</color>
     <color name="colorLightGray">#f9f9f9</color>
+
     <color name="colorGray">#f1f1f1</color>
 
     <!--서비스별 폰트 색상-->

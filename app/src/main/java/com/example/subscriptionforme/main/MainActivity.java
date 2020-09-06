@@ -15,9 +15,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
-
 import com.example.subscriptionforme.R;
-
 import com.example.subscriptionforme.SubscriptionModelData;
 
 import com.example.subscriptionforme.collection.FragmentCollectionView;
@@ -25,8 +23,8 @@ import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.recommendation.FragmentRecommendation;
 import com.example.subscriptionforme.AppUsedTimeData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-
 import java.util.ArrayList;
+
 
 public class MainActivity extends AppCompatActivity {
 
