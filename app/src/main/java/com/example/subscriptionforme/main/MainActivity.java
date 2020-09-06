@@ -54,31 +54,7 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, new FragmentHome()).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
-        Log.d("creat","create");
 
-        //퍼미션 체크
-        boolean granted = false;
-        AppOpsManager appOps = (AppOpsManager)getSystemService(Context.APP_OPS_SERVICE);
-        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,android.os.Process.myUid(), getPackageName());
-
-        if (mode == AppOpsManager.MODE_DEFAULT) {
-            granted = (checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
-        } else {
-            granted = (mode == AppOpsManager.MODE_ALLOWED);
-        }
-
-        if (granted == false)
-        {
-            // 권한이 없을 경우 권한 요구 페이지 이동
-            Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
-            startActivity(intent);
-        }
-
-        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
-        Long youtubeUseTime = appUsedTimeData.getAppUsedTime(MainActivity.this,"youtube")/(60*1000);
-        Log.d("youtube", String.valueOf(youtubeUseTime));
-/*        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
-        appUsedTimeData.printCurrentUsageStatus(MainActivity.this);*/
     }
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {
@@ -105,6 +81,30 @@ public class MainActivity extends AppCompatActivity {
             return true;
         }
 
+    }
+
+    public void getPermissionAndAppData(){
+        //퍼미션 체크
+        boolean granted = false;
+        AppOpsManager appOps = (AppOpsManager)getSystemService(Context.APP_OPS_SERVICE);
+        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,android.os.Process.myUid(), getPackageName());
+
+        if (mode == AppOpsManager.MODE_DEFAULT) {
+            granted = (checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
+        } else {
+            granted = (mode == AppOpsManager.MODE_ALLOWED);
+        }
+
+        if (granted == false)
+        {
+            // 권한이 없을 경우 권한 요구 페이지 이동
+            Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
+            startActivity(intent);
+        }
+
+        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
+        Long youtubeUseTime = appUsedTimeData.getAppUsedTime(MainActivity.this,"youtube")/(60*1000);
+        Log.d("youtube", String.valueOf(youtubeUseTime));
     }
 
     //fragment 전환하는 메소드

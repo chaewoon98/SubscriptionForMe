@@ -36,17 +36,6 @@ public class AppUsedTimeData {
         return 0;
     }
 
-    /*public void printUsageStats(List<UsageStats> usageStatsList){
-        for (UsageStats u : usageStatsList){
-            Log.d(TAG, "Pkg: " + u.getPackageName() +  "\t" + "ForegroundTime: "
-                    + u.getTotalTimeInForeground()) ;
-        }
-    }
-
-    public void printCurrentUsageStatus(Context context){
-        printUsageStats(getUsageStatsList(context));
-    }*/
-
     @SuppressWarnings("ResourceType")
     private UsageStatsManager getUsageStatsManager(Context context){
         UsageStatsManager usm = (UsageStatsManager) context.getSystemService("usagestats");
