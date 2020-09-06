@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="350dp"
+    android:layout_height="170dp"
+    android:orientation="vertical"
+    android:background="@color/white"
+    android:padding="10dp">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/nanumsquarer"
+        android:paddingLeft="15dp"
+        android:paddingTop="10dp"
+        android:text="사용 정보 접근 권한 요청"
+        android:textColor="@color/black"
+        android:textSize="17dp" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+
+        android:fontFamily="@font/nanumsquarer"
+        android:paddingLeft="15dp"
+        android:paddingTop="5dp"
+        android:text="어플 사용시간 측정을 위해 사용정보 접근 허용 권한이 필요합니다. 권한 설정을 하러 가시겠습니까?"
+        android:textColor="@color/black"
+        android:textSize="15dp" />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <Space
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            />
+
+        <Button
+            android:id="@+id/ok_button_check_app_time_permission"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="확인"
+            android:textSize="15dp" />
+
+        <Button
+            android:id="@+id/cancel_button_check_app_time_permission"
+            style="?android:attr/borderlessButtonStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:fontFamily="@font/nanumsquarer"
+            android:text="취소"
+            android:textColor="#ff0000"
+            android:textSize="15dp" />
+
+    </LinearLayout>
+
+</LinearLayout>

@@ -1,7 +1,9 @@
 package com.example.subscriptionforme.home.Activity;
 
+import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
@@ -11,6 +13,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -18,6 +21,7 @@ import androidx.annotation.Nullable;
 import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.example.subscriptionforme.AppUsedTimeData;
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.home.Data.AllAccountDatabase;
 import com.example.subscriptionforme.home.Data.UserDatabase;
@@ -28,6 +32,7 @@ import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClick
 import com.example.subscriptionforme.main.MainActivity;
 import com.example.subscriptionforme.setting.card.AccountVO;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
+
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -37,14 +42,16 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
     private Context context;
     private UserSubscriptionData userSubscriptionData;
-    private ImageView logoImage,warnningImage;
-    private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting, deleteSubscriptionTextView,review,recommendation,useStatus;
+    private ImageView logoImage, warnningImage;
+    private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting, deleteSubscriptionTextView, review, recommendation, useStatus;
     private EditText priceEditText, deleteUrlEditText, descriptionEditText;
     private View payDateView, alarmSettingView;
+    private LinearLayout useStatusLinearLayout;
     private Button updateButton;
     private ArrayList<AccountVO> accountList;
     private SQLiteDatabase allAccountDatabase;
     private int dataCount;
+
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -77,6 +84,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         review = findViewById(R.id.review_ativity_management_subscription);
         recommendation = findViewById(R.id.recommendation_ativity_management_subscription);
         warnningImage = findViewById(R.id.warnnig_ativity_management_subscription);
+        useStatusLinearLayout = findViewById(R.id.use_status_layout_ativity_management_subscription);
 
         //이용 현황 셋
         setUserUseStatusData();
@@ -159,10 +167,10 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
         CalendarDialog calendarDialog = new CalendarDialog(context);
         String paymentDay = calendarDialog.getPayDate(updatePayDate.getText().toString());
-        String price =moneyFormat(Integer.parseInt(priceEditText.getText().toString().replaceAll(",","")));
+        String price = moneyFormat(Integer.parseInt(priceEditText.getText().toString().replaceAll(",", "")));
 
         UserDatabase.getInstance(context).updateSubscruption(UserDatabase.getInstance(context).getWritableDatabase(), userSubscriptionData.getRegisterNumber(),
-                price,updatePayDate.getText().toString(),paymentDay,updateAlarmSetting.getText().toString(),isAlarmOn,description,deleteURL);
+                price, updatePayDate.getText().toString(), paymentDay, updateAlarmSetting.getText().toString(), isAlarmOn, description, deleteURL);
 
         Intent intent = new Intent(context, MainActivity.class);
         intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
@@ -171,13 +179,12 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
     }
 
     //계좌정보를 이용해서 이용 현황 set
-    public void setUserUseStatusData(){
+    public void setUserUseStatusData() {
 
-        String targetDES="null",targetDES2="null";
-        int useStatusData = 0;
+        String targetDES = "null", targetDES2 = "null";
 
         //데이터가 0일 경우, 즉 계좌 등록이 안됐을 경우.
-        if(dataCount == 0){
+        if (dataCount == 0) {
             useStatus.setText("-");
             recommendation.setText("-");
             recommendation.setTextColor(Color.BLACK);
@@ -186,73 +193,137 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             return;
         }
 
-        switch (userSubscriptionData.getSubscriptionNumberID()){
+        switch (userSubscriptionData.getSubscriptionNumberID()) {
 
             case "0":
                 targetDES = "네이버페이결제";
+                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),100000);
                 break;
 
             case "1":
                 targetDES = "G마켓";
                 targetDES2 = "옥션";
-               break;
+                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),50000);
+                break;
 
             case "2":
                 targetDES = "쿠팡";
+                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),50000);
                 break;
 
             case "3":
                 targetDES = "요기요";
+                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),50000);
                 break;
 
             case "4":
-                targetDES = "버거킹";
+                makeLayoutInvisible();
                 break;
 
-            case "5": case "6":
-                targetDES = "GS25";
+            case "5":
+            case "6":
+                makeLayoutInvisible();
                 break;
 
-            case "7": case "8": case "9":
+            case "7":
+            case "8":
+            case "9":
                 targetDES = "티몬";
+                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),10000);
                 break;
 
-            case "10": case "11": case "12":
-                targetDES = "뚜레쥬르";
+            case "10":
+            case "11":
+            case "12":
+                makeLayoutInvisible();
                 break;
 
-            case "13": case "14": case "15":
-                targetDES = "멜론";
+            case "13":
+            case "14":
+            case "15":
+                makeLayoutInvisible();
                 break;
 
-            case "16": case "17": case "18":
-                targetDES = "넷플릭스";
+            case "16":
+            case "17":
+            case "18":
+                judceRecommnedWithTime(200);
                 break;
 
             case "19":
-                targetDES = "유튜브";
+                judceRecommnedWithTime(400);
                 break;
         }
 
+    }
+
+    public void judceRecommnedWithTime(int time){
+        //300분보다 높으면
+        if (time > 300){
+            useStatus.setText(time + " 분");
+            String recommendationMaintainString = "해당 서비스를 충분히 효율적으로 사용하고 있어요! 이용을 유지하는 것을 추천드립니다.";
+            recommendation.setText("유지 추천");
+            recommendation.setTextColor(Color.GREEN);
+            review.setText(recommendationMaintainString);
+            warnningImage.setVisibility(View.INVISIBLE);
+        }
+        else{
+            useStatus.setText(time + " 분");
+            String recommendationCancelString = "최근 2주 서비스 사용 시간을 보니, 이용이 많지 않습니다. 해지를 추천드립니다.";
+            recommendation.setText("해지 추천");
+            recommendation.setTextColor(Color.RED);
+            review.setText(recommendationCancelString);
+            warnningImage.setVisibility(View.VISIBLE);
+        }
+    }
+
+    public int setArrayData(String targetDES,String targetDES2){
+        int useStatusData = 0;
         for (int index = 0; index < dataCount; index++) {
             accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
-                Log.d("qwewqe", accountList.get(index).getResAccountOut());
         }
 
         for (int index = 0; index < dataCount; index++) {
             accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
 
-            if(accountList.get(index).getResAccountDesc3().contains(targetDES)){
-                useStatusData+= Integer.parseInt(accountList.get(index).getResAccountOut());
-                //Log.d("qwewqe", String.valueOf(useStatusData));
+            if (accountList.get(index).getResAccountDesc3().contains(targetDES) || accountList.get(index).getResAccountDesc3().contains(targetDES2)) {
+                useStatusData += Integer.parseInt(accountList.get(index).getResAccountOut());
             }
         }
 
-        useStatus.setText(moneyFormat(useStatusData) + " 원");
-
+        return useStatusData;
     }
 
-    public String moneyFormat(int intputMoney){
+    public void makeLayoutInvisible(){
+        useStatusLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
+    }
+
+    public void judgeRecommendWithPrice(int useStatusData,int price){
+        if (useStatusData > price)
+            recommendMaintaination(useStatusData);
+        else
+            recommendCancel(useStatusData);
+    }
+
+    public void recommendMaintaination(int useStatusData) {
+        useStatus.setText(moneyFormat(useStatusData) + " 원");
+        String recommendationMaintainString = "해당 서비스를 충분히 효율적으로 사용하고 있어요! 이용을 유지하는 것을 추천드립니다.";
+        recommendation.setText("유지 추천");
+        recommendation.setTextColor(Color.GREEN);
+        review.setText(recommendationMaintainString);
+        warnningImage.setVisibility(View.INVISIBLE);
+    }
+
+    public void recommendCancel(int useStatusData) {
+        useStatus.setText(moneyFormat(useStatusData) + " 원");
+        String recommendationCancelString = "지난 달 사용액과 비교해보니, 혜택 받는 금액이 더 적을 것 으로 예상됩니다. 해지를 추천드립니다.";
+        recommendation.setText("해지 추천");
+        recommendation.setTextColor(Color.RED);
+        review.setText(recommendationCancelString);
+        warnningImage.setVisibility(View.VISIBLE);
+    }
+
+    public String moneyFormat(int intputMoney) {
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         return decimalFormat.format(intputMoney);
     }

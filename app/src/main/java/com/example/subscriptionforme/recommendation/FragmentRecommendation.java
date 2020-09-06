@@ -1,11 +1,13 @@
 package com.example.subscriptionforme.recommendation;
 
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ListView;
 
 import androidx.annotation.NonNull;
@@ -14,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
+import com.example.subscriptionforme.setting.SettingActivity;
 
 import java.util.ArrayList;
 
@@ -22,6 +25,7 @@ public class FragmentRecommendation extends Fragment {
     ArrayList<RecommendationList> recommendationList;
     int dataCount;
     SQLiteDatabase subscriptionDatabase;
+    private ImageButton imageButton;
 
     public FragmentRecommendation(){
 
@@ -68,5 +72,24 @@ public class FragmentRecommendation extends Fragment {
             recommendationList.add(SubscriptionDatabase.getInstance(getActivity()).getSubscriptionData(subscriptionDatabase, i));
         }
      }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        imageButton = getActivity().findViewById(R.id.setting_fragment_recommendatrion);
+
+        // 설정 페이지 엑티비티 가는 버튼
+        imageButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Intent intent  = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+
+            }
+        });
+    }
 
 }

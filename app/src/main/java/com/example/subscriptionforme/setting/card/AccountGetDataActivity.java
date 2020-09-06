@@ -127,8 +127,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
     }
 
-
-    // 요기요
     public void setAccountYogiyoList(){
         AccountVO accountVO1 = new AccountVO("20200801","042103","19000","0","박태순","","우아한형제들","1000000");
         accountList.add(accountVO1);
@@ -166,7 +164,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
         accountList.add(accountV17);
         AccountVO accountV18 = new AccountVO("20200818","131244","2500","0","박태순","","명량핫도그","856860");
         accountList.add(accountV18);
-        AccountVO accountV19 = new AccountVO("20200819","181134","18000","0","박태순","","요기요","838860");
+        AccountVO accountV19 = new AccountVO("20200819","181134","18000","0","박태순","","회덕농협","838860");
         accountList.add(accountV19);
         AccountVO accountV20 = new AccountVO("20200820","030137","1500","0","박태순","","회덕농협","837360");
         accountList.add(accountV20);
@@ -174,7 +172,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
         accountList.add(accountV21);
         AccountVO accountV22 = new AccountVO("20200822","190229","1500","0","박태순","","회덕농협","822460");
         accountList.add(accountV22);
-        AccountVO accountV23 = new AccountVO("20200823","191120","16000","0","박태순","","요기요","806460");
+        AccountVO accountV23 = new AccountVO("20200823","191120","16000","0","박태순","","회덕농협","806460");
         accountList.add(accountV23);
         AccountVO accountV24 = new AccountVO("20200824","140049","7000","0","박태순","","쿠팡","799460");
         accountList.add(accountV24);

@@ -81,30 +81,6 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    public void getPermissionAndAppData(){
-        //퍼미션 체크
-        boolean granted = false;
-        AppOpsManager appOps = (AppOpsManager)getSystemService(Context.APP_OPS_SERVICE);
-        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,android.os.Process.myUid(), getPackageName());
-
-        if (mode == AppOpsManager.MODE_DEFAULT) {
-            granted = (checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
-        } else {
-            granted = (mode == AppOpsManager.MODE_ALLOWED);
-        }
-
-        if (granted == false)
-        {
-            // 권한이 없을 경우 권한 요구 페이지 이동
-            Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
-            startActivity(intent);
-        }
-
-        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
-        Long youtubeUseTime = appUsedTimeData.getAppUsedTime(MainActivity.this,"youtube")/(60*1000);
-        Log.d("youtube", String.valueOf(youtubeUseTime));
-    }
-
     //fragment 전환하는 메소드
     public void replaceFragment(Fragment fragment) {
         transaction = fragmentManager.beginTransaction();
@@ -159,7 +135,7 @@ public class MainActivity extends AppCompatActivity {
         subscriptionModelDataList.add(new SubscriptionModelData("1", "스마일 클럽 멤버십", "basic", "한 달", "37,000",
                 "G마켓, 옥션, g9 어디서나 최고의 혜택을 받는 최고의 쇼핑 멤버쉽", null, null, R.drawable.smileclub_logo));
 
-        subscriptionModelDataList.add(new SubscriptionModelData("2", "쿠팡 로켓와우 클럽", "basic", "한 달", "2,900",
+        subscriptionModelDataList.add(new SubscriptionModelData("2", "쿠팡 로켓 와우 클럽", "basic", "한 달", "2,900",
                 "로켓배송상품 100% 무료배송 + 최대 5% 캐시적립. 언제든지 현명하게!", null, null, R.drawable.coupang_logo));
 
         subscriptionModelDataList.add(new SubscriptionModelData("3", "요기요 슈퍼 클럽", "basic", "한 달", "9,900",

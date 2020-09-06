@@ -41,7 +41,6 @@ public class SettingActivity extends AppCompatActivity {
     int userDataCount;
     int accountDataCount;
 
-
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

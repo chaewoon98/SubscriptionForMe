@@ -7,6 +7,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ExpandableListAdapter;
 import android.widget.ExpandableListView;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 
@@ -15,6 +17,7 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.setting.SettingActivity;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -26,6 +29,7 @@ public class FragmentCollectionView extends Fragment {
     CustomAdapter adapter;
     List<String> listGroup;
     HashMap<String, List<String>> listItem;
+    private ImageButton imageButton;
 
     @Nullable
     @Override
@@ -34,6 +38,24 @@ public class FragmentCollectionView extends Fragment {
         return inflater.inflate(R.layout.fragment_collectionview, container, false);
     }
 
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        imageButton = getActivity().findViewById(R.id.setting_fragment_collection_view);
+
+        // 설정 페이지 엑티비티 가는 버튼
+        imageButton.setOnClickListener(new View.OnClickListener(){
+
+            @Override
+            public void onClick(View view) {
+
+                Intent intent  = new Intent(getActivity(), SettingActivity.class);
+                startActivity(intent);
+
+            }
+        });
+    }
     @Override
     public void onActivityCreated(Bundle savedInstanceState){
         super.onActivityCreated(savedInstanceState);
