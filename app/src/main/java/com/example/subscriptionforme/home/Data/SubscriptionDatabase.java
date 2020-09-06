@@ -5,6 +5,7 @@ import android.database.Cursor;
 import android.database.SQLException;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
+import android.util.Log;
 
 import androidx.annotation.Nullable;
 
@@ -40,7 +41,7 @@ public class SubscriptionDatabase extends SQLiteOpenHelper {
 
     public void createTable(SQLiteDatabase database) {
 
-        String sqlString = "CREATE TABLE " + tableNameSubscription + " (registerNumber INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,title TEXT,name TEXT, price TEXT, " +
+        String sqlString = "CREATE TABLE " + tableNameSubscription + " (title TEXT,name TEXT, price TEXT, " +
                 "consumption TEXT, discount TEXT,icon INTEGER, color INTEGER, benefit INTEGER)";
 
         try {
@@ -56,10 +57,10 @@ public class SubscriptionDatabase extends SQLiteOpenHelper {
         database.beginTransaction();
         try {
 
-            String sqlString = "insert into " + tableNameSubscription + "( title,name,price," +
-                    "consumption,discount,icon,color, benefit)"
+            String sqlString = "insert into " + tableNameSubscription + "(title,name,price," +
+                    "consumption,discount,icon,color,benefit)"
                     + " values('" + title + "', '" + name + "', '" + price + "', '"
-                    + consumption + "', '" + discount + "', '" + icon + "', '" + color + "', " + benefit + ")";
+                    + consumption + "', '" + discount + "', " + icon + ", " + color + ", " + benefit + ")";
 
             database.execSQL(sqlString);
             database.setTransactionSuccessful();
@@ -90,9 +91,14 @@ public class SubscriptionDatabase extends SQLiteOpenHelper {
 
         while (cursor.moveToNext()) {
 
-            if (count == index)
-                return new RecommendationList(cursor.getString(0),cursor.getString(1),cursor.getString(2),cursor.getString(3),cursor.getString(4),
-                        cursor.getInt(5),cursor.getInt(6),cursor.getInt(7));
+
+
+            if (count == index) {
+
+                return new RecommendationList(cursor.getString(0), cursor.getString(1), cursor.getString(2), cursor.getString(3), cursor.getString(4),
+                        cursor.getInt(5), cursor.getInt(6), cursor.getInt(7));
+
+            }
             count++;
         }
         return null;

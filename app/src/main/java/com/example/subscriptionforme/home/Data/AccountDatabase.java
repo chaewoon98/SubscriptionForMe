@@ -39,7 +39,7 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
     public void createTable(SQLiteDatabase database) {
 
-        String sqlString = "CREATE TABLE " + tableNameAccount + " (registerNumber INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL,resAccountTrDate TEXT,resAccountTrTime TEXT, resAccountOut TEXT, " +
+        String sqlString = "CREATE TABLE " + tableNameAccount + " (resAccountTrDate TEXT,resAccountTrTime TEXT, resAccountOut TEXT, " +
                 "resAccountIn TEXT, resAccountDesc1 TEXT,resAccountDesc2 TEXT, resAccountDesc3 TEXT, resAfterTranBalance TEXT)";
 
         try {

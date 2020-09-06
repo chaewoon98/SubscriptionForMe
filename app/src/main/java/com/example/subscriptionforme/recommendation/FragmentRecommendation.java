@@ -50,7 +50,9 @@ public class FragmentRecommendation extends Fragment {
         subscriptionDatabase = SubscriptionDatabase.getInstance(getActivity()).getReadableDatabase();
         dataCount = SubscriptionDatabase.getInstance(getActivity()).getDataCount(SubscriptionDatabase.getInstance(getActivity()).getReadableDatabase());
 
-        Log.d("태순숫자",String.valueOf(dataCount));
+        recommendationList = new ArrayList<RecommendationList>();
+
+        Log.d("태순숫자",String.valueOf(dataCount)); // 2
 
         initList();
     }
@@ -62,7 +64,7 @@ public class FragmentRecommendation extends Fragment {
         ListView listView = view.findViewById(R.id.listView);
 
 
-        if(recommendationList != null) {
+        if(dataCount != 0) {
             final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList);
             listView.setAdapter(listAdapter);
 
@@ -126,10 +128,11 @@ public class FragmentRecommendation extends Fragment {
 
     //임시 추천 리스트
     public void initList(){
-
-        for (int index = 0; index < dataCount; index++) {
-            recommendationList.add(SubscriptionDatabase.getInstance(getActivity()).getSubscriptionData(subscriptionDatabase, index));
+        for(int i=0;i<dataCount;i++)
+        {
+            recommendationList.add(SubscriptionDatabase.getInstance(getActivity()).getSubscriptionData(subscriptionDatabase, i));
         }
+
 
         //recommendationList = AccountGetDataActivity.recommendationList;
         //Log.d("박태순",String.valueOf(recommendationList));
