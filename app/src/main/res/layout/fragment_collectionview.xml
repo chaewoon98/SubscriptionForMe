@@ -24,6 +24,7 @@
             android:textSize="17dp" />
 
         <ImageButton
+            android:id="@+id/setting_fragment_collection_view"
             android:layout_width="25dp"
             android:layout_height="25dp"
             android:layout_gravity="right"

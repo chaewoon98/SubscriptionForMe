@@ -267,7 +267,8 @@
                         android:layout_marginTop="30dp"
 
                         android:fontFamily="@font/nanumsquarer"
-                        android:text="지난 달 서비스 이용 현황"
+                        android:text="지난 달 서비스 관련 이용 현황"
+
                         android:textColor="@color/black"
                         android:textSize="17dp" />
 
@@ -344,8 +345,8 @@
                     android:layout_marginLeft="20dp"
                     android:layout_marginRight="20dp"
                     android:fontFamily="@font/nanumsquarer"
+                    android:text="지난 달 사용액 대비 혜택 받는 금액이 더 적을 것 으로 예상됩니다."
 
-                    android:text="저번달 사용액 대비 혜택 받는 금액이 더 적을 것 으로 예상됩니다."
                     android:textColor="@color/black"
                     android:textSize="15dp" />
 

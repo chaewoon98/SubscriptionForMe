@@ -407,7 +407,7 @@
                         android:layout_height="wrap_content"
                         android:fontFamily="@font/nanumsquarer"
                         android:gravity="right"
-                        android:text="58,700 원"
+                        android:text="151,800 원"
                         android:textColor="@color/black"
                         android:textSize="17dp" />
 

@@ -9,6 +9,9 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.LinearLayout;
+import android.widget.ImageButton;
+import android.widget.Toast;
+
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -37,10 +40,9 @@ public class SettingActivity extends AppCompatActivity {
     LinearLayout cardCsvDataButton; // 카드 csv 정보 받기 버튼
     LinearLayout recommendationCsvDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
     LinearLayout surveyButton; //설문조사 버튼
-
+    ImageButton back_btn;
     int userDataCount;
     int accountDataCount;
-
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -54,18 +56,25 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
+        back_btn = findViewById(R.id.setting_back_btn);
         cardRegisterButton = findViewById(R.id.card_register_layout);
         recommendationCsvDataButton = findViewById(R.id.recommendation_data_csv_layout);
         cardCsvDataButton = findViewById(R.id.card_data_csv_layout);
         surveyButton = findViewById(R.id.survey_layout);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //카드 등록 하기 버튼 이벤트
         cardRegisterButton.setOnClickListener(new View.OnClickListener() {
 
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(view.getContext(), CardActivity.class);
+                Intent intent = new Intent(view.getContext(), CardActivity.class);
                 startActivity(intent);
             }
         });
@@ -80,38 +89,51 @@ public class SettingActivity extends AppCompatActivity {
                 ArrayList<AccountVO> accountList = new ArrayList<AccountVO>();
                 accountDataCount = AccountDatabase.getInstance(getApplicationContext()).getDataCount(AccountDatabase.getInstance(getApplicationContext()).getReadableDatabase());
 
-                for(int i=0;i<accountDataCount;i++){
-                    accountList.add(AccountDatabase.getInstance(getApplicationContext()).getAccountData(accountDatabase, i));
+
+                if (accountDataCount > 0) {
+
+
+                    for (int i = 0; i < accountDataCount; i++) {
+                        accountList.add(AccountDatabase.getInstance(getApplicationContext()).getAccountData(accountDatabase, i));
+                    }
+
+                    StringBuilder data = new StringBuilder();
+                    data.append("결제 날짜, 결제 시간, 출금 금액, 입금 금액, 입금자, 예금자, 통장 잔고");
+
+                    for (int i = 0; i < accountDataCount; i++) {
+                        data.append("\n" + accountList.get(i).getResAccountTrDate() + "," + accountList.get(i).getResAccountTrTime() + "," + accountList.get(i).getResAccountOut() + "," + accountList.get(i).getResAccountIn() + "," + accountList.get(i).getResAccountDesc1() + "," + accountList.get(i).getResAccountDesc3() + "," + accountList.get(i).getResAfterTranBalance());
+                    }
+
+                    try {
+                        FileOutputStream out = openFileOutput("carddata.csv", Context.MODE_PRIVATE);
+                        out.write((data.toString()).getBytes());
+                        out.close();
+
+                        Context context = getApplicationContext();
+                        File filelocation = new File(getFilesDir(), "carddata.csv");
+                        Uri path = FileProvider.getUriForFile(context, "com.example.subscriptionforme.setting.fileprovider", filelocation);
+                        Intent fileIntent = new Intent(Intent.ACTION_SEND);
+                        fileIntent.setType("text/csv");
+                        fileIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
+                        fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        fileIntent.putExtra(Intent.EXTRA_STREAM, path);
+                        startActivity(Intent.createChooser(fileIntent, "Send mail"));
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "계좌를 등록해 주세요.", Toast.LENGTH_SHORT).show();
                 }
 
-                StringBuilder data = new StringBuilder();
-                data.append("결제 날짜,결제 시간,출금 금액,입금 금액,입금자,예금자,통장 잔고");
-
-
-                for(int i=0;i<accountDataCount;i++){
-                    data.append("\n"+accountList.get(i).getResAccountTrDate()+","+accountList.get(i).getResAccountTrTime()+","+accountList.get(i).getResAccountOut()+","+accountList.get(i).getResAccountIn()+","+accountList.get(i).getResAccountDesc1()+","+accountList.get(i).getResAccountDesc3()+","+accountList.get(i).getResAfterTranBalance());
-                }
-
-                try {
-                    FileOutputStream out = openFileOutput("carddata.csv", Context.MODE_PRIVATE);
-                    out.write((data.toString()).getBytes());
-                    out.close();
-
-                    Context context = getApplicationContext();
-                    File filelocation = new File(getFilesDir(), "carddata.csv");
-                    Uri path = FileProvider.getUriForFile(context, "com.example.subscriptionforme.setting.fileprovider",filelocation);
-                    Intent fileIntent =  new Intent(Intent.ACTION_SEND);
-                    fileIntent.setType("text/csv");
-                    fileIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
-                    fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    fileIntent.putExtra(Intent.EXTRA_STREAM, path);
-                    startActivity(Intent.createChooser(fileIntent, "Send mail"));
-
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
+                back_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onBackPressed();
+                    }
+                });
             }
         });
 
@@ -129,49 +151,51 @@ public class SettingActivity extends AppCompatActivity {
                 dataCount = SubscriptionDatabase.getInstance(getApplicationContext()).getDataCount(SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase());
                 userDataCount = UserDatabase.getInstance(getApplicationContext()).getDataCount(UserDatabase.getInstance(getApplicationContext()).getReadableDatabase());
 
-                for(int i =0; i<dataCount;i++){
-                    recommendationLists.add(SubscriptionDatabase.getInstance(getApplicationContext()).getSubscriptionData(subscriptionDatabase, i));
-                }
 
-                for(int i =0; i<userDataCount;i++){
-                    userSubscriptionData.add(UserDatabase.getInstance(getApplicationContext()).getUserData(userDatabase, i));
-                }
-
-                Log.d("태순", String.valueOf(recommendationLists.get(0).getPrice()));
-                Log.d("태순", String.valueOf(recommendationLists.get(0).getDiscount()));
-                Log.d("태순", String.valueOf(recommendationLists.get(0).getConsumption()));
+                if (dataCount != 0 || userDataCount != 0) {
+                    for (int i = 0; i < dataCount; i++) {
+                        recommendationLists.add(SubscriptionDatabase.getInstance(getApplicationContext()).getSubscriptionData(subscriptionDatabase, i));
+                    }
 
 
-                data.append("paymentDay,resMemberStoreName,resPaymentAmt,useMoney,maxSale,manageMent,recommend");
+                    for (int i = 0; i < userDataCount; i++) {
+                        userSubscriptionData.add(UserDatabase.getInstance(getApplicationContext()).getUserData(userDatabase, i));
+                    }
 
-                for(int i=0;i<dataCount;i++){
-                    data.append("\n"+'X'+","+recommendationLists.get(i).getName()+","+recommendationLists.get(i).getPrice().replace(",","")+","+recommendationLists.get(i).getConsumption().replace(",","")+","+recommendationLists.get(i).getDiscount().replace(",","")+"," + 'X' + "," + 'O');
-                    //data.append("\n"+accountList.get(i).getResAccountTrDate()+","+accountList.get(i).getResAccountTrTime()+","+accountList.get(i).getResAccountOut()+","+accountList.get(i).getResAccountIn()+","+accountList.get(i).getResAccountDesc1()+","+accountList.get(i).getResAccountDesc3()+","+accountList.get(i).getResAfterTranBalance());
-                }
 
-                for(int i=0;i<userDataCount;i++){
-                    data.append("\n"+userSubscriptionData.get(i).getBeginningPayDate()+","+userSubscriptionData.get(i).getSubscriptionName()+","+userSubscriptionData.get(i).getSubscriptionPrice().replace(",","")+","+"X"+","+"X"+","+"O"+","+"X");
-                }
+                    data.append("구독 결제 날짜, 구독명, 구독료, 사용 금액, 최대 할인 금액 , 관리, 추천");
 
-                try {
-                    FileOutputStream out = openFileOutput("subcriptionData.csv", Context.MODE_PRIVATE);
-                    out.write((data.toString()).getBytes());
-                    out.close();
+                    for (int i = 0; i < dataCount; i++) {
+                        data.append("\n" + 'X' + "," + recommendationLists.get(i).getName() + "," + recommendationLists.get(i).getPrice().replace(",", "") + "," + recommendationLists.get(i).getConsumption().replace(",", "") + "," + recommendationLists.get(i).getDiscount().replace(",", "") + "," + 'X' + "," + 'O');
+                        //data.append("\n"+accountList.get(i).getResAccountTrDate()+","+accountList.get(i).getResAccountTrTime()+","+accountList.get(i).getResAccountOut()+","+accountList.get(i).getResAccountIn()+","+accountList.get(i).getResAccountDesc1()+","+accountList.get(i).getResAccountDesc3()+","+accountList.get(i).getResAfterTranBalance());
+                    }
 
-                    Context context = getApplicationContext();
-                    File filelocation = new File(getFilesDir(), "subcriptionData.csv");
-                    Uri path = FileProvider.getUriForFile(context, "com.example.subscriptionforme.setting.fileprovider",filelocation);
-                    Intent fileIntent =  new Intent(Intent.ACTION_SEND);
-                    fileIntent.setType("text/csv");
-                    fileIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
-                    fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
-                    fileIntent.putExtra(Intent.EXTRA_STREAM, path);
-                    startActivity(Intent.createChooser(fileIntent, "Send mail"));
+                    for (int i = 0; i < userDataCount; i++) {
+                        data.append("\n" + userSubscriptionData.get(i).getBeginningPayDate() + "," + userSubscriptionData.get(i).getSubscriptionName() + "," + userSubscriptionData.get(i).getSubscriptionPrice().replace(",", "") + "," + "X" + "," + "X" + "," + "O" + "," + "X");
+                    }
 
-                } catch (FileNotFoundException e) {
-                    e.printStackTrace();
-                } catch (IOException e) {
-                    e.printStackTrace();
+                    try {
+                        FileOutputStream out = openFileOutput("subcriptionData.csv", Context.MODE_PRIVATE);
+                        out.write((data.toString()).getBytes());
+                        out.close();
+
+                        Context context = getApplicationContext();
+                        File filelocation = new File(getFilesDir(), "subcriptionData.csv");
+                        Uri path = FileProvider.getUriForFile(context, "com.example.subscriptionforme.setting.fileprovider", filelocation);
+                        Intent fileIntent = new Intent(Intent.ACTION_SEND);
+                        fileIntent.setType("text/csv");
+                        fileIntent.putExtra(Intent.EXTRA_SUBJECT, "Data");
+                        fileIntent.addFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION);
+                        fileIntent.putExtra(Intent.EXTRA_STREAM, path);
+                        startActivity(Intent.createChooser(fileIntent, "Send mail"));
+
+                    } catch (FileNotFoundException e) {
+                        e.printStackTrace();
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                } else {
+                    Toast.makeText(getApplicationContext(), "계좌를 등록해 주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -185,6 +209,7 @@ public class SettingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 }
