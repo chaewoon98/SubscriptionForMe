@@ -29,6 +29,7 @@ import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
+import com.example.subscriptionforme.main.AppTimeCheckDialog;
 import com.example.subscriptionforme.main.MainActivity;
 import com.example.subscriptionforme.setting.card.AccountVO;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -182,6 +183,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
     public void setUserUseStatusData() {
 
         String targetDES = "null", targetDES2 = "null";
+        recommendation.setClickable(false);
 
         //데이터가 0일 경우, 즉 계좌 등록이 안됐을 경우.
         if (dataCount == 0) {
@@ -197,23 +199,23 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
             case "0":
                 targetDES = "네이버페이결제";
-                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),100000);
+                judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 100000);
                 break;
 
             case "1":
                 targetDES = "G마켓";
                 targetDES2 = "옥션";
-                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),50000);
+                judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 50000);
                 break;
 
             case "2":
                 targetDES = "쿠팡";
-                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),50000);
+                judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 50000);
                 break;
 
             case "3":
                 targetDES = "요기요";
-                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),50000);
+                judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 50000);
                 break;
 
             case "4":
@@ -229,7 +231,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "8":
             case "9":
                 targetDES = "티몬";
-                judgeRecommendWithPrice(setArrayData(targetDES,targetDES2),10000);
+                judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 10000);
                 break;
 
             case "10":
@@ -247,37 +249,84 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "16":
             case "17":
             case "18":
-                judceRecommnedWithTime(200);
+                judceRecommnedWithTime("netflix");
                 break;
 
             case "19":
-                judceRecommnedWithTime(400);
+                judceRecommnedWithTime("youtube");
                 break;
         }
 
     }
 
-    public void judceRecommnedWithTime(int time){
-        //300분보다 높으면
-        if (time > 300){
-            useStatus.setText(time + " 분");
-            String recommendationMaintainString = "해당 서비스를 충분히 효율적으로 사용하고 있어요! 이용을 유지하는 것을 추천드립니다.";
-            recommendation.setText("유지 추천");
-            recommendation.setTextColor(Color.GREEN);
-            review.setText(recommendationMaintainString);
-            warnningImage.setVisibility(View.INVISIBLE);
+    public void judceRecommnedWithTime(String appName) {
+
+        //권한 체크
+        boolean granted = false;
+        AppOpsManager appOps = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
+        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), getPackageName());
+
+        if (mode == AppOpsManager.MODE_DEFAULT) {
+            granted = (checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
+        } else {
+            granted = (mode == AppOpsManager.MODE_ALLOWED);
         }
-        else{
-            useStatus.setText(time + " 분");
-            String recommendationCancelString = "최근 2주 서비스 사용 시간을 보니, 이용이 많지 않습니다. 해지를 추천드립니다.";
-            recommendation.setText("해지 추천");
-            recommendation.setTextColor(Color.RED);
-            review.setText(recommendationCancelString);
-            warnningImage.setVisibility(View.VISIBLE);
+
+        //권한 체크가 false
+        if (!granted) {
+            useStatus.setText("-");
+            recommendation.setText(">>>");
+            recommendation.setClickable(true);
+            recommendation.setTextColor(Color.BLUE);
+            review.setText("어플 사용시간 측정을 위해 사용정보 접근 허용 권한이 필요합니다. 위의 화살표를 누르시면 권한 설정 안내를 해드리겠습니다.");
+            warnningImage.setVisibility(View.INVISIBLE);
+
+            recommendation.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    AppTimeCheckDialog appTimeCheckDialog = new AppTimeCheckDialog(ManagementSusbscriptionActivity.this,true);
+                }
+            });
+
+        } else {
+            //권한 체크 된 경우.
+
+            AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
+
+            Long youtubeUseTime = Long.valueOf(0);
+            switch (appName){
+
+                case "netflix":
+                    youtubeUseTime = appUsedTimeData.getAppUsedTime(context, "netflix") / (30 * 1000);
+                    break;
+
+                case "youtube":
+                    youtubeUseTime = appUsedTimeData.getAppUsedTime(context, "youtube") / (30 * 1000);
+                    break;
+
+            }
+
+
+            //300분보다 높으면
+            if (youtubeUseTime > 300) {
+                useStatus.setText(youtubeUseTime + " 분");
+                String recommendationMaintainString = "해당 서비스를 충분히 효율적으로 사용하고 있어요! 이용을 유지하는 것을 추천드립니다.";
+                recommendation.setText("유지 추천");
+                recommendation.setTextColor(Color.GREEN);
+                review.setText(recommendationMaintainString);
+                warnningImage.setVisibility(View.INVISIBLE);
+            } else {
+                useStatus.setText(youtubeUseTime + " 분");
+                String recommendationCancelString = "최근 2주 서비스 사용 시간을 보니, 이용이 많지 않습니다. 해지를 추천드립니다.";
+                recommendation.setText("해지 추천");
+                recommendation.setTextColor(Color.RED);
+                review.setText(recommendationCancelString);
+                warnningImage.setVisibility(View.VISIBLE);
+            }
         }
     }
 
-    public int setArrayData(String targetDES,String targetDES2){
+    public int setArrayData(String targetDES, String targetDES2) {
         int useStatusData = 0;
         for (int index = 0; index < dataCount; index++) {
             accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
@@ -294,11 +343,11 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         return useStatusData;
     }
 
-    public void makeLayoutInvisible(){
-        useStatusLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
+    public void makeLayoutInvisible() {
+        useStatusLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
     }
 
-    public void judgeRecommendWithPrice(int useStatusData,int price){
+    public void judgeRecommendWithPrice(int useStatusData, int price) {
         if (useStatusData > price)
             recommendMaintaination(useStatusData);
         else

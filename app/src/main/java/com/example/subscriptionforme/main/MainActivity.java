@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.util.Log;
@@ -15,6 +16,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
+
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.SubscriptionModelData;
 
@@ -24,11 +26,13 @@ import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.recommendation.FragmentRecommendation;
 import com.example.subscriptionforme.AppUsedTimeData;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
 public class MainActivity extends AppCompatActivity {
 
     public ArrayList<SubscriptionModelData> subscriptionModelDataList;
+    private SharedPreferences sharedPreferences;
 
     // FrameLayout에 각 메뉴의 Fragment를 바꿔 줌
     private FragmentManager fragmentManager = getSupportFragmentManager();
@@ -44,6 +48,37 @@ public class MainActivity extends AppCompatActivity {
         backPressCloseHandler = new BackPressCloseHandler(this);
         setContentView(R.layout.activity_main);
 
+        //앱 최초 실행 확인
+        sharedPreferences = getSharedPreferences("checkFirst", MODE_PRIVATE);
+        boolean checkFirst = sharedPreferences.getBoolean("checkFirst", true);
+
+        //앱 최초 실행시 하고싶은 코드->권한 설정 확인하는코드
+        if (checkFirst) {
+
+            //퍼미션 체크
+            boolean granted = false;
+            AppOpsManager appOps = (AppOpsManager) getSystemService(Context.APP_OPS_SERVICE);
+            int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS, android.os.Process.myUid(), getPackageName());
+
+            if (mode == AppOpsManager.MODE_DEFAULT) {
+                granted = (checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
+            } else {
+                granted = (mode == AppOpsManager.MODE_ALLOWED);
+            }
+
+            //권한 체크가 false일 경우 다이얼로그 띄움.
+            if (!granted) {
+                AppTimeCheckDialog appTimeCheckDialog = new AppTimeCheckDialog(MainActivity.this,false);
+            }
+
+            //false로 만들어줌으로써 최초실행 이후에는 안들어오게끔
+            sharedPreferences.edit().putBoolean("checkFirst",false).apply();
+        }
+
+        startActivity();
+    }
+
+    public void startActivity() {
         //구독 상품 데이터 셋팅
         initializeSubscriptionModelData();
 
@@ -52,7 +87,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction transaction = fragmentManager.beginTransaction();
         transaction.replace(R.id.frame_container, new FragmentHome()).commitAllowingStateLoss();
         bottomNavigationView.setOnNavigationItemSelectedListener(new ItemSelectedListener());
-
     }
 
     class ItemSelectedListener implements BottomNavigationView.OnNavigationItemSelectedListener {

@@ -9,20 +9,24 @@ import android.graphics.drawable.ColorDrawable;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.Toast;
 
 import com.example.subscriptionforme.AppUsedTimeData;
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Activity.AddSubscriptionActivity;
 import com.example.subscriptionforme.home.Activity.ManagementSusbscriptionActivity;
 
 public class AppTimeCheckDialog extends Dialog {
 
     private Button cancelButton, okayButton;
     private Context context;
+    private boolean isInManagement;
 
-    public AppTimeCheckDialog(Context context){
+    public AppTimeCheckDialog(Context context, boolean isInManagement) {
         super(context);
 
         this.context = context;
+        this.isInManagement = isInManagement;
 
         getWindow().setBackgroundDrawable(new ColorDrawable(android.graphics.Color.TRANSPARENT));
         setContentView(R.layout.dialog_check_app_time_permission);
@@ -33,41 +37,36 @@ public class AppTimeCheckDialog extends Dialog {
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                onBackPressed();
+                dismiss();
+                Toast.makeText(context, "권한 요청 취소로 인해 앱 사용 시간 분석이 불가능해집니다.", Toast.LENGTH_SHORT).show();
             }
         });
 
         okayButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                getPermissionAndAppData();
+                dismiss();
+
 
             }
         });
 
+        show();
+
     }
 
-    public void getPermissionAndAppData(){
-        //퍼미션 체크
-        boolean granted = false;
-        AppOpsManager appOps = (AppOpsManager)context.getSystemService(Context.APP_OPS_SERVICE);
-        int mode = appOps.checkOpNoThrow(AppOpsManager.OPSTR_GET_USAGE_STATS,android.os.Process.myUid(), context.getPackageName());
+    public void getPermissionAndAppData() {
 
-        if (mode == AppOpsManager.MODE_DEFAULT) {
-            granted = (context.checkCallingOrSelfPermission(android.Manifest.permission.PACKAGE_USAGE_STATS) == PackageManager.PERMISSION_GRANTED);
-        } else {
-            granted = (mode == AppOpsManager.MODE_ALLOWED);
-        }
-
-        if (granted == false)
-        {
-            // 권한이 없을 경우 권한 요구 페이지 이동
-            Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        if (isInManagement) {
+            Intent intent = new Intent(context, MainActivity.class);
+            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
             context.startActivity(intent);
         }
+        // 권한이 없을 경우 권한 요구 페이지 이동
+        Intent intent = new Intent(android.provider.Settings.ACTION_USAGE_ACCESS_SETTINGS);
+        context.startActivity(intent);
 
-        AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
-        Long youtubeUseTime = appUsedTimeData.getAppUsedTime(context,"youtube")/(60*1000);
-        Log.d("youtube", String.valueOf(youtubeUseTime));
     }
 
 }
