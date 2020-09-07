@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.LinearLayout;
 import android.widget.Toast;
 
@@ -38,6 +39,7 @@ public class SettingActivity extends AppCompatActivity {
     LinearLayout cardCsvDataButton; // 카드 csv 정보 받기 버튼
     LinearLayout recommendationCsvDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
     LinearLayout surveyButton; //설문조사 버튼
+    ImageButton back_btn;
 
     int userDataCount;
     int accountDataCount;
@@ -55,11 +57,18 @@ public class SettingActivity extends AppCompatActivity {
     @Override
     public void onStart() {
         super.onStart();
-
+        back_btn = findViewById(R.id.setting_back_btn);
         cardRegisterButton = findViewById(R.id.card_register_layout);
         recommendationCsvDataButton = findViewById(R.id.recommendation_data_csv_layout);
         cardCsvDataButton = findViewById(R.id.card_data_csv_layout);
         surveyButton = findViewById(R.id.survey_layout);
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
         //카드 등록 하기 버튼 이벤트
         cardRegisterButton.setOnClickListener(new View.OnClickListener() {
@@ -120,6 +129,13 @@ public class SettingActivity extends AppCompatActivity {
                 else{
                     Toast.makeText(getApplicationContext(),"계좌를 등록해 주세요.",Toast.LENGTH_SHORT).show();
                 }
+
+                back_btn.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        onBackPressed();
+                    }
+                });
             }
         });
 
@@ -148,7 +164,7 @@ public class SettingActivity extends AppCompatActivity {
                     }
 
 
-                    data.append("구독 결제 날짜, 구독명, 구독 금액, 사용한 금액, 최대 할인율 , 관리, 추천");
+                    data.append("구독 결제 날짜, 구독명, 구독 금액, 사용한 금액, 최대 할인율 , 관리, 추천`");
 
                     for (int i = 0; i < dataCount; i++) {
                         data.append("\n" + 'X' + "," + recommendationLists.get(i).getName() + "," + recommendationLists.get(i).getPrice().replace(",", "") + "," + recommendationLists.get(i).getConsumption().replace(",", "") + "," + recommendationLists.get(i).getDiscount().replace(",", "") + "," + 'X' + "," + 'O');
@@ -195,6 +211,7 @@ public class SettingActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+
 
     }
 }
