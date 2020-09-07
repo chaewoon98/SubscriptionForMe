@@ -27,6 +27,7 @@ public class FragmentRecommendation extends Fragment {
     int dataCount;
     SQLiteDatabase subscriptionDatabase;
     private ImageButton imageButton;
+    private View view;
 
     public FragmentRecommendation(){
 
@@ -55,7 +56,7 @@ public class FragmentRecommendation extends Fragment {
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View view = inflater.inflate(R.layout.fragment_recommendation,container,false);
+        view = inflater.inflate(R.layout.fragment_recommendation,container,false);
         ListView listView = view.findViewById(R.id.listView);
         //if(dataCount != 0) {
             final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList);
@@ -78,7 +79,7 @@ public class FragmentRecommendation extends Fragment {
     public void onStart() {
         super.onStart();
 
-        imageButton = getActivity().findViewById(R.id.setting_fragment_recommendatrion);
+        imageButton = view.findViewById(R.id.setting_fragment_recommendatrion);
 
         // 설정 페이지 엑티비티 가는 버튼
         imageButton.setOnClickListener(new View.OnClickListener(){

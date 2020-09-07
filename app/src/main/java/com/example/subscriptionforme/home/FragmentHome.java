@@ -92,7 +92,7 @@ public class FragmentHome extends Fragment {
     public void onStart() {
         super.onStart();
 
-        imageButton = getActivity().findViewById(R.id.setting);
+        imageButton = view.findViewById(R.id.setting);
 
         // 설정 페이지 엑티비티 가는 버튼
         imageButton.setOnClickListener(new View.OnClickListener(){

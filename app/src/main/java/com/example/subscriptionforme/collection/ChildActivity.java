@@ -19,7 +19,6 @@ import com.example.subscriptionforme.R;
 
 public class ChildActivity extends AppCompatActivity {
 
-    TextView collectionTitle;
     TextView collectionDescription;
     TextView collectionName;
     TextView collectionPrice;
@@ -34,7 +33,6 @@ public class ChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_collection);
         Intent secondIntent = getIntent();
 
-        collectionTitle = findViewById(R.id.collectionTitle);
         collectionDescription = findViewById(R.id.collectionDescription);
         collectionName = findViewById(R.id.collectionName);
         collectionPrice = findViewById(R.id.collectionPrice);
@@ -185,7 +183,6 @@ public class ChildActivity extends AppCompatActivity {
         collectionDescription.setText(description);
         collectionName.setText(name);
         collectionPrice.setText(price);
-        collectionTitle.setText(title);
         collectionImage.setImageResource(image);
         collectionButton.setOnClickListener(new View.OnClickListener(){
             @Override

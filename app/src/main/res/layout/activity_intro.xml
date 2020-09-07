@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:orientation="vertical"
+    android:background="@color/mainColor">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="구독 For Me"
+        android:textColor="@color/white"
+        android:textSize="40dp"
+        android:fontFamily="@font/nanumsquareeb"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="200dp"
+        />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="#구독 시대를 살아가는 기발한 발견"
+        android:textColor="@color/white"
+        android:textSize="15dp"
+        android:fontFamily="@font/nanumsquareeb"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="10dp"
+        />
+
+    <Space
+        android:layout_width="match_parent"
+        android:layout_height="30dp"/>
+
+    <com.airbnb.lottie.LottieAnimationView
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_gravity="center_horizontal"
+        app:lottie_fileName="loading.json"
+        app:lottie_loop="true"
+        app:lottie_autoPlay="true"
+        app:lottie_speed="2.3"
+        />
+
+</LinearLayout>

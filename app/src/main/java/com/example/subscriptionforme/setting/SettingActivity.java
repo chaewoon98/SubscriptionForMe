@@ -41,11 +41,8 @@ public class SettingActivity extends AppCompatActivity {
     LinearLayout recommendationCsvDataButton; // 내 구독 관리, 추천 csv 정보 받기 버튼
     LinearLayout surveyButton; //설문조사 버튼
     ImageButton back_btn;
-
-
     int userDataCount;
     int accountDataCount;
-
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -77,7 +74,7 @@ public class SettingActivity extends AppCompatActivity {
 
             @Override
             public void onClick(View view) {
-                Intent intent  = new Intent(view.getContext(), CardActivity.class);
+                Intent intent = new Intent(view.getContext(), CardActivity.class);
                 startActivity(intent);
             }
         });
@@ -92,6 +89,7 @@ public class SettingActivity extends AppCompatActivity {
                 ArrayList<AccountVO> accountList = new ArrayList<AccountVO>();
                 accountDataCount = AccountDatabase.getInstance(getApplicationContext()).getDataCount(AccountDatabase.getInstance(getApplicationContext()).getReadableDatabase());
 
+
                 if (accountDataCount > 0) {
 
 
@@ -100,8 +98,7 @@ public class SettingActivity extends AppCompatActivity {
                     }
 
                     StringBuilder data = new StringBuilder();
-                    data.append("결제 날짜,결제 시간,출금 금액,입금 금액,입금자,예금자,통장 잔고");
-
+                    data.append("결제 날짜, 결제 시간, 출금 금액, 입금 금액, 입금자, 예금자, 통장 잔고");
 
                     for (int i = 0; i < accountDataCount; i++) {
                         data.append("\n" + accountList.get(i).getResAccountTrDate() + "," + accountList.get(i).getResAccountTrTime() + "," + accountList.get(i).getResAccountOut() + "," + accountList.get(i).getResAccountIn() + "," + accountList.get(i).getResAccountDesc1() + "," + accountList.get(i).getResAccountDesc3() + "," + accountList.get(i).getResAfterTranBalance());
@@ -127,9 +124,8 @@ public class SettingActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"계좌를 등록해 주세요.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "계좌를 등록해 주세요.", Toast.LENGTH_SHORT).show();
                 }
 
                 back_btn.setOnClickListener(new View.OnClickListener() {
@@ -155,6 +151,7 @@ public class SettingActivity extends AppCompatActivity {
                 dataCount = SubscriptionDatabase.getInstance(getApplicationContext()).getDataCount(SubscriptionDatabase.getInstance(getApplicationContext()).getReadableDatabase());
                 userDataCount = UserDatabase.getInstance(getApplicationContext()).getDataCount(UserDatabase.getInstance(getApplicationContext()).getReadableDatabase());
 
+
                 if (dataCount != 0 || userDataCount != 0) {
                     for (int i = 0; i < dataCount; i++) {
                         recommendationLists.add(SubscriptionDatabase.getInstance(getApplicationContext()).getSubscriptionData(subscriptionDatabase, i));
@@ -166,7 +163,7 @@ public class SettingActivity extends AppCompatActivity {
                     }
 
 
-                    data.append("구독 결제 날짜, 구독명, 구독 금액, 사용한 금액, 최대 할인율 , 관리, 추천`");
+                    data.append("구독 결제 날짜, 구독명, 구독료, 사용 금액, 최대 할인 금액 , 관리, 추천");
 
                     for (int i = 0; i < dataCount; i++) {
                         data.append("\n" + 'X' + "," + recommendationLists.get(i).getName() + "," + recommendationLists.get(i).getPrice().replace(",", "") + "," + recommendationLists.get(i).getConsumption().replace(",", "") + "," + recommendationLists.get(i).getDiscount().replace(",", "") + "," + 'X' + "," + 'O');
@@ -197,9 +194,8 @@ public class SettingActivity extends AppCompatActivity {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                }
-                else{
-                    Toast.makeText(getApplicationContext(),"계좌를 등록해 주세요.",Toast.LENGTH_SHORT).show();
+                } else {
+                    Toast.makeText(getApplicationContext(), "계좌를 등록해 주세요.", Toast.LENGTH_SHORT).show();
                 }
             }
         });

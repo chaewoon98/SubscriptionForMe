@@ -19,7 +19,7 @@
 
         <activity android:name=".collection.ChildActivity" />
 
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".main.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,8 +27,10 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".main.MainActivity"/>
         <activity android:name=".home.Activity.AddSubscriptionActivity" />
         <activity android:name=".home.Activity.ManagementSusbscriptionActivity" />
+        <activity android:name=".home.Activity.CompleteAddingSubscriptionActivity"/>
 
         <activity android:name=".recommendation.DetailRecommendationActivity" />
         <activity android:name=".recommendation.detail_recommendation.Detail_SmileClub" />

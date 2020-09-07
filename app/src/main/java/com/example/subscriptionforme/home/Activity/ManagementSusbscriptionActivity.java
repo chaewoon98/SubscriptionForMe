@@ -4,6 +4,7 @@ import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
+
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Color;
 import android.os.Build;
@@ -30,6 +31,7 @@ import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
 import com.example.subscriptionforme.main.AppTimeCheckDialog;
+
 import com.example.subscriptionforme.main.MainActivity;
 import com.example.subscriptionforme.setting.card.AccountVO;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
@@ -45,6 +47,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
     private UserSubscriptionData userSubscriptionData;
     private ImageView logoImage, warnningImage;
     private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting, deleteSubscriptionTextView, review, recommendation, useStatus;
+
     private EditText priceEditText, deleteUrlEditText, descriptionEditText;
     private View payDateView, alarmSettingView;
     private LinearLayout useStatusLinearLayout;
@@ -86,6 +89,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         recommendation = findViewById(R.id.recommendation_ativity_management_subscription);
         warnningImage = findViewById(R.id.warnnig_ativity_management_subscription);
         useStatusLinearLayout = findViewById(R.id.use_status_layout_ativity_management_subscription);
+
 
 
         //이용 현황 셋
@@ -188,6 +192,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
         //데이터가 0일 경우, 즉 계좌 등록이 안됐을 경우.
         if (dataCount == 0) {
+
             useStatus.setText("-");
             recommendation.setText("-");
             recommendation.setTextColor(Color.BLACK);
@@ -201,6 +206,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "0":
                 targetDES = "네이버페이결제";
                 judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 100000);
+
                 break;
 
             case "1":
@@ -212,6 +218,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "2":
                 targetDES = "쿠팡";
                 judgeRecommendWithPrice(setArrayData(targetDES, targetDES2), 50000);
+
                 break;
 
             case "3":
@@ -220,12 +227,12 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
                 break;
 
             case "4":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "5":
             case "6":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "7":
@@ -238,13 +245,13 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "10":
             case "11":
             case "12":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "13":
             case "14":
             case "15":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "16":
@@ -255,6 +262,10 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
             case "19":
                 judceRecommnedWithTime("youtube");
+                break;
+
+            case "null":
+                noInformation();
                 break;
         }
 
@@ -344,8 +355,12 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         return useStatusData;
     }
 
-    public void makeLayoutInvisible() {
-        useStatusLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
+    public void noInformation() {
+        useStatus.setText("-");
+        recommendation.setText("-");
+        recommendation.setTextColor(Color.BLACK);
+        review.setText("관련 정보가 없습니다.");
+        warnningImage.setVisibility(View.INVISIBLE);
     }
 
     public void judgeRecommendWithPrice(int useStatusData, int price) {

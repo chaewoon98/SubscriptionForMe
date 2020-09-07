@@ -30,19 +30,21 @@ public class FragmentCollectionView extends Fragment {
     List<String> listGroup;
     HashMap<String, List<String>> listItem;
     private ImageButton imageButton;
+    private View view;
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
 
-        return inflater.inflate(R.layout.fragment_collectionview, container, false);
+        view = inflater.inflate(R.layout.fragment_collectionview, container, false);
+        return view;
     }
 
     @Override
     public void onStart() {
         super.onStart();
 
-        imageButton = getActivity().findViewById(R.id.setting_fragment_collection_view);
+        imageButton = view.findViewById(R.id.setting_fragment_collection_view);
 
         // 설정 페이지 엑티비티 가는 버튼
         imageButton.setOnClickListener(new View.OnClickListener(){

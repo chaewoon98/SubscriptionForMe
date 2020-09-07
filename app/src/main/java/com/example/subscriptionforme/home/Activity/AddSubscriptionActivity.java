@@ -174,18 +174,21 @@ public class AddSubscriptionActivity extends AppCompatActivity {
 
         //autoCompleteTextView를 선택하지 않은경우, 즉 수동으로 등록한 경우
         if (selectedSubscriptionNumber.equals("null")) {
-
-            //수동으로 직접 등록 할 경우 예외처리 들어가야함.
-            Log.d("123","123");
+            UserDatabase.getInstance(context).insertSubcriptionData(UserDatabase.getInstance(context).getWritableDatabase(), selectedSubscriptionNumber,
+                    autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), price, payDateTextView.getText().toString()
+                    ,paymentDay,alarmSettingTextView.getText().toString(),isAlarmOn,selectedSubscriptionDescription,"null",R.drawable.no_image);
         } else {
             UserDatabase.getInstance(context).insertSubcriptionData(UserDatabase.getInstance(context).getWritableDatabase(), selectedSubscriptionNumber,
                     autoCompleteTextView.getText().toString(), paymentSystemEditText.getText().toString(), price, payDateTextView.getText().toString()
                     ,paymentDay,alarmSettingTextView.getText().toString(),isAlarmOn,selectedSubscriptionDescription,selectedSubscriptionDeleteURL,selectedSubscriptionImageID);
-
-            Intent intent = new Intent(context, MainActivity.class);
-            intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
-            startActivity(intent);
         }
+
+        Intent intent = new Intent(context, CompleteAddingSubscriptionActivity.class);
+        intent.putExtra("name",autoCompleteTextView.getText().toString());
+        intent.putExtra("price",price);
+        intent.putExtra("payDate",payDateTextView.getText().toString());
+        intent.putExtra("alarmSetting",alarmSettingTextView.getText().toString());
+        startActivity(intent);
 
     }
 
