@@ -87,6 +87,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         warnningImage = findViewById(R.id.warnnig_ativity_management_subscription);
         useStatusLinearLayout = findViewById(R.id.use_status_layout_ativity_management_subscription);
 
+
         //이용 현황 셋
         setUserUseStatusData();
 

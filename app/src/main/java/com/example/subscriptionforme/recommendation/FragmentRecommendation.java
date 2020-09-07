@@ -18,6 +18,7 @@ import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
 import com.example.subscriptionforme.setting.SettingActivity;
 
+
 import java.util.ArrayList;
 
 public class FragmentRecommendation extends Fragment {
