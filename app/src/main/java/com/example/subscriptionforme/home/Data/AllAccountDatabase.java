@@ -11,18 +11,18 @@ import androidx.annotation.Nullable;
 import com.example.subscriptionforme.recommendation.RecommendationList;
 import com.example.subscriptionforme.setting.card.AccountVO;
 
-public class AccountDatabase extends SQLiteOpenHelper {
+public class AllAccountDatabase extends SQLiteOpenHelper {
 
-    private static AccountDatabase databaseInstance = null;
-    public static String tableNameAccount = "accountDataBase";
+    private static AllAccountDatabase databaseInstance = null;
+    public static String tableNameAllAccount = "allaccountDataBase";
 
-    public AccountDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
+    public AllAccountDatabase(@Nullable Context context, @Nullable String name, @Nullable SQLiteDatabase.CursorFactory factory, int version) {
         super(context, name, factory, version);
     }
 
-    public static AccountDatabase getInstance(Context context) {
+    public static AllAccountDatabase getInstance(Context context) {
         if (databaseInstance == null) {
-            databaseInstance = new AccountDatabase(context, tableNameAccount, null, 1);
+            databaseInstance = new AllAccountDatabase(context, tableNameAllAccount, null, 1);
         }
         return databaseInstance;
     }
@@ -31,7 +31,6 @@ public class AccountDatabase extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
 
         createTable(sqLiteDatabase);
-
     }
 
     @Override
@@ -40,7 +39,7 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
     public void createTable(SQLiteDatabase database) {
 
-        String sqlString = "CREATE TABLE " + tableNameAccount + " (resAccountTrDate TEXT,resAccountTrTime TEXT, resAccountOut TEXT, " +
+        String sqlString = "CREATE TABLE " + tableNameAllAccount + " (resAccountTrDate TEXT,resAccountTrTime TEXT, resAccountOut TEXT, " +
                 "resAccountIn TEXT, resAccountDesc1 TEXT,resAccountDesc2 TEXT, resAccountDesc3 TEXT, resAfterTranBalance TEXT)";
 
         try {
@@ -50,12 +49,12 @@ public class AccountDatabase extends SQLiteOpenHelper {
         }
     }
 
-    public void insertAccountData(SQLiteDatabase database, String resAccountTrDate, String resAccountTrTime, String resAccountOut, String resAccountIn,
-                                      String resAccountDesc1,String resAccountDesc2, String resAccountDesc3,String resAfterTranBalance) {
+    public void insertAllAccountData(SQLiteDatabase database, String resAccountTrDate, String resAccountTrTime, String resAccountOut, String resAccountIn,
+                                  String resAccountDesc1,String resAccountDesc2, String resAccountDesc3,String resAfterTranBalance) {
 
         database.beginTransaction();
         try {
-            String sqlString = "insert into " + tableNameAccount + "( resAccountTrDate,resAccountTrTime,resAccountOut," +
+            String sqlString = "insert into " + tableNameAllAccount + "( resAccountTrDate,resAccountTrTime,resAccountOut," +
                     "resAccountIn,resAccountDesc1,resAccountDesc2,resAccountDesc3, resAfterTranBalance)"
                     + " values('" + resAccountTrDate + "', '" + resAccountTrTime + "', '" + resAccountOut + "', '"
                     + resAccountIn + "', '" + resAccountDesc1 + "', '" + resAccountDesc2 + "', '" + resAccountDesc3 + "', " + resAfterTranBalance + ")";
@@ -68,9 +67,9 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
     }
 
-    public void deleteAccount(SQLiteDatabase database) {
+    public void deleteAllAccount(SQLiteDatabase database) {
 
-        String sqlString = "delete from " + tableNameAccount;
+        String sqlString = "delete from " + tableNameAllAccount;
 
         database.beginTransaction();
         database.execSQL(sqlString);
@@ -78,8 +77,8 @@ public class AccountDatabase extends SQLiteOpenHelper {
         database.endTransaction();
     }
 
-    public AccountVO getAccountData(SQLiteDatabase database, int index) {
-        String sqlSelect = "SELECT * FROM " + tableNameAccount;
+    public AccountVO getAccountdata(SQLiteDatabase database, int index) {
+        String sqlSelect = "SELECT * FROM " + tableNameAllAccount;
         Cursor cursor = null;
         int count = 0;
 
@@ -99,7 +98,7 @@ public class AccountDatabase extends SQLiteOpenHelper {
 
     //총 데이타 수를 get
     public Integer getDataCount(SQLiteDatabase database) {
-        String sqlSelect = "SELECT * FROM " + tableNameAccount;
+        String sqlSelect = "SELECT * FROM " + tableNameAllAccount;
         Cursor cursor = null;
         cursor = database.rawQuery(sqlSelect, null);
 

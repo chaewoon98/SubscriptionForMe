@@ -508,7 +508,7 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:fontFamily="@font/nanumsquarer"
-                            android:text="0 원"
+                            android:text="381 원"
                             android:paddingRight="40dp"
                             android:gravity="right"
                             android:textColor="@color/black"

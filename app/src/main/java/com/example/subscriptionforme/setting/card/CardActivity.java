@@ -7,6 +7,7 @@ import android.view.View;
 import android.widget.Adapter;
 import android.widget.AdapterView;
 import android.widget.GridView;
+import android.widget.ImageButton;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -19,6 +20,7 @@ public class CardActivity extends AppCompatActivity {
 
     GridView gridView;
     GridAdapter adapter;
+    ImageButton back_btn;
     ArrayList<Card> cards = new ArrayList<>();
 
     @Override
@@ -39,6 +41,7 @@ public class CardActivity extends AppCompatActivity {
         adapter = new GridAdapter(this, cards);
         gridView = (GridView)findViewById(R.id.cardGrid);
         gridView.setAdapter(adapter);
+        back_btn = findViewById(R.id.select_card_back_btn);
     }
 
     @Override
@@ -54,6 +57,13 @@ public class CardActivity extends AppCompatActivity {
                 startActivity(intent);
             }
 
+        });
+
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
         });
 
 

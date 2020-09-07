@@ -32,6 +32,7 @@
         <LinearLayout
             android:id="@+id/card_register_layout"
             android:layout_width="match_parent"
+
             android:layout_height="60dp"
             android:orientation="horizontal"
             android:background="@drawable/setting_button_background"

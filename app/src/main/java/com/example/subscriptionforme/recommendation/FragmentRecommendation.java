@@ -12,6 +12,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
 
 import java.util.ArrayList;
@@ -51,7 +52,6 @@ public class FragmentRecommendation extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_recommendation,container,false);
         ListView listView = view.findViewById(R.id.listView);
-
         //if(dataCount != 0) {
             final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList);
             listView.setAdapter(listAdapter);

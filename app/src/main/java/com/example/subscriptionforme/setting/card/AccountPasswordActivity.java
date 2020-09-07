@@ -7,6 +7,8 @@ import android.text.TextWatcher;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -22,7 +24,10 @@ public class AccountPasswordActivity extends AppCompatActivity {
     EditText passwordEditText;
     TextView warningText;
     boolean canNextButton;
+    ImageButton back_btn;
     Button button; // 동의 버튼
+    int index;
+    Intent secondIntent;
 
     @Override
     public void onCreate(@NonNull Bundle savedInstanceState) {
@@ -33,6 +38,9 @@ public class AccountPasswordActivity extends AppCompatActivity {
         warningText = findViewById(R.id.warningPasswordText);
         passwordEditText = findViewById(R.id.accountPasswordEdit);
         button = findViewById(R.id.account_data_button);
+        index = 0;
+        back_btn = findViewById(R.id.account_password_back_btn);
+
     }
 
     @Override
@@ -90,6 +98,12 @@ public class AccountPasswordActivity extends AppCompatActivity {
             }
         });
 
+        back_btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
     }
 
 }

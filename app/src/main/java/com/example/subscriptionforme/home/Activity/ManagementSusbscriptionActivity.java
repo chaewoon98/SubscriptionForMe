@@ -2,6 +2,8 @@ package com.example.subscriptionforme.home.Activity;
 
 import android.content.Context;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
@@ -17,32 +19,42 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.subscriptionforme.R;
+import com.example.subscriptionforme.home.Data.AllAccountDatabase;
 import com.example.subscriptionforme.home.Data.UserDatabase;
 import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
+import com.example.subscriptionforme.main.MainActivity;
+import com.example.subscriptionforme.setting.card.AccountVO;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Date;
 
 public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
     private Context context;
     private UserSubscriptionData userSubscriptionData;
-    private ImageView logoImage;
-    private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting, deleteSubscriptionTextView;
+    private ImageView logoImage,warnningImage;
+    private TextView name, paymentSystem, beginningDate, payDate, updatePayDate, updateAlarmSetting, deleteSubscriptionTextView,review,recommendation,useStatus;
     private EditText priceEditText, deleteUrlEditText, descriptionEditText;
     private View payDateView, alarmSettingView;
     private Button updateButton;
-
+    private ArrayList<AccountVO> accountList;
+    private SQLiteDatabase allAccountDatabase;
+    private int dataCount;
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_manage_subscription);
 
         context = getApplicationContext();
+
+        accountList = new ArrayList<>();
+        allAccountDatabase = AllAccountDatabase.getInstance(context).getReadableDatabase();
+        dataCount = AllAccountDatabase.getInstance(context).getDataCount(allAccountDatabase);
 
         Intent intent = getIntent();
         userSubscriptionData = (UserSubscriptionData) intent.getSerializableExtra("userSubscriptionData");
@@ -61,6 +73,13 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         name = findViewById(R.id.name_ativity_management_subscription);
         paymentSystem = findViewById(R.id.payment_system_ativity_management_subscription);
         deleteSubscriptionTextView = findViewById(R.id.delete_subscription_ativity_management_subscription);
+        useStatus = findViewById(R.id.use_status_ativity_management_subscription);
+        review = findViewById(R.id.review_ativity_management_subscription);
+        recommendation = findViewById(R.id.recommendation_ativity_management_subscription);
+        warnningImage = findViewById(R.id.warnnig_ativity_management_subscription);
+
+        //이용 현황 셋
+        setUserUseStatusData();
 
         logoImage.setImageResource(userSubscriptionData.getSubscriptionImageID());
         beginningDate.setText(userSubscriptionData.getBeginningPayDate());
@@ -145,7 +164,91 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         UserDatabase.getInstance(context).updateSubscruption(UserDatabase.getInstance(context).getWritableDatabase(), userSubscriptionData.getRegisterNumber(),
                 price,updatePayDate.getText().toString(),paymentDay,updateAlarmSetting.getText().toString(),isAlarmOn,description,deleteURL);
 
-        onBackPressed();
+        Intent intent = new Intent(context, MainActivity.class);
+        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startActivity(intent);
+
+    }
+
+    //계좌정보를 이용해서 이용 현황 set
+    public void setUserUseStatusData(){
+
+        String targetDES="null",targetDES2="null";
+        int useStatusData = 0;
+
+        //데이터가 0일 경우, 즉 계좌 등록이 안됐을 경우.
+        if(dataCount == 0){
+            useStatus.setText("-");
+            recommendation.setText("-");
+            recommendation.setTextColor(Color.BLACK);
+            review.setText("계좌가 연동되지 않았습니다. 계좌 연동 진행 시, 해당 서비스에 대한 구독 For Me 만의 총평을 알려드릴게요!");
+            warnningImage.setVisibility(View.INVISIBLE);
+            return;
+        }
+
+        switch (userSubscriptionData.getSubscriptionNumberID()){
+
+            case "0":
+                targetDES = "네이버페이결제";
+                break;
+
+            case "1":
+                targetDES = "G마켓";
+                targetDES2 = "옥션";
+               break;
+
+            case "2":
+                targetDES = "쿠팡";
+                break;
+
+            case "3":
+                targetDES = "요기요";
+                break;
+
+            case "4":
+                targetDES = "버거킹";
+                break;
+
+            case "5": case "6":
+                targetDES = "GS25";
+                break;
+
+            case "7": case "8": case "9":
+                targetDES = "티몬";
+                break;
+
+            case "10": case "11": case "12":
+                targetDES = "뚜레쥬르";
+                break;
+
+            case "13": case "14": case "15":
+                targetDES = "멜론";
+                break;
+
+            case "16": case "17": case "18":
+                targetDES = "넷플릭스";
+                break;
+
+            case "19":
+                targetDES = "유튜브";
+                break;
+        }
+
+        for (int index = 0; index < dataCount; index++) {
+            accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
+                Log.d("qwewqe", accountList.get(index).getResAccountOut());
+        }
+
+        for (int index = 0; index < dataCount; index++) {
+            accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
+
+            if(accountList.get(index).getResAccountDesc3().contains(targetDES)){
+                useStatusData+= Integer.parseInt(accountList.get(index).getResAccountOut());
+                //Log.d("qwewqe", String.valueOf(useStatusData));
+            }
+        }
+
+        useStatus.setText(moneyFormat(useStatusData) + " 원");
 
     }
 
