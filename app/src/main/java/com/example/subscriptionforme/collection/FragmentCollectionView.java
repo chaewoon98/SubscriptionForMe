@@ -32,7 +32,6 @@ public class FragmentCollectionView extends Fragment {
     private ImageButton imageButton;
     private View view;
 
-
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {

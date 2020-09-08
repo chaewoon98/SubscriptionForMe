@@ -52,6 +52,7 @@
                 android:orientation="vertical">
 
                 <RadioButton
+                    android:id="@+id/radio_button_1_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -62,6 +63,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_1_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -72,6 +74,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_1_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -82,6 +85,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_1_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -92,6 +96,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_1_5"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -120,6 +125,7 @@
                 android:layout_marginLeft="20dp">
 
                 <RadioButton
+                    android:id="@+id/radio_button_2_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -130,6 +136,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_2_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -140,6 +147,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_2_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -150,6 +158,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_2_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -166,7 +175,7 @@
                 android:layout_marginTop="25dp"
                 android:layout_marginBottom="10dp"
                 android:fontFamily="@font/nanumsquarer"
-                android:text="3. 관심있는 항목에 모두 체크해 주세요. (중복 가능)"
+                android:text="3. 관심있는 항목에 모두 체크해주세요. (중복 가능)"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
 
@@ -254,6 +263,7 @@
                 android:layout_marginLeft="20dp">
 
                 <RadioButton
+                    android:id="@+id/radio_button_3_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -264,6 +274,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_3_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -274,6 +285,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_3_3"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -284,6 +296,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_3_4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -308,27 +321,29 @@
                 android:id="@+id/check_baby"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:orientation="vertical"
-                android:layout_marginLeft="20dp">
+                android:layout_marginLeft="20dp"
+                android:orientation="vertical">
 
                 <RadioButton
+                    android:id="@+id/radio_button_4_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
+                    android:buttonTint="@color/colorPurple"
                     android:fontFamily="@font/nanumsquarer"
                     android:text="예"
                     android:textColor="@color/black"
-                    android:buttonTint="@color/colorPurple"
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_4_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
+                    android:buttonTint="@color/colorPurple"
                     android:fontFamily="@font/nanumsquarer"
                     android:text="아니오"
                     android:textColor="@color/black"
-                    android:buttonTint="@color/colorPurple"
                     android:textSize="17dp" />
             </RadioGroup>
 
@@ -350,6 +365,7 @@
                 android:layout_marginLeft="20dp">
 
                 <RadioButton
+                    android:id="@+id/radio_button_5_1"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -360,6 +376,7 @@
                     android:textSize="17dp" />
 
                 <RadioButton
+                    android:id="@+id/radio_button_5_2"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_marginRight="15dp"
@@ -418,11 +435,11 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
+                android:buttonTint="@color/colorPurple"
                 android:fontFamily="@font/nanumsquarer"
                 android:text="오디오북"
                 android:textColor="@color/black"
-                android:buttonTint="@color/colorPurple"
-                android:textSize="17dp"/>
+                android:textSize="17dp" />
 
             <CheckBox
                 android:id="@+id/interest_webtoon"
@@ -449,15 +466,17 @@
             <Button
                 android:id="@+id/submit_survey_button"
                 android:layout_width="match_parent"
-                android:layout_height="80dp"
-                android:text="제출하기"
-                android:textSize="20dp"
-                android:textColor="@color/white"
-                android:fontFamily="@font/nanumsquarer"
-                android:layout_gravity="center"
-                android:layout_marginTop="20dp"
+                android:layout_height="60dp"
+                android:layout_gravity="bottom"
+                android:layout_marginTop="40dp"
                 android:layout_marginBottom="20dp"
-                android:background="@color/colorPurple"/>
+                android:background="@drawable/card_agreement"
+
+                android:fontFamily="@font/nanumsquareb"
+                android:onClick="addServiceButton"
+                android:text="제출하기"
+                android:textColor="@color/white"
+                android:textSize="20dp" />
 
         </LinearLayout>
 

@@ -20,6 +20,8 @@ import com.example.subscriptionforme.recommendation.detail_recommendation.Detail
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Yogiyo;
 import com.example.subscriptionforme.recommendation.detail_recommendation.Detail_Youtube;
 
+import org.w3c.dom.Text;
+
 import java.util.ArrayList;
 
 public class ListAdapter extends BaseAdapter {
@@ -28,21 +30,24 @@ public class ListAdapter extends BaseAdapter {
     Context context = null;
     LayoutInflater layoutInflater = null;
     ArrayList<RecommendationList> list;
+    private ArrayList<RecommendationUserVO> recommendationUserList;
 
-    public ListAdapter(Context context, ArrayList<RecommendationList> data){
+    public ListAdapter(Context context, ArrayList<RecommendationList> data, ArrayList<RecommendationUserVO> recommendationUserList){
         this.context = context;
         list = data;
+        this.recommendationUserList = recommendationUserList;
         layoutInflater = LayoutInflater.from(context);
     }
 
     @Override
     public int getCount() {
 
-        if(list.size() == 0){
+        //계좌 등록, 설문 둘다 안 한 경우.
+        if(list.size() == 0 && recommendationUserList.size() == 0){
             return 1;
         }
 
-        return list.size();
+        return list.size() + recommendationUserList.size();
     }
 
     @Override
@@ -58,13 +63,32 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
 
-        if(list.size() == 0){
+        if(list.size() == 0 && recommendationUserList.size() == 0){
             view = layoutInflater.inflate(R.layout.recommendation_null_list,viewGroup,false);
 
             return view;
         }
 
-        view = layoutInflater.inflate(R.layout.recommendation_list_view,null);
+        if(list.size() <= position){
+            view = layoutInflater.inflate(R.layout.recommendation_user_info_list_view,viewGroup,false);
+
+            TextView title = view.findViewById(R.id.title_text_user_info_list);
+            TextView name = view.findViewById(R.id.name_text_user_info_list);
+            TextView descriptioon = view.findViewById(R.id.description_text_user_info_list);
+            ImageView icon = view.findViewById(R.id.icon_logo_user_info_list);
+
+            title.setText(recommendationUserList.get(position - list.size()).getTitle());
+            name.setText(recommendationUserList.get(position - list.size()).getName());
+            descriptioon.setText(recommendationUserList.get(position - list.size()).getDescription());
+            icon.setImageResource(recommendationUserList.get(position - list.size()).getIcon());
+
+            title.setTextColor(recommendationUserList.get(position - list.size()).getColor());
+            name.setTextColor(recommendationUserList.get(position - list.size()).getColor());
+
+            return view;
+        }
+
+        view = layoutInflater.inflate(R.layout.recommendation_list_view,viewGroup,false);
 
         TextView title = (TextView)view.findViewById(R.id.title_text);
         title.setText(list.get(position).getTitle());

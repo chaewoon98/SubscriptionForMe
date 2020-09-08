@@ -24,6 +24,7 @@ public class ChildActivity extends AppCompatActivity {
     TextView collectionPrice;
     ImageView collectionImage;
     Button collectionButton;
+    private ImageButton backButton;
 
 
     @Override
@@ -38,6 +39,14 @@ public class ChildActivity extends AppCompatActivity {
         collectionPrice = findViewById(R.id.collectionPrice);
         collectionImage = findViewById(R.id.collectionImage);
         collectionButton = findViewById(R.id.collectionButton);
+        backButton = findViewById(R.id.back_button_chlid_activity);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
         if(secondIntent.getStringExtra("group").equals("식당")){
@@ -194,6 +203,5 @@ public class ChildActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    tools:context=".collection.ChildActivity"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
@@ -22,13 +22,13 @@
             android:textSize="17dp" />
 
         <ImageButton
+            android:id="@+id/back_button_chlid_activity"
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:background="@color/transparentColor"
-            android:onClick="backButton"
             android:padding="2.5dp"
             android:scaleType="fitCenter"
             android:src="@drawable/back" />
@@ -121,7 +121,6 @@
             android:background="@drawable/card_agreement"
 
             android:fontFamily="@font/nanumsquareb"
-            android:onClick="addServiceButton"
             android:text="구독하러 가기"
             android:textColor="@color/white"
             android:textSize="20dp" />

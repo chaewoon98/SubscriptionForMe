@@ -233,7 +233,6 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "5":
             case "6":
                 noInformation();
-
                 break;
 
             case "7":
@@ -247,14 +246,12 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "11":
             case "12":
                 noInformation();
-
                 break;
 
             case "13":
             case "14":
             case "15":
                 noInformation();
-
                 break;
 
             case "16":
