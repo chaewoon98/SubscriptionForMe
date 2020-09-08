@@ -43,12 +43,15 @@ public class AccountGetDataActivity extends AppCompatActivity {
     private int cupangAccount;
     private int yokiyoAccount;
     private int smailAccount;
+    private int coffeeAccount;
     private int[] naverAccountIndex; // 네이버 추천인덱스
     private int[] gsAccountIndex;
     private int[] burgerkingAccountIndex;
     private int[] yokiyoAccountIndex;
     private int yokiyoCount;
+    private int coffeeCount;
     private int[] cupangAccountIndex;
+    private int[] coffeeAccountIndex;
     private int[] smailAccountIndex;
     public static ArrayList<RecommendationList> recommendationList;
     ImageButton back_btn;
@@ -70,9 +73,12 @@ public class AccountGetDataActivity extends AppCompatActivity {
         burgerkingAccount = 0;
         cupangAccount = 0;
         smailAccount = 0;
+        coffeeAccount = 0;
+        coffeeCount = 0;
         yokiyoAccount = 0;
         naverAccountIndex = new int[50];
         gsAccountIndex = new int[50];
+        coffeeAccountIndex = new int[50];
         yokiyoAccountIndex = new int[50];
         burgerkingAccountIndex = new int[50];
         cupangAccountIndex = new int[50];
@@ -349,6 +355,11 @@ public class AccountGetDataActivity extends AppCompatActivity {
                 smailAccountIndex[i] = 1;
             }
 
+            if (accountList.get(i).getResAccountDesc3().contains("스타벅스") || accountList.get(i).getResAccountDesc3().contains("투썸")) {
+                coffeeAccount += Integer.valueOf(accountList.get(i).getResAccountOut());
+                coffeeAccountIndex[i] = 1;
+            }
+
         }
 
         if (naverAccount > 5000) {
@@ -387,8 +398,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
             }
         }
 
-        if (cupangAccount > 5000) {
-
+        if (cupangAccount > 30000) {
             recommendationList.add(new RecommendationList("쿠팡", "쿠팡 로켓 와우", "2,900", "19,000", "2,500", R.drawable.ic_coupang, getResources().getColor(R.color.colorCoupang), R.drawable.benefit_coupang));
 
             SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
@@ -450,12 +460,30 @@ public class AccountGetDataActivity extends AppCompatActivity {
             recommendationList.add(new RecommendationList("스마일 클럽", "스마일 클럽", "3,000", "19,000", "2,500", R.drawable.ic_smile_club, getResources().getColor(R.color.color11st), R.drawable.benefit_coupang));
 
             SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
-                    "스마일 클럽", "스마일 클럽", "3,000", String.valueOf(smailAccount * 0.12), String.valueOf((int) Integer.valueOf(3000*yokiyoCount)), R.drawable.ic_smile_club, getResources().getColor(R.color.color11st), R.drawable.benefit_coupang
+                    "G마켓, 옥션", "스마일 클럽 멤버십", "3,000", String.valueOf(smailAccount * 0.12), String.valueOf((int) Integer.valueOf(3000*yokiyoCount)), R.drawable.ic_smile_club, getResources().getColor(R.color.color11st), R.drawable.benefit_coupang
 
             ); // 여기도 바꿈 내용은 추가바람.
 
             for (int i = 0; i < 50; i++) {
                 if (gsAccountIndex[i] == 1) {
+                    AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                            accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
+                            , accountList.get(i).getResAccountDesc3(), accountList.get(i).getResAfterTranBalance());
+                }
+            }
+        }
+
+        if (coffeeAccount > 31000) {
+
+            //recommendationList.add(new RecommendationList("스마일 클럽", "스마일 클럽", "3,000", "19,000", "2,500", R.drawable.ic_smile_club, getResources().getColor(R.color.color11st), R.drawable.benefit_coupang));
+
+            SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
+                    "커피", "커피 플리즈", "36,900", "바꿔야함", String.valueOf((int) Integer.valueOf(3000*yokiyoCount)), R.drawable.ic_coffeeplease, getResources().getColor(R.color.colorCoffeePlease), R.drawable.benefit_coupang
+
+            ); // 여기도 바꿈 내용은 추가바람.
+
+            for (int i = 0; i < 50; i++) {
+                if (coffeeAccountIndex[i] == 1) {
                     AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
                             accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
                             , accountList.get(i).getResAccountDesc3(), accountList.get(i).getResAfterTranBalance());

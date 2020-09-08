@@ -32,6 +32,7 @@ public class FragmentCollectionView extends Fragment {
     private ImageButton imageButton;
     private View view;
 
+
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -43,7 +44,6 @@ public class FragmentCollectionView extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         imageButton = view.findViewById(R.id.setting_fragment_collection_view);
 
         // 설정 페이지 엑티비티 가는 버튼

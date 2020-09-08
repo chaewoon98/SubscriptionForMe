@@ -91,8 +91,8 @@ public class FragmentHome extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         imageButton = view.findViewById(R.id.setting);
+
 
         // 설정 페이지 엑티비티 가는 버튼
         imageButton.setOnClickListener(new View.OnClickListener(){

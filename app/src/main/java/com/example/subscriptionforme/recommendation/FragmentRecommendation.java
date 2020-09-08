@@ -29,6 +29,7 @@ public class FragmentRecommendation extends Fragment {
     private ImageButton imageButton;
     private View view;
 
+
     public FragmentRecommendation(){
 
     }
@@ -78,7 +79,6 @@ public class FragmentRecommendation extends Fragment {
     @Override
     public void onStart() {
         super.onStart();
-
         imageButton = view.findViewById(R.id.setting_fragment_recommendatrion);
 
         // 설정 페이지 엑티비티 가는 버튼
