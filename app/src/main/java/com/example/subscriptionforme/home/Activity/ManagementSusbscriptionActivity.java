@@ -106,7 +106,6 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         useStatusLinearLayout = findViewById(R.id.use_status_layout_ativity_management_subscription);
 
 
-
         //이용 현황 셋
         setUserUseStatusData();
 
@@ -213,6 +212,11 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             recommendation.setTextColor(Color.BLACK);
             review.setText("계좌가 연동되지 않았습니다. 계좌 연동 진행 시, 해당 서비스에 대한 구독 For Me 만의 총평을 알려드릴게요!");
             warnningImage.setVisibility(View.INVISIBLE);
+
+            //도표 없애기
+            LinearLayout chartLayout = findViewById(R.id.layout_chart_acrivity_management_subscription);
+            chartLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
+
             return;
         }
 
@@ -288,6 +292,10 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
     }
 
     public void judceRecommnedWithTime(String appName) {
+
+        //도표 없애기
+        LinearLayout chartLayout = findViewById(R.id.layout_chart_acrivity_management_subscription);
+        chartLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
 
         //권한 체크
         boolean granted = false;
@@ -373,6 +381,12 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             }
         }
         drawLineChart(managementChartDataList);
+
+        if(useStatusData != 0){
+            TextView noDataTextView = findViewById(R.id.no_data_textview_activity_manage_subscription);
+            noDataTextView.setVisibility(View.INVISIBLE);
+        }
+
         return useStatusData;
     }
 
@@ -382,6 +396,10 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         recommendation.setTextColor(Color.BLACK);
         review.setText("관련 정보가 없습니다.");
         warnningImage.setVisibility(View.INVISIBLE);
+
+        LinearLayout chartLayout = findViewById(R.id.layout_chart_acrivity_management_subscription);
+        chartLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
+
     }
 
     public void judgeRecommendWithPrice(int useStatusData, int price) {
@@ -473,10 +491,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         lineChart.setTouchEnabled(false);
 
         Legend legend = lineChart.getLegend();
-        legend.setYEntrySpace(2);
-        legend.setVerticalAlignment(Legend.LegendVerticalAlignment.BOTTOM);
-        legend.setHorizontalAlignment(Legend.LegendHorizontalAlignment.RIGHT);
-        legend.setDrawInside(false);
+        legend.setEnabled(false);
 
         lineChart.setBackgroundColor(Color.parseColor("#00000000"));
         lineChart.invalidate();

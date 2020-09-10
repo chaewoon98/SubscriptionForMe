@@ -59,6 +59,7 @@
                             android:layout_height="match_parent"
                             android:gravity="bottom"
                             android:paddingLeft="20dp"
+                            android:fontFamily="@font/nanumsquarer"
                             android:text="우리은행"
                             android:textColor="@color/black"
                             android:textSize="27dp" />
@@ -70,6 +71,7 @@
                             android:gravity="bottom"
                             android:paddingLeft="8dp"
                             android:text="계좌번호를"
+                            android:fontFamily="@font/nanumsquarer"
                             android:textColor="@color/black"
                             android:textSize="27dp" />
                     </LinearLayout>
@@ -86,6 +88,7 @@
                         android:layout_height="match_parent"
                         android:paddingLeft="20dp"
                         android:text="입력해주세요"
+                        android:fontFamily="@font/nanumsquarer"
                         android:textColor="@color/black"
                         android:textSize="27dp" />
                 </FrameLayout>
@@ -104,7 +107,7 @@
                 android:layout_height="match_parent"
                 android:ems="10"
                 android:hint="계좌번호 입력 ( '-' 제외 )"
-                android:inputType="textPersonName"
+                android:inputType="number"
                 android:paddingLeft="20dp"
                 android:textSize="22dp"
                 android:backgroundTint="@color/mainColor"
@@ -123,6 +126,7 @@
                 android:layout_height="match_parent"
                 android:layout_marginTop="3dp"
                 android:text="계좌번호 자릿 수를 확인 바랍니다."
+                android:fontFamily="@font/nanumsquarer"
                 android:textColor="@android:color/holo_red_light"
                 android:textSize="16dp" />
         </FrameLayout>
@@ -133,6 +137,7 @@
             android:layout_weight="1">
 
             <Button
+                style="@android:style/ButtonBar"
                 android:id="@+id/agreement_button"
                 android:layout_width="match_parent"
                 android:layout_height="60dp"
