@@ -2,6 +2,7 @@ package com.example.subscriptionforme.recommendation;
 
 import android.content.Context;
 import android.content.Intent;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -31,10 +32,12 @@ public class ListAdapter extends BaseAdapter {
     LayoutInflater layoutInflater = null;
     ArrayList<RecommendationList> list;
     private ArrayList<RecommendationUserVO> recommendationUserList;
+    private Long youtubeUseTime;
 
-    public ListAdapter(Context context, ArrayList<RecommendationList> data, ArrayList<RecommendationUserVO> recommendationUserList){
+    public ListAdapter(Context context, ArrayList<RecommendationList> data, ArrayList<RecommendationUserVO> recommendationUserList, Long youtubeUseTime) {
         this.context = context;
         list = data;
+        this.youtubeUseTime =  youtubeUseTime;
         this.recommendationUserList = recommendationUserList;
         layoutInflater = LayoutInflater.from(context);
     }
@@ -43,7 +46,7 @@ public class ListAdapter extends BaseAdapter {
     public int getCount() {
 
         //계좌 등록, 설문 둘다 안 한 경우.
-        if(list.size() == 0 && recommendationUserList.size() == 0){
+        if (list.size() == 0 && recommendationUserList.size() == 0) {
             return 1;
         }
 
@@ -63,14 +66,14 @@ public class ListAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View convertView, ViewGroup viewGroup) {
 
-        if(list.size() == 0 && recommendationUserList.size() == 0){
-            view = layoutInflater.inflate(R.layout.recommendation_null_list,viewGroup,false);
+        if (list.size() == 0 && recommendationUserList.size() == 0) {
+            view = layoutInflater.inflate(R.layout.recommendation_null_list, viewGroup, false);
 
             return view;
         }
 
-        if(list.size() <= position){
-            view = layoutInflater.inflate(R.layout.recommendation_user_info_list_view,viewGroup,false);
+        if (list.size() <= position) {
+            view = layoutInflater.inflate(R.layout.recommendation_user_info_list_view, viewGroup, false);
 
             TextView title = view.findViewById(R.id.title_text_user_info_list);
             TextView name = view.findViewById(R.id.name_text_user_info_list);
@@ -85,26 +88,48 @@ public class ListAdapter extends BaseAdapter {
             title.setTextColor(recommendationUserList.get(position - list.size()).getColor());
             name.setTextColor(recommendationUserList.get(position - list.size()).getColor());
 
+            View touchView = view.findViewById(R.id.touch_view_recommendation_list_view);
+            touchView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    switch (recommendationUserList.get(position - list.size()).getName()) {
+
+                        case "유튜브 프리미엄": {
+                            Intent intent = new Intent(context, Detail_Youtube.class);
+                            intent.putExtra("youtubeTime",youtubeUseTime);
+                            context.startActivity(intent);
+                            break;
+                        }
+
+                        case "밀리의 서재": {
+                            Intent intent = new Intent(context, Detail_Millie.class);
+                            context.startActivity(intent);
+                            break;
+                        }
+                    }
+                }
+            });
+
             return view;
         }
 
-        view = layoutInflater.inflate(R.layout.recommendation_list_view,viewGroup,false);
+        view = layoutInflater.inflate(R.layout.recommendation_list_view, viewGroup, false);
 
-        TextView title = (TextView)view.findViewById(R.id.title_text);
+        TextView title = (TextView) view.findViewById(R.id.title_text);
         title.setText(list.get(position).getTitle());
         title.setTextColor(list.get(position).getColor());
 
-        TextView name = (TextView)view.findViewById(R.id.name_text);
+        TextView name = (TextView) view.findViewById(R.id.name_text);
         name.setText(list.get(position).getName());
         name.setTextColor(list.get(position).getColor());
 
-        ImageView icon = (ImageView)view.findViewById(R.id.icon_logo);
+        ImageView icon = (ImageView) view.findViewById(R.id.icon_logo);
         icon.setImageResource(list.get(position).getIcon());
 
-        TextView consumption = (TextView)view.findViewById(R.id.consumption_text);
+        TextView consumption = (TextView) view.findViewById(R.id.consumption_text);
         consumption.setText(list.get(position).getConsumption());
 
-        TextView discount = (TextView)view.findViewById(R.id.discount_text);
+        TextView discount = (TextView) view.findViewById(R.id.discount_text);
         discount.setText(list.get(position).getDiscount());
 
         View viewTouch = view.findViewById(R.id.test_1);
@@ -112,56 +137,56 @@ public class ListAdapter extends BaseAdapter {
             @Override
             public void onClick(View view) {
 
-                switch (list.get(position).getName()){
-                    case "스마일 클럽 멤버십":{
+                switch (list.get(position).getName()) {
+                    case "스마일 클럽 멤버십": {
                         Intent intent = new Intent(context, Detail_SmileClub.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "버거킹 정기 구독 서비스":{
+                    case "버거킹 정기 구독 서비스": {
                         Intent intent = new Intent(context, Detail_BurgerKing.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "쿠팡 로켓 와우":{
+                    case "쿠팡 로켓 와우": {
                         Intent intent = new Intent(context, Detail_Coupang.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "커피 플리즈":{
+                    case "커피 플리즈": {
                         Intent intent = new Intent(context, Detail_CoffeePlease.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "네이버 플러스 멤버십":{
+                    case "네이버 플러스 멤버십": {
                         Intent intent = new Intent(context, Detail_Naver.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "GS 더 팝 플러스":{
+                    case "GS 더 팝 플러스": {
                         Intent intent = new Intent(context, Detail_GS25.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "요기요 슈퍼클럽":{
+                    case "요기요 슈퍼클럽": {
                         Intent intent = new Intent(context, Detail_Yogiyo.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "밀리의 서재":{
+                    case "밀리의 서재": {
                         Intent intent = new Intent(context, Detail_Millie.class);
                         context.startActivity(intent);
                         break;
                     }
 
-                    case "유튜브 프리미엄":{
+                    case "유튜브 프리미엄": {
                         Intent intent = new Intent(context, Detail_Youtube.class);
                         context.startActivity(intent);
                         break;

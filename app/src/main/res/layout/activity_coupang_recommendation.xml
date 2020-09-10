@@ -96,100 +96,45 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/nanumsquareb"
-                android:text="혜택"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-            <FrameLayout
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="15dp">
-
-                <ImageView
-                    android:id="@+id/naver_benefit_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="170dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/coupang_benefit1" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="180dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/round_frame" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="로켓 배송 상품은 100% 무료로 배송받을 수 있습니다.\n당일 주문, 당일 도착으로 빠르고 간편한 쇼핑은 물론, 로켓 프레시로 신선 식품을 배달 받아 보세요!"
-                android:fontFamily="@font/nanumsquarer"
-                android:textSize="17dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textColor="@color/black"/>
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp"/>
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_margin="5dp"
-                    android:scaleType="fitXY"
-                    android:layout_gravity="center"
-                    android:src="@drawable/coupang_benefit2" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="210dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/round_frame" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:text="로켓 배송 상품은 30일 이내에 무료로 환불할 수 있어요."
-                android:fontFamily="@font/nanumsquarer"
-                android:textSize="17dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:textColor="@color/black"/>
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_marginTop="40dp"
-                android:background="@color/colorGray" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="45dp"
-                android:fontFamily="@font/nanumsquareb"
                 android:text="추천한 이유"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="관련 지출 월간 비교"
+                android:textColor="@color/mainColor"
+                android:textSize="17dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart_activity_coupang_recommendation"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="8월, 당신이 놓친 혜택"
+                android:textColor="@color/mainColor"
+                android:textSize="17dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="50dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -391,6 +336,28 @@
                     android:rotation="90"
                     android:src="@drawable/ic_baseline_double_arrow_24" />
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barchart_activity_coupang_recommendation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="20dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center"
+                        android:text="-12,500\n>>>>>"
+                        android:fontFamily="@font/nanumsquarer"
+                        android:textColor="@color/red"
+                        android:textSize="15dp"
+                        />
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -445,6 +412,92 @@
                 </LinearLayout>
 
             </LinearLayout>
+
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/nanumsquareb"
+                android:text="혜택"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="15dp">
+
+                <ImageView
+                    android:id="@+id/naver_benefit_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/coupang_benefit1" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="180dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_frame" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로켓 배송 상품은 100% 무료로 배송받을 수 있습니다.\n당일 주문, 당일 도착으로 빠르고 간편한 쇼핑은 물론, 로켓 프레시로 신선 식품을 배달 받아 보세요!"
+                android:fontFamily="@font/nanumsquarer"
+                android:textSize="17dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
+                android:textColor="@color/black"/>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp"/>
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    android:layout_gravity="center"
+                    android:src="@drawable/coupang_benefit2" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="210dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_frame" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="로켓 배송 상품은 30일 이내에 무료로 환불할 수 있어요."
+                android:fontFamily="@font/nanumsquarer"
+                android:textSize="17dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
+                android:textColor="@color/black"/>
 
         </LinearLayout>
 

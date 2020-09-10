@@ -38,6 +38,7 @@ public class FragmentRecommendation extends Fragment {
     private ImageButton imageButton;
     private View view;
     private Context context;
+    private Long youtubeUseTime;
 
     public FragmentRecommendation() {
 
@@ -71,7 +72,7 @@ public class FragmentRecommendation extends Fragment {
         view = inflater.inflate(R.layout.fragment_recommendation, container, false);
         ListView listView = view.findViewById(R.id.listView);
 
-        final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList, recommendationUserList);
+        final ListAdapter listAdapter = new ListAdapter(getContext(), recommendationList, recommendationUserList, youtubeUseTime);
         listView.setAdapter(listAdapter);
 
 
@@ -116,6 +117,7 @@ public class FragmentRecommendation extends Fragment {
 
     public void updateRecommendation() {
 
+        youtubeUseTime = 0l;
         SubscriptionDatabase.getInstance(context).deleteUserSubscription(SubscriptionDatabase.getInstance(context).getWritableDatabase());
 
         //책읽기를 설문조사에서 한 경우
@@ -138,7 +140,7 @@ public class FragmentRecommendation extends Fragment {
         //권한 체크가 true 인 경우,유튜브 앱 사용 시간 2주 300분 이상인경우.
         if (granted) {
             AppUsedTimeData appUsedTimeData = new AppUsedTimeData();
-            Long youtubeUseTime = appUsedTimeData.getAppUsedTime(context, "youtube") / (30 * 1000);
+            youtubeUseTime = appUsedTimeData.getAppUsedTime(context, "youtube") / (30 * 1000);
 
             if (youtubeUseTime > 300) {
                 SubscriptionDatabase.getInstance(context).insertUserSubscriptionData(SubscriptionDatabase.getInstance(context).getWritableDatabase(),

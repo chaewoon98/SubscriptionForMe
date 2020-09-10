@@ -49,6 +49,7 @@ dependencies {
     testImplementation 'junit:junit:4.12'
     implementation 'com.github.prolificinteractive:material-calendarview:1.6.1'
     implementation 'com.airbnb.android:lottie:3.4.1'
+    implementation 'com.github.PhilJay:MPAndroidChart:v3.1.0'   // 막대, 원 그래프 사용
 
     implementation 'com.android.support:design:27.1.1' // android bottomNav
     // codef api

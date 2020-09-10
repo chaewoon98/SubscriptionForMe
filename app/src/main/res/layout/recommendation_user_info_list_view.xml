@@ -111,7 +111,7 @@
         </LinearLayout>
 
         <View
-            android:id="@+id/test_2"
+            android:id="@+id/touch_view_recommendation_list_view"
             android:layout_width="match_parent"
             android:layout_marginTop="30dp"
             android:layout_height="match_parent"

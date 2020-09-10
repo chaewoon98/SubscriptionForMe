@@ -287,6 +287,14 @@
 
                 </FrameLayout>
 
+                <com.github.mikephil.charting.charts.LineChart
+                    android:id="@+id/linechart_activity_manage_subscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_marginLeft="20dp"
+                    android:layout_marginRight="20dp"
+                    android:layout_marginTop="20dp"/>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
