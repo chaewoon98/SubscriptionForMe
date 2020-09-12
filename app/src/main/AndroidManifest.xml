@@ -10,7 +10,7 @@
     <application
         android:allowBackup="true"
         android:hardwareAccelerated="true"
-        android:icon="@mipmap/ic_launcher2"
+        android:icon="@mipmap/ic_launcher4"
         android:label="@string/app_name"
         android:largeHeap="true"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -19,7 +19,7 @@
 
         <activity android:name=".collection.ChildActivity" />
 
-        <activity android:name=".main.MainActivity">
+        <activity android:name=".main.IntroActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -27,42 +27,47 @@
             </intent-filter>
         </activity>
 
+        <activity android:name=".main.MainActivity" />
         <activity android:name=".home.Activity.AddSubscriptionActivity" />
         <activity android:name=".home.Activity.ManagementSusbscriptionActivity" />
+        <activity android:name=".home.Activity.CompleteAddingSubscriptionActivity" />
 
-        <activity android:name=".recommendation.DetailRecommendationActivity" />
         <activity android:name=".recommendation.detail_recommendation.Detail_SmileClub" />
         <activity android:name=".recommendation.detail_recommendation.Detail_BurgerKing" />
         <activity android:name=".recommendation.detail_recommendation.Detail_CoffeePlease" />
         <activity android:name=".recommendation.detail_recommendation.Detail_Coupang" />
         <activity android:name=".recommendation.detail_recommendation.Detail_GS25" />
         <activity android:name=".recommendation.detail_recommendation.Detail_Naver" />
-        <activity android:name=".recommendation.detail_recommendation.Detail_Yogiyo"/>
-        <activity android:name=".recommendation.detail_recommendation.Detail_Millie"/>
-        <activity android:name=".recommendation.detail_recommendation.Detail_Youtube"/>
-        <activity android:name=".setting.card.AccountGetDataActivity"/>
+        <activity android:name=".recommendation.detail_recommendation.Detail_Yogiyo" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_Millie" />
+        <activity android:name=".recommendation.detail_recommendation.Detail_Youtube" />
+        <activity android:name=".setting.card.AccountGetDataActivity" />
 
         <!--   설정 액티비티 추가     -->
-        <activity android:name=".setting.SettingActivity"/>
+        <activity android:name=".setting.SettingActivity" />
         <!--   계좌 선택 엑티비티 추가    -->
-        <activity android:name=".setting.card.CardActivity"/>
+        <activity android:name=".setting.card.CardActivity" />
         <!--   약관 확인 엑티비티 추가     -->
-        <activity android:name=".setting.card.AgreementActivity"/>
+        <activity
+            android:name=".setting.card.AgreementActivity"
+            android:windowSoftInputMode="adjustResize" />
         <!--   계좌 비밀번호 엑티비티 추가     -->
-        <activity android:name=".setting.card.AccountPasswordActivity"/>
+        <activity
+            android:name=".setting.card.AccountPasswordActivity"
+            android:windowSoftInputMode="adjustResize" />
         <!--   계좌 얻는 엑티비티 추가     -->
 
-        <activity android:name=".setting.SurveyActivity"/>
+        <activity android:name=".setting.SurveyActivity" />
 
         <!--    CSV 추출하기    -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="com.example.subscriptionforme.setting.fileprovider"
-            android:grantUriPermissions="true"
-            android:exported="false">
+            android:exported="false"
+            android:grantUriPermissions="true">
             <meta-data
                 android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/provider_paths"/>
+                android:resource="@xml/provider_paths" />
         </provider>
 
     </application>

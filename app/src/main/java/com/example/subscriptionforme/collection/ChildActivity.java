@@ -19,12 +19,12 @@ import com.example.subscriptionforme.R;
 
 public class ChildActivity extends AppCompatActivity {
 
-    TextView collectionTitle;
     TextView collectionDescription;
     TextView collectionName;
     TextView collectionPrice;
     ImageView collectionImage;
     Button collectionButton;
+    private ImageButton backButton;
 
 
     @Override
@@ -34,20 +34,27 @@ public class ChildActivity extends AppCompatActivity {
         setContentView(R.layout.activity_detail_collection);
         Intent secondIntent = getIntent();
 
-        collectionTitle = findViewById(R.id.collectionTitle);
         collectionDescription = findViewById(R.id.collectionDescription);
         collectionName = findViewById(R.id.collectionName);
         collectionPrice = findViewById(R.id.collectionPrice);
         collectionImage = findViewById(R.id.collectionImage);
         collectionButton = findViewById(R.id.collectionButton);
+        backButton = findViewById(R.id.back_button_chlid_activity);
+
+        backButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                onBackPressed();
+            }
+        });
 
 
         if(secondIntent.getStringExtra("group").equals("식당")){
 
             if(secondIntent.getIntExtra("child",0) == 0){
-                setDetailActivity("월 4700원에 버거가 4개??",
+                setDetailActivity("월 4700원에 저렴하게 즐기는 버거킹 치킨 버거! 햄버거를 좋아하는 당신에게 대박 추천!",
                         "버거킹",
-                        "4,700원","버거킹", R.drawable.ic_burgerking,
+                        "4,700원","버거킹", R.drawable.burgerking_benefit1,
                         "market://details?id=com.skmc.okcashbag.home_google",
                         "https://play.google.com/store/apps/details?id=com.skmc.okcashbag.home_google");
             } else if(secondIntent.getIntExtra("child",1) == 1){
@@ -68,11 +75,11 @@ public class ChildActivity extends AppCompatActivity {
             } else if(secondIntent.getIntExtra("child",1) == 1){
                 setDetailActivity("광고 없는 동영상: 수백만 개의 동영상을 광고 없이 시청하세요.",
                         "YouTube Primium",
-                        "7,900원","YouTube", R.drawable.youtube_logo,
+                        "7,900원","YouTube", R.drawable.youtube_benefit1,
                         "https://www.youtube.com/premium",
                         "https://www.youtube.com/premium");
             } else if(secondIntent.getIntExtra("child",2) == 2){
-                setDetailActivity("영화, TV 프로그램을 무제한으로.",
+                setDetailActivity("영화, TV 프로그램을 무제한으로. 어디서에나 즐기는 프리미엄 넷플릭스",
                         "넷플릭스",
                         "9,900원","nexflix", R.drawable.nexflix_logo,
                         "https://www.netflix.com/kr/",
@@ -80,13 +87,13 @@ public class ChildActivity extends AppCompatActivity {
             } else if(secondIntent.getIntExtra("child",3) == 3){
                 setDetailActivity("국내 최다 4000만곡 보유, No.1 뮤직플랫폼 멜론! 실시간 차트부터 나를 아는 똑똑한 음악추천까지!",
                         "멜론",
-                        "6,900원","멜론", R.drawable.melon_logo,
+                        "6,900원","멜론", R.drawable.melon_img,
                         "https://www.melon.com/commerce/pamphlet/web/sale_listMainView.htm",
                         "https://www.melon.com/commerce/pamphlet/web/sale_listMainView.htm");
             } else if(secondIntent.getIntExtra("child",4) == 4){
                 setDetailActivity("국내 최다 음원 보유, FLAC 고음질, 지니차트, 최신음악, 앨범, 뮤직비디오, 오늘의 선곡, TV속음악, 시대별음악, 지니라이프 등 제공.",
                         "지니",
-                        "4,700원","지니", R.drawable.genie_logo,
+                        "4,700원","지니", R.drawable.genie_img,
                         "https://www.genie.co.kr/buy/recommend",
                         "https://www.genie.co.kr/buy/recommend");
             }
@@ -116,7 +123,7 @@ public class ChildActivity extends AppCompatActivity {
         } else if(secondIntent.getStringExtra("group").equals("식품 배송")){
 
             if(secondIntent.getIntExtra("child",0) == 0){
-                setDetailActivity("맛있고 신선한 제철과일을 배달 즐기세요!", "REAL Fruit", "24,000원","REAL Fruit", R.drawable.fruit, "https://realfruit.co.kr/shop/subscription-request","https://realfruit.co.kr/shop/subscription-request");
+                setDetailActivity("맛있고 신선한 제철과일을 배달 즐기세요!", "REAL Fruit", "24,000원","REAL Fruit", R.drawable.real_fruit, "https://realfruit.co.kr/shop/subscription-request","https://realfruit.co.kr/shop/subscription-request");
             }
 
         } else if(secondIntent.getStringExtra("group").equals("의류")){
@@ -129,14 +136,14 @@ public class ChildActivity extends AppCompatActivity {
             } else if(secondIntent.getIntExtra("child",1) == 1){
                 setDetailActivity("당신의 집 앞으로 매주 새로운 옷을 가져다 드릴게요.",
                         "Trendy 패션 정기구독",
-                        "59,000원","TRENDY", R.drawable.image_trendy,
+                        "59,000원","TRENDY", R.drawable.trendy,
                         "market://details?id=com/store/apps/details?id=co.actionrabbit.tlendy",
                         " https://play.google.com/store/apps/details?id=co.actionrabbit.tlendy");
             }
         } else if(secondIntent.getStringExtra("group").equals("생활")){
 
             if(secondIntent.getIntExtra("child",0) == 0){
-                setDetailActivity("세탁을 맡길 것인지, 집에서 빨것인지...",
+                setDetailActivity("세탁의 차이, 옷은 알고 있습니다. 세탁, 수선 모든 공정을 직접 운영하는 라이언 클리너만의 독창적인 운영",
                         "LION CLEANERS",
                         "49,900원","LION CLEANERS", R.drawable.lion_clean,
                         "https://www.lioncleaners.com/reserved",
@@ -144,7 +151,7 @@ public class ChildActivity extends AppCompatActivity {
             } else if(secondIntent.getIntExtra("child",1) == 1){
                 setDetailActivity("로켓배송상품 100% 무료배송 + 최대 5% 캐시적립",
                         "로켓와우 클럽",
-                        "2,900원","로켓와우 클럽", R.drawable.coupang_logo,
+                        "2,900원","로켓와우 클럽", R.drawable.coupang_image,
                         "https://loyalty.coupang.com/loyalty/sign-up/home",
                         "https://loyalty.coupang.com/loyalty/sign-up/home");
             }
@@ -154,19 +161,19 @@ public class ChildActivity extends AppCompatActivity {
             if(secondIntent.getIntExtra("child",0) == 0){
                 setDetailActivity("쇼핑할 때마다 네이버페이 포인트 5%! 다양한 혜택과 서비스",
                         "네이버 플러스 멤버쉽",
-                        "4,900원","NAVER", R.drawable.naver_logo,
+                        "4,900원","NAVER", R.drawable.naver_image,
                         "https://nid.naver.com/membership/join",
                         "https://nid.naver.com/membership/join");
             } else if(secondIntent.getIntExtra("child",1) == 1){
                 setDetailActivity("G마켓, 옥션, G9 어디서나 최고의 혜택을 받는 최고의 쇼핑 멤버쉽",
                         "스마일 클럽",
-                        "37,000원","G마켓, 옥션, G9", R.drawable.smileclub_logo,
+                        "37,000원","G마켓, 옥션, G9", R.drawable.smile_club_image,
                         "http://m.auction.co.kr/corners/smileclub",
                         "http://m.auction.co.kr/corners/smileclub");
             } else if(secondIntent.getIntExtra("child",2) == 2){
                 setDetailActivity("주문할 때마다 자동할인, 중복 할인, 매월 받는 정기 할인",
                         "요기요 슈퍼 클럽",
-                        "9,900원","요기요", R.drawable.yogiyo_logo,
+                        "9,900원","요기요", R.drawable.yogiyo_image,
                         "https://www.yogiyo.co.kr/mobile/superclub.html",
                         "https://www.yogiyo.co.kr/mobile/superclub.html");
             } else if(secondIntent.getIntExtra("child",3) == 3){
@@ -185,7 +192,6 @@ public class ChildActivity extends AppCompatActivity {
         collectionDescription.setText(description);
         collectionName.setText(name);
         collectionPrice.setText(price);
-        collectionTitle.setText(title);
         collectionImage.setImageResource(image);
         collectionButton.setOnClickListener(new View.OnClickListener(){
             @Override
@@ -197,6 +203,5 @@ public class ChildActivity extends AppCompatActivity {
                 }
             }
         });
-
     }
 }

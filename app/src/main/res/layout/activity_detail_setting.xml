@@ -6,36 +6,30 @@
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1">
+        android:layout_height="90dp">
 
-        <LinearLayout
+        <TextView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:orientation="horizontal">
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/nanumsquareb"
+            android:gravity="center_horizontal"
 
-            <ImageButton
-                android:id="@+id/setting_back_btn"
-                android:layout_width="15dp"
-                android:layout_height="15dp"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="24dp"
-                android:adjustViewBounds="true"
-                android:background="@color/transparentColor"
-                android:scaleType="fitCenter"
-                android:src="@drawable/back" />
+            android:text="설정"
+            android:textColor="@color/mainColor"
+            android:textSize="17dp" />
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_gravity="left|center"
-                android:layout_marginLeft="40dp"
-                android:fontFamily="@font/nanumsquareb"
-                android:text="데이터 설정"
-                android:textColor="@color/colorPurple"
-                android:textSize="20dp" />
-        </LinearLayout>
-
+        <ImageButton
+            android:id="@+id/setting_back_btn"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_marginLeft="20dp"
+            android:layout_marginTop="20dp"
+            android:adjustViewBounds="true"
+            android:background="@color/transparentColor"
+            android:padding="2.5dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/back" />
     </FrameLayout>
 
     <LinearLayout

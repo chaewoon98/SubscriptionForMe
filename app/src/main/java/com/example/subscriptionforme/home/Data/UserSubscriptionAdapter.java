@@ -62,7 +62,7 @@ public class UserSubscriptionAdapter extends BaseAdapter {
     @Override
     public View getView(int position, View view, ViewGroup viewGroup) {
 
-        TextView startingDate, dDayDate, nameOfSubscription, priceOfSubscription, paymentSystemSubscription;
+        TextView startingDate, dDayDate, nameOfSubscription, priceOfSubscription, paymentSystemSubscription,guide;
         ImageButton alarmButton, addSubscrpitionButton;
         ImageView imageOfSubscription;
         Button manageButton, cancleButton;
@@ -71,6 +71,12 @@ public class UserSubscriptionAdapter extends BaseAdapter {
         if (position == userSubscriptionDataList.size()) {
             view = layoutInflater.inflate(R.layout.item_add_subscription_home, viewGroup, false);
             addSubscrpitionButton = view.findViewById(R.id.add_button_subscription_home);
+            guide = view.findViewById(R.id.guide_textview_subscription_home);
+
+            if(userSubscriptionDataList.size() == 0)
+                guide.setVisibility(View.VISIBLE);
+            else
+                guide.setVisibility(View.INVISIBLE);
 
             //추가하기 버튼 처리
             addSubscrpitionButton.setOnClickListener(new View.OnClickListener() {

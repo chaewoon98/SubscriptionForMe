@@ -28,7 +28,7 @@
             android:id="@+id/d_day_date_subsciption_home"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginRight="35dp"
+            android:layout_marginRight="45dp"
             android:fontFamily="@font/nanumsquarer"
 
             android:gravity="right|center_vertical"
@@ -41,7 +41,7 @@
             android:layout_width="17dp"
             android:layout_height="17dp"
             android:layout_gravity="right|center_vertical"
-            android:layout_marginRight="10dp"
+            android:layout_marginRight="20dp"
 
             android:adjustViewBounds="true"
             android:background="@color/transparentColor"
@@ -109,13 +109,12 @@
 
         <TextView
             android:id="@+id/price_subsciption_home"
-            android:layout_width="0dp"
+            android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:layout_weight="1"
             android:fontFamily="@font/nanumsquareb"
             android:gravity="center_vertical|right"
 
-            android:paddingRight="10dp"
+            android:paddingRight="20dp"
             android:text="3,900원"
             android:textColor="@color/black"
             android:textSize="18dp" />

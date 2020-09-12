@@ -2,7 +2,7 @@
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="50dp"
+    android:layout_height="70dp"
     android:orientation="vertical"
     android:background="@color/transparentColor">
 
@@ -17,5 +17,17 @@
         android:scaleType="fitCenter"
         android:background="@color/transparentColor"
         />
+
+    <TextView
+        android:id="@+id/guide_textview_subscription_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:paddingTop="7dp"
+
+        android:fontFamily="@font/nanumsquarer"
+        android:text="구독 서비스 추가하기"
+        android:textColor="@color/grayColor"
+        android:textSize="15dp" />
 
 </LinearLayout>

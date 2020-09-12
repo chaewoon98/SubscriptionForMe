@@ -96,101 +96,46 @@
                 android:layout_marginLeft="20dp"
                 android:layout_marginTop="45dp"
                 android:fontFamily="@font/nanumsquareb"
-                android:text="혜택"
-                android:textColor="@color/black"
-                android:textSize="20dp" />
-
-            <FrameLayout
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp">
-
-                <ImageView
-                    android:id="@+id/naver_benefit_1"
-                    android:layout_width="match_parent"
-                    android:layout_height="190dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/naver_image2" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="200dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/round_frame" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="스마일캐시 37,000원을 즉시 지급해드립니다. 최대 3%를 상시 적립 가능하며 최고 등급 할인은 12%까지 가능하답니다!\n당일배송 상품을 장보면 매일 할인받을 수 있어요!"
-                android:textColor="@color/black"
-                android:textSize="17dp" />
-
-
-            <Space
-                android:layout_width="match_parent"
-                android:layout_height="20dp" />
-
-            <FrameLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="15dp">
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="220dp"
-                    android:layout_gravity="center"
-                    android:layout_margin="5dp"
-                    android:scaleType="fitXY"
-                    android:src="@drawable/benefit_11st_2" />
-
-                <ImageView
-                    android:layout_width="match_parent"
-                    android:layout_height="230dp"
-                    android:layout_gravity="center"
-                    android:src="@drawable/round_frame" />
-
-            </FrameLayout>
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginRight="20dp"
-                android:fontFamily="@font/nanumsquarer"
-                android:text="365일 배달료를 할인받으세요!\n매일 스마일배송상품 무료배송 쿠폰 또한 드립니다."
-                android:textColor="@color/black"
-                android:textSize="17dp" />
-
-            <View
-                android:layout_width="match_parent"
-                android:layout_height="15dp"
-                android:layout_marginTop="40dp"
-                android:background="@color/colorGray" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginLeft="20dp"
-                android:layout_marginTop="45dp"
-                android:fontFamily="@font/nanumsquareb"
                 android:text="추천한 이유"
                 android:textColor="@color/black"
                 android:textSize="20dp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="45dp"
+                android:layout_gravity="center"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="관련 지출 월간 비교"
+                android:textColor="@color/mainColor"
+                android:textSize="17dp" />
+
+            <com.github.mikephil.charting.charts.LineChart
+                android:id="@+id/linechart_activity_smileclub_recommendation"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_marginTop="45dp"
+                android:layout_marginBottom="30dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="8월, 당신이 놓친 혜택"
+                android:textColor="@color/mainColor"
+                android:textSize="17dp" />
+
 
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginLeft="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_marginRight="20dp"
-                android:layout_marginBottom="50dp"
                 android:orientation="vertical">
 
                 <LinearLayout
@@ -430,6 +375,28 @@
                     android:rotation="90"
                     android:src="@drawable/ic_baseline_double_arrow_24" />
 
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp">
+
+                    <com.github.mikephil.charting.charts.BarChart
+                        android:id="@+id/barchart_activity_smileclub_recommendation"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:layout_marginBottom="20dp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+
+                        android:gravity="center"
+                        android:text="-44,500\n>>>>>"
+                        android:fontFamily="@font/nanumsquarer"
+                        android:textColor="@color/red"
+                        android:textSize="15dp"
+                        />
+
+                </FrameLayout>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -534,10 +501,94 @@
                         android:textColor="@color/black"
                         android:textSize="17dp" />
 
-
                 </LinearLayout>
 
             </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="15dp"
+                android:layout_marginTop="40dp"
+                android:background="@color/colorGray" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginTop="45dp"
+                android:fontFamily="@font/nanumsquareb"
+                android:text="혜택"
+                android:textColor="@color/black"
+                android:textSize="20dp" />
+
+            <FrameLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <ImageView
+                    android:id="@+id/naver_benefit_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="190dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/naver_image2" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="200dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_frame" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="스마일캐시 37,000원을 즉시 지급해드립니다. 최대 3%를 상시 적립 가능하며 최고 등급 할인은 12%까지 가능하답니다!\n당일배송 상품을 장보면 매일 할인받을 수 있어요!"
+                android:textColor="@color/black"
+                android:textSize="17dp" />
+
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="20dp" />
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15dp">
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="220dp"
+                    android:layout_gravity="center"
+                    android:layout_margin="5dp"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/benefit_11st_2" />
+
+                <ImageView
+                    android:layout_width="match_parent"
+                    android:layout_height="230dp"
+                    android:layout_gravity="center"
+                    android:src="@drawable/round_frame" />
+
+            </FrameLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="20dp"
+                android:layout_marginRight="20dp"
+                android:layout_marginBottom="40dp"
+                android:fontFamily="@font/nanumsquarer"
+                android:text="365일 배달료를 할인받으세요!\n매일 스마일배송상품 무료배송 쿠폰 또한 드립니다."
+                android:textColor="@color/black"
+                android:textSize="17dp" />
 
         </LinearLayout>
 

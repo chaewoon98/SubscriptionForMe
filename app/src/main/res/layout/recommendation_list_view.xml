@@ -3,17 +3,17 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="220dp"
+    android:layout_height="wrap_content"
     android:orientation="vertical">
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="wrap_content">
 
         <LinearLayout
             android:id="@+id/frameLayout"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="30dp"
             android:background="@drawable/recommendation_background"
             android:orientation="vertical">
@@ -149,15 +149,19 @@
                     android:text=" 할인"
                     android:textColor="@color/black"
                     android:textSize="23dp" />
-
             </LinearLayout>
+
+            <Space
+                android:layout_width="match_parent"
+                android:layout_height="10dp"/>
 
         </LinearLayout>
 
             <View
                 android:id="@+id/test_1"
                 android:layout_width="match_parent"
-                android:layout_height="190dp"
+                android:layout_height="match_parent"
+                android:layout_marginTop="30dp"
                 android:layout_gravity="bottom"
                 android:clickable="true"
                 android:background="#00000000"
@@ -182,6 +186,6 @@
 
     <Space
         android:layout_width="match_parent"
-        android:layout_height="20dp" />
+        android:layout_height="20dp"/>
 
 </LinearLayout>

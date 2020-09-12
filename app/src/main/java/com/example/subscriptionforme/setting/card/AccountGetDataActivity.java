@@ -1,6 +1,11 @@
 package com.example.subscriptionforme.setting.card;
 
+import android.app.AppOpsManager;
+import android.content.Context;
 import android.content.Intent;
+import android.content.pm.PackageManager;
+import android.database.sqlite.SQLiteDatabase;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.text.Editable;
 import android.text.TextWatcher;
@@ -17,10 +22,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.example.subscriptionforme.AppUsedTimeData;
 import com.example.subscriptionforme.R;
 import com.example.subscriptionforme.home.Data.AccountDatabase;
 import com.example.subscriptionforme.home.Data.AllAccountDatabase;
 import com.example.subscriptionforme.home.Data.SubscriptionDatabase;
+import com.example.subscriptionforme.home.Data.UserDatabase;
 import com.example.subscriptionforme.home.FragmentHome;
 import com.example.subscriptionforme.main.MainActivity;
 import com.example.subscriptionforme.recommendation.RecommendationList;
@@ -35,6 +42,7 @@ import java.util.regex.Pattern;
 
 public class AccountGetDataActivity extends AppCompatActivity {
 
+    private Context context;
     private List<AccountVO> accountList; // 전체 계좌
     private List<AccountVO> accountRecommendationList; // 추천에 쓰인 계좌
     private int naverAccount;
@@ -63,6 +71,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_account_get_data);
+        context = getApplicationContext();
 
         accountList = new ArrayList<AccountVO>();
         accountRecommendationList = new ArrayList<AccountVO>();
@@ -100,6 +109,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
                 AllAccountDatabase.getInstance(getApplicationContext()).deleteAllAccount(AllAccountDatabase.getInstance(getApplicationContext()).getWritableDatabase());
                 AccountDatabase.getInstance(getApplicationContext()).deleteAccount(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase());
                 SubscriptionDatabase.getInstance(getApplicationContext()).deleteSubscription(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase());
+                SubscriptionDatabase.getInstance(getApplicationContext()).deleteUserSubscription(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase());
 
                 if (recommendationList.size() != 0) {
                     recommendationList.clear();
@@ -117,6 +127,9 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
 
                 setSubscriptionList();
+
+                //설문 데이터 초기화.
+                UserDatabase.getInstance(context).deleteUserSurveyData(UserDatabase.getInstance(context).getWritableDatabase());
 
                 Intent intent = new Intent(getApplicationContext(), MainActivity.class);
                 intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
@@ -480,7 +493,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
 
             SubscriptionDatabase.getInstance(getApplicationContext()).insertSubscriptionData(SubscriptionDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
                     "커피", "커피 플리즈", "30,800", "36,900", "6,100", R.drawable.ic_coffeeplease, getResources().getColor(R.color.colorCoffeePlease), R.drawable.benefit_coupang
-
             ); // 여기도 바꿈 내용은 추가바람.
 
             for (int i = 0; i < 50; i++) {
@@ -491,7 +503,6 @@ public class AccountGetDataActivity extends AppCompatActivity {
                 }
             }
         }
-
 
     }
 

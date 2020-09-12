@@ -1,5 +1,6 @@
 package com.example.subscriptionforme.home.Activity;
 
+import android.annotation.SuppressLint;
 import android.app.AppOpsManager;
 import android.content.Context;
 import android.content.Intent;
@@ -30,16 +31,30 @@ import com.example.subscriptionforme.home.Data.UserSubscriptionData;
 import com.example.subscriptionforme.home.Dialog.AlarmSettingDialog;
 import com.example.subscriptionforme.home.Dialog.CalendarDialog;
 import com.example.subscriptionforme.home.Listener.DeleteUserSubscriptionOnClickListener;
+import com.example.subscriptionforme.home.ManagementChartDataVO;
 import com.example.subscriptionforme.main.AppTimeCheckDialog;
 
 import com.example.subscriptionforme.main.MainActivity;
+import com.example.subscriptionforme.recommendation.detail_recommendation.DayAxisValueLineChartFormatter;
+import com.example.subscriptionforme.recommendation.detail_recommendation.MyValueFormatter;
 import com.example.subscriptionforme.setting.card.AccountVO;
+import com.github.mikephil.charting.charts.LineChart;
+import com.github.mikephil.charting.components.AxisBase;
+import com.github.mikephil.charting.components.Legend;
+import com.github.mikephil.charting.components.XAxis;
+import com.github.mikephil.charting.components.YAxis;
+import com.github.mikephil.charting.data.BarEntry;
+import com.github.mikephil.charting.data.Entry;
+import com.github.mikephil.charting.data.LineData;
+import com.github.mikephil.charting.data.LineDataSet;
+import com.github.mikephil.charting.formatter.ValueFormatter;
 import com.prolificinteractive.materialcalendarview.CalendarDay;
 
 import java.text.DecimalFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
@@ -89,7 +104,6 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         recommendation = findViewById(R.id.recommendation_ativity_management_subscription);
         warnningImage = findViewById(R.id.warnnig_ativity_management_subscription);
         useStatusLinearLayout = findViewById(R.id.use_status_layout_ativity_management_subscription);
-
 
 
         //이용 현황 셋
@@ -198,6 +212,11 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             recommendation.setTextColor(Color.BLACK);
             review.setText("계좌가 연동되지 않았습니다. 계좌 연동 진행 시, 해당 서비스에 대한 구독 For Me 만의 총평을 알려드릴게요!");
             warnningImage.setVisibility(View.INVISIBLE);
+
+            //도표 없애기
+            LinearLayout chartLayout = findViewById(R.id.layout_chart_acrivity_management_subscription);
+            chartLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
+
             return;
         }
 
@@ -227,12 +246,12 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
                 break;
 
             case "4":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "5":
             case "6":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "7":
@@ -245,13 +264,13 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "10":
             case "11":
             case "12":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "13":
             case "14":
             case "15":
-                makeLayoutInvisible();
+                noInformation();
                 break;
 
             case "16":
@@ -263,11 +282,20 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
             case "19":
                 judceRecommnedWithTime("youtube");
                 break;
+
+            case "null":
+                noInformation();
+
+                break;
         }
 
     }
 
     public void judceRecommnedWithTime(String appName) {
+
+        //도표 없애기
+        LinearLayout chartLayout = findViewById(R.id.layout_chart_acrivity_management_subscription);
+        chartLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
 
         //권한 체크
         boolean granted = false;
@@ -336,23 +364,42 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
 
     public int setArrayData(String targetDES, String targetDES2) {
         int useStatusData = 0;
+        ArrayList<ManagementChartDataVO> managementChartDataList = new ArrayList<>();
+
+        //전체 계좌를 불러와서.
         for (int index = 0; index < dataCount; index++) {
             accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
         }
 
+        //관련 사항 더하기.
         for (int index = 0; index < dataCount; index++) {
             accountList.add(AllAccountDatabase.getInstance(context).getAccountdata(allAccountDatabase, index));
 
             if (accountList.get(index).getResAccountDesc3().contains(targetDES) || accountList.get(index).getResAccountDesc3().contains(targetDES2)) {
                 useStatusData += Integer.parseInt(accountList.get(index).getResAccountOut());
+                managementChartDataList.add(new ManagementChartDataVO(accountList.get(index).getResAccountTrDate(),accountList.get(index).getResAccountOut()));
             }
+        }
+        drawLineChart(managementChartDataList);
+
+        if(useStatusData != 0){
+            TextView noDataTextView = findViewById(R.id.no_data_textview_activity_manage_subscription);
+            noDataTextView.setVisibility(View.INVISIBLE);
         }
 
         return useStatusData;
     }
 
-    public void makeLayoutInvisible() {
-        useStatusLinearLayout.setLayoutParams(new LinearLayout.LayoutParams(0, 0));
+    public void noInformation() {
+        useStatus.setText("-");
+        recommendation.setText("-");
+        recommendation.setTextColor(Color.BLACK);
+        review.setText("관련 정보가 없습니다.");
+        warnningImage.setVisibility(View.INVISIBLE);
+
+        LinearLayout chartLayout = findViewById(R.id.layout_chart_acrivity_management_subscription);
+        chartLayout.setLayoutParams(new LinearLayout.LayoutParams(0,0));
+
     }
 
     public void judgeRecommendWithPrice(int useStatusData, int price) {
@@ -383,6 +430,71 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
     public String moneyFormat(int intputMoney) {
         DecimalFormat decimalFormat = new DecimalFormat("#,##0");
         return decimalFormat.format(intputMoney);
+    }
+
+
+    @SuppressLint("ResourceType")
+    public void drawLineChart(ArrayList<ManagementChartDataVO> managementChartDataList){
+        LineChart lineChart = (LineChart) findViewById(R.id.linechart_activity_manage_subscription);
+
+        //확대 불가능
+        lineChart.setPinchZoom(true);
+        lineChart.setScaleXEnabled(false);
+        lineChart.setScaleYEnabled(false);
+        lineChart.setDoubleTapToZoomEnabled(false);
+
+        List<Entry> entry_chart = new ArrayList<>();
+
+        //ValueFormatter xAxisFormatter = new DayAxisValueLineChartFormatter(lineChart);
+        XAxis xAxis = lineChart.getXAxis();
+        xAxis.setPosition(XAxis.XAxisPosition.BOTTOM);
+        //xAxis.setValueFormatter(xAxisFormatter);
+        xAxis.setTextColor(Color.parseColor("#000000"));
+        xAxis.setGranularity(1f);
+
+        //remove horizontal lines
+        AxisBase axisBase = lineChart.getAxisLeft();
+        axisBase.setDrawGridLines(false);
+
+        YAxis yAxisL = lineChart.getAxisLeft();
+        YAxis yAxisR = lineChart.getAxisRight();
+        xAxis.setAxisMinimum(0);
+        xAxis.setAxisMaximum(31);
+        xAxis.setDrawGridLines(false);
+        xAxis.setDrawAxisLine(true);
+        xAxis.setDrawLabels(true);
+        yAxisL.setDrawAxisLine(false);
+        yAxisL.setDrawLabels(false);
+        yAxisL.setDrawZeroLine(true);
+        yAxisR.setDrawGridLines(false);
+        yAxisR.setDrawAxisLine(false);
+        yAxisR.setDrawLabels(false);
+
+        //여기서 금액 넣기!
+        for(int i=0;i<managementChartDataList.size();i++){
+            entry_chart.add(new Entry(Integer.parseInt(managementChartDataList.get(i).getPayDate().substring(6)),
+                    Integer.parseInt(managementChartDataList.get(i).getPrice().replace(",",""))));
+        }
+
+        LineData lineData = new LineData();
+
+        LineDataSet lineDataSet = new LineDataSet(entry_chart, "네이버 페이 관련 지출");
+        lineDataSet.setColors(new int[] {Color.parseColor(getString(R.color.mainColor))});
+        lineData.addDataSet(lineDataSet);
+        lineDataSet.setValueFormatter(new MyValueFormatter());
+        lineDataSet.setValueTextColor(Color.parseColor("#000000"));
+        lineDataSet.setValueTextSize(10);
+        lineDataSet.setCircleColor(Color.parseColor(getString(R.color.mainColor)));
+        lineDataSet.setLineWidth(1.5f);
+        lineChart.setData(lineData);
+        lineChart.setDescription(null);
+        lineChart.setTouchEnabled(false);
+
+        Legend legend = lineChart.getLegend();
+        legend.setEnabled(false);
+
+        lineChart.setBackgroundColor(Color.parseColor("#00000000"));
+        lineChart.invalidate();
     }
 
     public void backButton(View view) {

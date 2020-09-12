@@ -45,7 +45,7 @@
             android:layout_width="20dp"
             android:layout_height="20dp"
             android:layout_marginLeft="20dp"
-            android:layout_marginTop="24dp"
+            android:layout_marginTop="20dp"
             android:adjustViewBounds="true"
             android:background="@color/transparentColor"
             android:onClick="backButton"
@@ -287,6 +287,64 @@
 
                 </FrameLayout>
 
+                <LinearLayout
+                    android:id="@+id/layout_chart_acrivity_management_subscription"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="25dp"
+                        android:orientation="horizontal">
+
+                        <View
+                            android:layout_width="10dp"
+                            android:layout_height="10dp"
+                            android:layout_marginLeft="20dp"
+                            android:background="@color/mainColor"/>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginLeft="5dp"
+
+                            android:fontFamily="@font/nanumsquarer"
+                            android:text="9월, 관련 지출 금액"
+                            android:textColor="@color/black"
+                            android:textSize="10dp"
+                            />
+
+
+                    </LinearLayout>
+
+                    <FrameLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content">
+
+                        <com.github.mikephil.charting.charts.LineChart
+                            android:id="@+id/linechart_activity_manage_subscription"
+                            android:layout_width="match_parent"
+                            android:layout_height="200dp"
+                            android:layout_marginLeft="20dp"
+                            android:layout_marginTop="5dp"
+                            android:layout_marginRight="20dp" />
+
+                        <TextView
+                            android:id="@+id/no_data_textview_activity_manage_subscription"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+
+                            android:fontFamily="@font/nanumsquarer"
+                            android:text="관련 데이터가 없습니다."
+                            android:textColor="@color/red"
+                            android:textSize="17dp"/>
+
+                    </FrameLayout>
+                </LinearLayout>
+
                 <FrameLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content">
@@ -312,8 +370,8 @@
                             android:layout_width="30dp"
                             android:layout_height="20dp"
                             android:layout_marginTop="25dp"
-                            android:src="@drawable/warning"
-                            android:scaleType="fitCenter"/>
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/warning" />
 
 
                     </LinearLayout>
