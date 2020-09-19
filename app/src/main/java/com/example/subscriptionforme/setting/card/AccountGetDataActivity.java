@@ -461,7 +461,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
             Log.d("태순숫자", "안녕3");
 
             for (int i = 0; i < 50; i++) {
-                if (gsAccountIndex[i] == 1) {
+                if (yokiyoAccountIndex[i] == 1) {
                     AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
                             accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
                             , accountList.get(i).getResAccountDesc3(), accountList.get(i).getResAfterTranBalance());
@@ -479,7 +479,7 @@ public class AccountGetDataActivity extends AppCompatActivity {
             ); // 여기도 바꿈 내용은 추가바람.
 
             for (int i = 0; i < 50; i++) {
-                if (gsAccountIndex[i] == 1) {
+                if (smailAccountIndex[i] == 1) {
                     AccountDatabase.getInstance(getApplicationContext()).insertAccountData(AccountDatabase.getInstance(getApplicationContext()).getWritableDatabase(),
                             accountList.get(i).getResAccountTrDate(), accountList.get(i).getResAccountTrTime(), accountList.get(i).getResAccountOut(), accountList.get(i).getResAccountIn(), accountList.get(i).getResAccountDesc1(), accountList.get(i).getResAccountDesc2()
                             , accountList.get(i).getResAccountDesc3(), accountList.get(i).getResAfterTranBalance());

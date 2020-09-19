@@ -112,7 +112,7 @@ public class ManagementSusbscriptionActivity extends AppCompatActivity {
         logoImage.setImageResource(userSubscriptionData.getSubscriptionImageID());
         beginningDate.setText(userSubscriptionData.getBeginningPayDate());
         payDate.setText(userSubscriptionData.getSubscriptionPayDate());
-        updatePayDate.setText(userSubscriptionData.getSubscriptionPayDate());
+        updatePayDate.setText(userSubscriptionData.getBeginningPayDate());
         updateAlarmSetting.setText(userSubscriptionData.getAlarmSetting());
         priceEditText.setText(userSubscriptionData.getSubscriptionPrice());
         name.setText(userSubscriptionData.getSubscriptionName());

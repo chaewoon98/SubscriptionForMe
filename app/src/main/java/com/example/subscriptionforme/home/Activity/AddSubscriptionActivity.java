@@ -186,7 +186,7 @@ public class AddSubscriptionActivity extends AppCompatActivity {
         Intent intent = new Intent(context, CompleteAddingSubscriptionActivity.class);
         intent.putExtra("name",autoCompleteTextView.getText().toString());
         intent.putExtra("price",price);
-        intent.putExtra("payDate",payDateTextView.getText().toString());
+        intent.putExtra("payDate",paymentDay);
         intent.putExtra("alarmSetting",alarmSettingTextView.getText().toString());
         startActivity(intent);
 
