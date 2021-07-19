@@ -57,5 +57,5 @@
 + 특정 어플리케이션의 사용 시간을 얻어 오고 이를 기반으로 구독 서비스의 유지 및 추천 여부를 판단하는 로직을 구현했습니다.<br><br>
 
 ## 🔍 More
-
+<p align="center"> <a href="https://youtu.be/YhI0cBliE-E"><img src="https://user-images.githubusercontent.com/64072741/126221152-1a764a42-d1cf-49a1-9574-13bf5fc78891.jpg"/></a> </p>
 
