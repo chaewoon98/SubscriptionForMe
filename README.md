@@ -33,7 +33,29 @@
 <br>
 
 ##  🖥️  Preview
+### 1. 구독 관리 기능.
+<p align="center"> <img src = "https://user-images.githubusercontent.com/64072741/126216375-7bce03a5-3a24-47a9-857e-65cae2450093.png"> </p>
 
+### 2. 구독 추천 기능.
+<p align="center"> <img src = "https://user-images.githubusercontent.com/64072741/126216973-a02d65fe-f50d-4c96-aec0-6d4b47c2c268.png">  </p>
 
+### 3. 데이터 관리 기능.
+<p align="center"> <img src = "https://user-images.githubusercontent.com/64072741/126216983-f7abc436-4802-4873-8af0-2601bfc6b763.png">  </p><br>
+
+##  🛠️  Process
+
+<p align="center"> <img src = "https://user-images.githubusercontent.com/64072741/126217408-c7632d9c-1f75-4ad3-8a86-298f501840d6.png" width = "85%">  </p>
+
++ 사용자의 계좌 데이터, 앱 사용시간, 사용자 정보 및 관심사 데이터 이용.
++ 사용자 맞춤 구독 추천 및 관리 서비스 제공.
++ 구독 서비스의 데이터들을 저장 및 업데이트.<br><br>
+
+## 🎓 I Learned
+
++ 구독 관리 기능의 전반적인 기능 설계 및 구현을 담당했습니다.
++ 다양한 어플리케이션을 벤치마킹해서 퀄리티 높은 UI/UX를 추구하려고 노력했습니다.
++ 특정 어플리케이션의 사용 시간을 얻어 오고 이를 기반으로 구독 서비스의 유지 및 추천 여부를 판단하는 로직을 구현했습니다.<br><br>
+
+## 🔍 More
 
 
